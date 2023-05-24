@@ -13,7 +13,7 @@ const Form = () => {
             phoneNumber,
         }
         tg.sendData(JSON.stringify(data));
-    }, [])
+    }, [name, phoneNumber])
 
     useEffect(() => {
       tg.WebApp.onEvent('mainButtonClicked', onSendData())
