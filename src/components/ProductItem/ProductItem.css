@@ -13,6 +13,7 @@
     height: 100px;
     margin: 0 auto;
     background: var(--tg-theme-button-color);
+    border-radius: 7px;
 }
 
 .description {
@@ -21,5 +22,12 @@
 
 .add-btn {
     border-radius: 7px;
-    width: 100%;
+    width: 47%;
+    background-color: #31b545;
+}
+
+.rem-btn {
+    border-radius: 7px;
+    width: 47%;
+    background-color: #bd514a;
 }
