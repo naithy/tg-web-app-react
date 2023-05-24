@@ -26,7 +26,7 @@ const Form = () => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
         })
-    }, [])
+    }, [name, phoneNumber])
 
     useEffect(() => {
         if (!name || !phoneNumber) {
