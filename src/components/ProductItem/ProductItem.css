@@ -22,12 +22,17 @@
 
 .add-btn {
     border-radius: 7px;
-    width: 47%;
+    width: 97%;
     background-color: #31b545;
 }
 
 .rem-btn {
     border-radius: 7px;
-    width: 47%;
+    width: 97%;
     background-color: #bd514a;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
 }

@@ -20,12 +20,14 @@ const ProductItem = ({product, className, onAdd, onRem}) => {
             <div className={'price'}>
                 <span>Стоимость: <b>{product.price}</b></span>
             </div>
-            <Button className={'rem-btn'} onClick={onRemHandler}>
-                Убрать из корзины
-            </Button>
-            <Button className={'add-btn'} onClick={onAddHandler}>
-                Добавить в корзину
-            </Button>
+            <div className={'btns'}>
+                <Button className={'rem-btn'} onClick={onRemHandler}>
+                    Убрать из корзины
+                </Button>
+                <Button className={'add-btn'} onClick={onAddHandler}>
+                    Добавить в корзину
+                </Button>
+            </div>
         </div>
     );
 };
