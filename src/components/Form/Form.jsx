@@ -10,7 +10,7 @@ const Form = () => {
     const onSendData = useCallback(() => {
         const data = {
             name,
-            phoneNumber,
+            phoneNumber
         }
         tg.sendData(JSON.stringify(data));
     }, [name, phoneNumber])
