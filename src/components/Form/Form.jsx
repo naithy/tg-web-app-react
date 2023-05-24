@@ -3,19 +3,18 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const [country, setCountry] = useState('');
-    const [street, setStreet] = useState('');
+    const [name, setName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
-            country,
-            street,
-            subject
+            name,
+            phoneNumber
         }
         tg.sendData(JSON.stringify(data));
-    }, [country, street, subject])
+    }, [name, phoneNumber, subject])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -31,23 +30,19 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
-        if(!street || !country) {
+        if(!name || !phoneNumber) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])
+    }, [name, phoneNumber])
 
-    const onChangeCountry = (e) => {
-        setCountry(e.target.value)
+    const onChangeName = (e) => {
+        setName(e.target.value)
     }
 
-    const onChangeStreet = (e) => {
-        setStreet(e.target.value)
-    }
-
-    const onChangeSubject = (e) => {
-        setSubject(e.target.value)
+    const onChangePhoneNumber = (e) => {
+        setPhoneNumber(e.target.value)
     }
 
     return (
@@ -56,21 +51,17 @@ const Form = () => {
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Страна'}
-                value={country}
-                onChange={onChangeCountry}
+                placeholder={'Имя'}
+                value={name}
+                onChange={onChangeName}
             />
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Улица'}
-                value={street}
-                onChange={onChangeStreet}
+                placeholder={'Номер телефона'}
+                value={phoneNumber}
+                onChange={onChangePhoneNumber}
             />
-            <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option value={'physical'}>Физ. лицо</option>
-                <option value={'legal'}>Юр. лицо</option>
-            </select>
         </div>
     );
 };
