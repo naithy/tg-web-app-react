@@ -16,23 +16,27 @@
     border-radius: 7px;
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .description {
     font-size: 0.8em;
 }
 
 .add-btn {
     border-radius: 7px;
-    width: 100%;
     background-color: #31b545;
 }
 
 .rem-btn {
     border-radius: 7px;
-    width: 100%;
     background-color: #bd514a;
 }
 
 .btns {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
 }
