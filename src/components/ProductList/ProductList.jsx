@@ -5,10 +5,10 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'ГОВНОЕ ЕБАНОЕ', price: 9999, description: 'Коричневого цвета, жиденькое'},
-    {id: '2', title: 'ТЯГИ БАРХАТНЫЕ', price: 99999, description: 'Зеленого цвета, удобные'},
-    {id: '3', title: 'ЗАЛУПА', price: 5000, description: 'Красная'},
-    {id: '4', title: 'хуй', price: 122, description: 'венистый'},
+    {id: '1', title: 'DRAGBAR 5000', price: 900, description: '5000 затяжек'},
+    {id: '2', title: 'DRAGBAR 5000', price: 1150, description: '6000 затяжек'},
+    {id: '3', title: 'LOST MARY 5000', price: 900, description: '5000 затяжек'},
+    {id: '4', title: 'GANG X BOX 8000', price: 1200, description: '8000 затяжек'},
 ]
 
 const getTotalPrice = (items = []) => {
