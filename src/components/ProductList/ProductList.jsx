@@ -8,7 +8,7 @@ const products = [
     {id: '1', title: 'DRAGBAR 5000', price: 900, description: '5000 затяжек', img: `https://sun9-65.userapi.com/impg/_F1DA-7WWEH3m_OSfXRep0q3bmCB8UQZi9aIYA/G6u037ouVtg.jpg?size=1024x1024&quality=95&sign=1a94f94d968f4607e4283820d142b38f&type=album`},
     {id: '2', title: 'DRAGBAR 5000', price: 1150, description: '6000 затяжек'},
     {id: '3', title: 'LOST MARY 5000', price: 900, description: '5000 затяжек'},
-    {id: '4', title: 'GANG X BOX 8000', price: 1200, description: '8000 затяжек'},
+    {id: '4', title: 'GANG X BOX 8000', price: 1200, description: '8000 затяжек', img: `https://sun9-43.userapi.com/impg/05TMhD0ejlPKx34-wHjN8WbO-5Rzc4k2BaC_Aw/rESpbIN2IVk.jpg?size=2000x2000&quality=95&sign=19676aa438e85b7b68b6b2d63530db88&type=album`},
 ]
 
 const getTotalPrice = (items = []) => {
