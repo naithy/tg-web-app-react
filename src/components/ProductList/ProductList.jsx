@@ -5,7 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'DRAGBAR 5000', price: 900, description: '5000 затяжек'},
+    {id: '1', title: 'DRAGBAR 5000', price: 900, description: '5000 затяжек', img: `https://sun9-65.userapi.com/impg/_F1DA-7WWEH3m_OSfXRep0q3bmCB8UQZi9aIYA/G6u037ouVtg.jpg?size=1024x1024&quality=95&sign=1a94f94d968f4607e4283820d142b38f&type=album`},
     {id: '2', title: 'DRAGBAR 5000', price: 1150, description: '6000 затяжек'},
     {id: '3', title: 'LOST MARY 5000', price: 900, description: '5000 затяжек'},
     {id: '4', title: 'GANG X BOX 8000', price: 1200, description: '8000 затяжек'},
