@@ -1,0 +1,36 @@
+* {
+    font-family: Arial, sans-serif;
+}
+
+a:active,
+a:hover,
+a {
+    text-decoration: none;
+}
+
+.nextPage {
+    min-width: 170px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.product {
+
+}
+
+.title {
+    text-align: center;
+}
+
+.img {
+    text-align: center;
+    background: lightgray;
+    height: 100px;
+    background: var(--tg-theme-button-color);
+    border-radius: 7px;
+}
+
+.img > img {
+    width: 100px;
+}

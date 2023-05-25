@@ -1,8 +1,8 @@
 import './App.css';
 import {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
-import {Route, Routes} from "react-router-dom";
-import ProductList from "./components/ProductList/ProductList";
+import {Route, Routes, Link} from "react-router-dom";
+import CategoriesList from "./components/CategoriesList/CategoriesList";
 import Form from "./components/Form/Form";
 
 
@@ -17,7 +17,8 @@ function App() {
   return (
     <div className="App">
         <Routes>
-            <Route index element={<ProductList/>}/>
+            <Route index element={<CategoriesList/>}/>
+            <Route path="/hqd" element={<hqd/>}/>
             <Route path={'form'} element={<Form/>}/>
         </Routes>
     </div>
