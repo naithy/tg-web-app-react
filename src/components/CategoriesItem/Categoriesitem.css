@@ -21,17 +21,18 @@ a {
 }
 
 .title {
-    padding-top: 10px;
+    padding-top: 5px;
     text-align: center;
 }
 
 .img {
     text-align: center;
-    background: lightgray;
-    height: 100px;
+    background: var(--tg-theme-bg-color);
+    height: 110px;
     border-radius: 7px;
 }
 
 .img > img {
+    padding-top: 5px;
     width: 100px;
 }
