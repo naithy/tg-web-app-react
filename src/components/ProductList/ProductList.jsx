@@ -48,12 +48,13 @@ const ProductList = () => {
         setAddedItems(newItems)
 
         if(newItems.length !== 0) {
+            tg.MainButton.hide();
             tg.MainButton.setParams({
                 text: `Купить ${getTotalPrice(newItems)}`,
                 "color": "#31b545"
             })
-            tg.MainButton.hide();
         } else {
+            tg.MainButton.setParams({text: `Купить ${getTotalPrice(newItems)}`});
             tg.MainButton.show();
         }
     }
