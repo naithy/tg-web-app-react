@@ -16,6 +16,7 @@
     height: 100px;
     margin: 0 auto;
     background: var(--tg-theme-button-color);
+    background-size: 150px;
     border-radius: 7px;
 }
 

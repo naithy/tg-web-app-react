@@ -14,8 +14,7 @@ const ProductItem = ({product, className, onAdd, onRem}) => {
 
     return (
         <div className={'product ' + className}>
-            <div className={'img'}/>
-            <img width={'150px'} src={product.img}/>
+            <div className={'img'} style={{backgroundImage: `url(${product.img})`, width: `150px`}}/>
             <div className={'container'}>
                 <div className={'container-text'}>
                     <div className={'title'}>{product.title}</div>
