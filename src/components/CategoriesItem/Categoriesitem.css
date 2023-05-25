@@ -1,5 +1,6 @@
 * {
     font-family: Arial, sans-serif;
+    color: var(--tg-theme-text-color);
 }
 
 a:active,
@@ -20,6 +21,7 @@ a {
 }
 
 .title {
+    padding-top: 10px;
     text-align: center;
 }
 
@@ -27,7 +29,6 @@ a {
     text-align: center;
     background: lightgray;
     height: 100px;
-    background: var(--tg-theme-button-color);
     border-radius: 7px;
 }
 
