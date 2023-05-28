@@ -2,10 +2,14 @@ import React from 'react';
 import './ProductItem.css'
 import Button from "../Button/Button";
 
-const ProductItem = ({product, onAdd}) => {
+const ProductItem = ({product, onAdd, onRemove}) => {
 
     const onAddHandler = () => {
         onAdd(product);
+    }
+
+    const onRemoveHandler = () => {
+        onRemove(product);
     }
 
 
@@ -18,6 +22,7 @@ const ProductItem = ({product, onAdd}) => {
                 {(!!!product.option && product.count > 0) ? ((product.options).map(item => (
                     <div className={'option'}>
                         <Button className={'addBtn'} onClick={onAddHandler}>+</Button>
+                        <Button className={'rmvBtn'} onClick={onRemoveHandler}>-</Button>
                         <div className={'producttext'}>
                             <p>{item}</p>
                         </div>

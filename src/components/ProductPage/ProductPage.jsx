@@ -68,6 +68,7 @@ const ProductPage = () => {
         <ProductItem
             product = {products[params.id - 1]}
             onAdd={onAdd}
+            onRemove={onRemove}
         />
     );
 };
