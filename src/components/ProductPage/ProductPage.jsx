@@ -12,52 +12,17 @@ const getTotalPrice = (items = []) => {
 }
 
 const ProductPage = () => {
-    const [addedItems, setAddedItems] = useState([]);
-    const {tg, queryId} = useTelegram();
+    const [total, setTotal] = useState(0);
 
-    const onSendData = useCallback(() => {
-        const data = {
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
-            queryId,
-        }
-        fetch('http://85.119.146.179:8000/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [addedItems])
+    const [productCount, setProductCount] = useState(0);
 
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
-
-    const onAdd = (product) => {
-        const alreadyAdded = addedItems.find(item => item.id === product.id);
-        const newItems = [...addedItems, product];
-        setAddedItems(newItems)
-
-        if(newItems.length === 0) {
-            tg.MainButton.setParams({
-                text: 'Купить'
-            })
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                text: `Купить ${getTotalPrice(newItems)}`
-            })
-        }
-    }
-
-    const onRemove = (product) => {
-        const newItems = addedItems.filter(item => item.id !== product.id);
-        setAddedItems(newItems);
+    const handleAdd = () => {
+        setProductCount(productCount + products.price);
+        setTotal(total + products.price);
+    };
+    const handleRemove = () => {
+        setProductCount(productCount - products.price);
+        setTotal(total - products.price);
     };
 
     const params = useParams();
@@ -66,8 +31,8 @@ const ProductPage = () => {
     return (
         <ProductItem
             product = {products[params.id - 1]}
-            onAdd={onAdd}
-            onRemove={onRemove}
+            onAdd={handleAdd}
+            onRemove={handleRemove}
         />
     );
 };

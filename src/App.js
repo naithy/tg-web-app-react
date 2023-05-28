@@ -4,8 +4,6 @@ import {useTelegram} from "./hooks/useTelegram";
 import {Route, Routes, useParams} from "react-router-dom";
 import CategoryList from "./components/CategoryList/CategoryList";
 import HqdList, {products} from "./components/HqdList/HqdList";
-import ProductItem from "./components/ProductItem/ProductItem";
-import HqdItem from "./components/HqdItem/HqdItem";
 import ProductPage from "./components/ProductPage/ProductPage";
 
 

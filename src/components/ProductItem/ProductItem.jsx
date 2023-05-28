@@ -24,7 +24,7 @@ const ProductItem = ({product, onAdd, onRemove}) => {
                         <Button className={'addBtn'} onClick={onAddHandler}>+</Button>
                         <Button className={'rmvBtn'} onClick={onRemoveHandler}>-</Button>
                         <div className={'producttext'}>
-                            <p>{item}</p>
+                            <p>{item} {product.price}</p>
                         </div>
                     </div>)
                 )) : <div>Нет в наличии</div>
