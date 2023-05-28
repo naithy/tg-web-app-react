@@ -2,8 +2,8 @@ import './App.css';
 import {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import {Route, Routes, Link} from "react-router-dom";
-import CategoriesList from "./components/CategoriesList/CategoriesList";
-import Form from "./components/Form/Form";
+import CategoryList from "./components/CategoryList/CategoryList";
+import HqdList from "./components/HqdList/HqdList";
 
 
 function App() {
@@ -13,13 +13,11 @@ function App() {
         tg.ready();
     })
 
-
   return (
     <div className="App">
         <Routes>
-            <Route index element={<CategoriesList/>}/>
-            <Route path="/hqd" element={<hqd/>}/>
-            <Route path={'form'} element={<Form/>}/>
+            <Route index element={<CategoryList/>}/>
+            <Route path="/hqd" element={<HqdList/>}/>
         </Routes>
     </div>
   );

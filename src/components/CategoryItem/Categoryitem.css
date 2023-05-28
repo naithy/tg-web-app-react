@@ -16,23 +16,20 @@ a {
     padding: 15px;
 }
 
-.product {
-
-}
-
-.title {
+.categorytitle {
     padding-top: 5px;
     text-align: center;
+    font-weight: 700;
 }
 
-.img {
+.categoryimg {
     text-align: center;
     background: var(--tg-theme-bg-color);
     height: 110px;
     border-radius: 7px;
 }
 
-.img > img {
+.categoryimg > img {
     padding-top: 5px;
     width: 100px;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
-import './CategoriesList.css';
-import Categoriesitem from "../CategoriesItem/Categoriesitem";
+import './CategoryList.css';
+import Categoriesitem from "../CategoryItem/Categoryitem";
 import disposable from '../../pics/disposable.png'
 import vape from '../../pics/vape.png'
 import liquid from '../../pics/liquid.png'
 import atomizer from '../../pics/atomizer.png'
+import AnimatedPage from "../../AnimatedPage";
 
 
 const categories = [
@@ -14,17 +15,19 @@ const categories = [
     {id: 'atomizer', title: 'Испарители', img: atomizer}
 ]
 
-const CategoriesList = () => {
+const CategoryList = () => {
     return (
-        <div className={'list'}>
-            {categories.map(item => (
-                <Categoriesitem
-                    product={item}
-                    className={'item'}
-                />
-            ))}
-        </div>
+        <AnimatedPage>
+            <div className={'list'}>
+                {categories.map(item => (
+                    <Categoriesitem
+                        category={item}
+                        className={'item'}
+                    />
+                ))}
+            </div>
+        </AnimatedPage>
     );
 };
 
-export default CategoriesList;
+export default CategoryList;
