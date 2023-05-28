@@ -39,7 +39,7 @@ const ProductPage = () => {
 
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
-        const newItems = [...addedItems];
+        const newItems = [...addedItems, product];
         setAddedItems(newItems)
 
         if(newItems.length === 0) {
