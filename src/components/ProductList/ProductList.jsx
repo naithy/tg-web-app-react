@@ -16,9 +16,6 @@ const ProductList = ({product, className, onAdd}) => {
                     <span>{product.price + '₽'}</span>
                 </div>
             </div>
-            <Button className={'add-btn'} onClick={onAddHandler}>
-                Добавить
-            </Button>
         </div>
     );
 };

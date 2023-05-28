@@ -27,11 +27,11 @@ export const products = [
     {id: '4', title: 'LOST MARY OS4000', price: 850,}
 ]
 
-const getTotalPrice = (items = []) => {
-    return items.reduce((acc, item) => {
-        return acc += item.price
-    }, 0)
-}
+// const getTotalPrice = (items = []) => {
+//     return items.reduce((acc, item) => {
+//         return acc += item.price
+//     }, 0)
+// }
 
 const HqdList = () => {
     const [addedItems, setAddedItems] = useState([]);

@@ -1,7 +1,12 @@
 import React from 'react';
 import './ProductItem.css'
+import Button from "../Button/Button";
 
-const ProductItem = ({product}) => {
+const ProductItem = ({product, onAdd}) => {
+
+    const onAddHandler = () => {
+        onAdd(product);
+    }
 
 
     return (
@@ -12,7 +17,7 @@ const ProductItem = ({product}) => {
             <div className={'choicecontainer'}>
                 {(!!!product.option && product.count > 0) ? ((product.options).map(item => (
                     <div className={'option'}>
-                        <button className={'addBtn'}>+</button>
+                        <Button className={'addBtn'} onClick={onAddHandler}>+</Button>
                         <div className={'producttext'}>
                             <p>{item}</p>
                         </div>

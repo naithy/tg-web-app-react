@@ -6,6 +6,7 @@ import CategoryList from "./components/CategoryList/CategoryList";
 import HqdList, {products} from "./components/HqdList/HqdList";
 import ProductItem from "./components/ProductItem/ProductItem";
 import HqdItem from "./components/HqdItem/HqdItem";
+import ProductPage from "./components/ProductPage/ProductPage";
 
 
 
@@ -17,25 +18,26 @@ function App() {
         tg.ready();
     })
 
-    function Product(){
-        // получаем параметры
-        const params = useParams();
-        const prodId = params.id;
-        return (
-            <ProductItem
-                product = {products[params.id - 1]}
-            />
-
-                // {products[params.id - 1].id}
-        );
-    }
+    // function Product(){
+    //
+    //
+    //
+    //
+    //     const params = useParams();
+    //     const prodId = params.id;
+    //     return (
+    //         <ProductItem
+    //             product = {products[params.id - 1]}
+    //         />
+    //     );
+    // }
 
   return (
     <div className="App">
         <Routes>
             <Route index element={<CategoryList/>}/>
             <Route path="/hqd" element={<HqdList/>}/>
-            <Route path="/hqd/:id" element={<Product/>}/>
+            <Route path="/hqd/:id" element={<ProductPage/>}/>
         </Routes>
     </div>
   );
