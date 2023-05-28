@@ -12,7 +12,6 @@ const getTotalPrice = (items = []) => {
 }
 
 const ProductPage = () => {
-
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
@@ -31,17 +30,17 @@ const ProductPage = () => {
         })
     }, [addedItems])
 
-    const onAdd = (product) => {
-        tg.MainButton.setParams({
-            text: `Купить`
-        })
-
-        const alreadyAdded = addedItems.find(item => item.id === product.id);
-        let newItems = [];
-
-        if(!!alreadyAdded) {
-            newItems = [...addedItems, product];
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
         }
+    }, [onSendData])
+
+    const onAdd = (product) => {
+        const alreadyAdded = addedItems.find(item => item.id === product.id);
+        const newItems = [...addedItems];
+        setAddedItems(newItems)
 
         if(newItems.length === 0) {
             tg.MainButton.hide();
@@ -52,6 +51,7 @@ const ProductPage = () => {
             })
         }
     }
+
 
     const params = useParams();
     const prodId = params.id;
