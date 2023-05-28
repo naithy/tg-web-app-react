@@ -39,7 +39,7 @@ const ProductPage = () => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
 
-        if(alreadyAdded) {
+        if(!!alreadyAdded) {
             newItems = [...addedItems, product];
         }
 
