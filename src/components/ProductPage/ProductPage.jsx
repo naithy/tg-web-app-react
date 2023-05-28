@@ -41,8 +41,6 @@ const ProductPage = () => {
 
         if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
-        } else {
-            newItems = [...addedItems, product];
         }
 
         setAddedItems(newItems)
