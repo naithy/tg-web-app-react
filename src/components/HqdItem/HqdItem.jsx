@@ -1,15 +1,15 @@
 import React from 'react';
 import './HqdItem.css';
-import Button from "../Button/Button";
+import {useNavigate} from "react-router-dom";
 
 const HqdItem = ({product, className, onAdd}) => {
-
+    const history = useNavigate()
     const onAddHandler = () => {
         onAdd(product);
     }
 
     return (
-        <a className={'toItemPage'} href={'hqd/' + product.id}>
+        <a onClick={() => history(product.id)} className={'toItemPage'}>
             <div className={'hqdcontainer'}>
                 <div className={'product ' + className}>
                     <img className={'hqdimg'} src={product.img}/>
