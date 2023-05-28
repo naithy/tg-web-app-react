@@ -1,8 +1,10 @@
 import React from 'react';
 import './ProductItem.css'
 import Button from "../Button/Button";
+import {useNavigate} from "react-router-dom";
 
 const ProductItem = ({product, productCount, onAdd, onRemove}) => {
+    const history = useNavigate()
 
     const onAddHandler = () => {
         onAdd(product);
@@ -38,7 +40,7 @@ const ProductItem = ({product, productCount, onAdd, onRemove}) => {
                 )) : <div>Нет в наличии</div>
                 }
             </div>
-            <a href={'/hqd'}>go back</a>
+            <button onClick={() => history(-1)}>Go back</button>
         </div>
     );
 };
