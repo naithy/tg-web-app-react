@@ -1,12 +1,10 @@
 import './App.css';
 import React, {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
-import {Route, Routes, useParams} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import CategoryList from "./components/CategoryList/CategoryList";
-import HqdList, {products} from "./components/HqdList/HqdList";
+import HqdList from "./components/HqdList/HqdList";
 import ProductPage from "./components/ProductPage/ProductPage";
-
-
 
 
 function App() {

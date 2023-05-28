@@ -4,6 +4,7 @@ import HqdItem from "../HqdItem/HqdItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 import AnimatedPage from "../../AnimatedPage";
+import {useNavigate} from "react-router-dom";
 
 export const products = [
     {id: '1', title: 'DRAGBAR B5000', price: 900,
@@ -89,6 +90,8 @@ const HqdList = () => {
             tg.offEvent('mainButtonClicked', onSendData)
         }
     }, [onSendData])
+
+    const history = useNavigate();
 
     return (
         <AnimatedPage>
