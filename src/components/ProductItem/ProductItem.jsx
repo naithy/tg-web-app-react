@@ -38,6 +38,7 @@ const ProductItem = ({product, productCount, onAdd, onRemove}) => {
                 )) : <div>Нет в наличии</div>
                 }
             </div>
+            <a href={'/hqd'}>go back</a>
         </div>
     );
 };
