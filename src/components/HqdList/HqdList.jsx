@@ -16,13 +16,19 @@ export const products = [
         count: 10
     },
     {id: '2', title: 'DRAGBAR B6000', price: 1000,
-        options: []},
+        options: [
+            'cherry',
+            'mango'
+        ],
+        count: 30
+    },
     {id: '3', title: 'LOST MARY BM5000', price: 900,
         img: `https://sun9-43.userapi.com/impg/05TMhD0ejlPKx34-wHjN8WbO-5Rzc4k2BaC_Aw/rESpbIN2IVk.jpg?size=2000x2000&quality=95&sign=19676aa438e85b7b68b6b2d63530db88&type=album`,
         options: [
             'cherry',
             'pineapple'
-        ]
+        ],
+        count: 12
     },
     {id: '4', title: 'LOST MARY OS4000', price: 850,}
 ]
