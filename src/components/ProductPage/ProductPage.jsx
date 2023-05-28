@@ -43,6 +43,9 @@ const ProductPage = () => {
         setAddedItems(newItems)
 
         if(newItems.length === 0) {
+            tg.MainButton.setParams({
+                text: 'Купить'
+            })
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
@@ -50,6 +53,11 @@ const ProductPage = () => {
                 text: `Купить ${getTotalPrice(newItems)}`
             })
         }
+    }
+
+    const onRemove = (product) => {
+        const alreadyRemoved = addedItems.find(item => item.id !== product.id);
+
     }
 
 
