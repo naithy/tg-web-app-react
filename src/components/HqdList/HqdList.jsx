@@ -100,6 +100,9 @@ const HqdList = () => {
                         className={'item'}
                     />
                 ))}
+                <div>
+                    <button onClick={() => history(-1)}>Go back</button>
+                </div>
             </div>
         </AnimatedPage>
     );

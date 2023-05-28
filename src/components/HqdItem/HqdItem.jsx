@@ -9,7 +9,7 @@ const HqdItem = ({product, className, onAdd}) => {
     }
 
     return (
-        <div>
+        <div className={'HqdItem'}>
             <a onClick={() => history(product.id)} className={'toItemPage'}>
                 <div className={'hqdcontainer'}>
                     <div className={'product ' + className}>
@@ -24,7 +24,6 @@ const HqdItem = ({product, className, onAdd}) => {
                     </div>
                 </div>
             </a>
-            <button onClick={() => history(-1)}>Go back</button>
         </div>
     );
 };
