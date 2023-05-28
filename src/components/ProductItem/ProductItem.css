@@ -62,3 +62,8 @@ p {
 .last {
     border-bottom: 0;
 }
+
+.btns {
+    display: flex;
+    flex-direction: row;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductItem.css'
 import Button from "../Button/Button";
 
-const ProductItem = ({product, onAdd, onRemove}) => {
+const ProductItem = ({product, productCount, onAdd, onRemove}) => {
 
     const onAddHandler = () => {
         onAdd(product);
@@ -21,8 +21,16 @@ const ProductItem = ({product, onAdd, onRemove}) => {
             <div className={'choicecontainer'}>
                 {(!!!product.option && product.count > 0) ? ((product.options).map(item => (
                     <div className={'option'}>
-                        <Button className={'addBtn'} onClick={onAddHandler}>+</Button>
-                        <Button className={'rmvBtn'} onClick={onRemoveHandler}>-</Button>
+                        {productCount === 0 ? (
+                            <Button className={'addBtn'} onClick={onAddHandler}>+</Button>
+                        ) : (
+                            <div className={'btns'}>
+                                <Button className={'addBtn'} onClick={onAddHandler}>+</Button>
+                                <Button className={'rmvBtn'} onClick={onRemoveHandler}>-</Button>
+                            </div>
+                        )}
+
+
                         <div className={'producttext'}>
                             <p>{item} {product.price}</p>
                         </div>

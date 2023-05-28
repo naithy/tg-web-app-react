@@ -12,27 +12,41 @@ const getTotalPrice = (items = []) => {
 }
 
 const ProductPage = () => {
-    const [total, setTotal] = useState(0);
+    const {tg, queryId} = useTelegram();
 
+    const [total, setTotal] = useState(0);
     const [productCount, setProductCount] = useState(0);
 
     const handleAdd = () => {
-        setProductCount(productCount + products.price);
-        setTotal(total + products.price);
+        setProductCount(productCount + products[params.id - 1].price);
+        setTotal(total + products[params.id - 1].price);
     };
     const handleRemove = () => {
-        setProductCount(productCount - products.price);
-        setTotal(total - products.price);
+        setProductCount(productCount - products[params.id - 1].price);
+        setTotal(total - products[params.id - 1].price);
     };
+
+    if(productCount === 0) {
+        tg.MainButton.hide();
+        tg.MainButton.setParams({
+            text: `Купить ${total}`,
+            "color": "#31b545"
+        })
+    } else {
+        tg.MainButton.setParams({text: `Купить ${total}`,
+            "color": "#31b545"});
+        tg.MainButton.show();
+    }
 
     const params = useParams();
     const prodId = params.id;
 
     return (
         <ProductItem
-            product = {products[params.id - 1]}
+            product={products[params.id - 1]}
             onAdd={handleAdd}
             onRemove={handleRemove}
+            productCount={productCount}
         />
     );
 };
