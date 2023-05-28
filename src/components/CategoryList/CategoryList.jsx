@@ -17,16 +17,14 @@ const categories = [
 
 const CategoryList = () => {
     return (
-        <AnimatedPage>
-            <div className={'list'}>
-                {categories.map(item => (
-                    <Categoriesitem
-                        category={item}
-                        className={'item'}
-                    />
-                ))}
-            </div>
-        </AnimatedPage>
+        <div className={'list'}>
+            {categories.map(item => (
+                <Categoriesitem
+                    category={item}
+                    className={'item'}
+                />
+            ))}
+        </div>
     );
 };
 
