@@ -5,7 +5,14 @@ import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
+const getTotalPrice = (items = []) => {
+    return items.reduce((acc, item) => {
+        return acc += item.price
+    }, 0)
+}
+
 const ProductPage = () => {
+
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
@@ -25,6 +32,10 @@ const ProductPage = () => {
     }, [addedItems])
 
     const onAdd = (product) => {
+        tg.MainButton.setParams({
+            text: `Купить`
+        })
+
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
 
@@ -41,7 +52,7 @@ const ProductPage = () => {
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Купить`
+                text: `Купить ${getTotalPrice(newItems)}`
             })
         }
     }
