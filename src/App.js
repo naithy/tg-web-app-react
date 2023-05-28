@@ -18,20 +18,6 @@ function App() {
         tg.ready();
     })
 
-    // function Product(){
-    //
-    //
-    //
-    //
-    //     const params = useParams();
-    //     const prodId = params.id;
-    //     return (
-    //         <ProductItem
-    //             product = {products[params.id - 1]}
-    //         />
-    //     );
-    // }
-
   return (
     <div className="App">
         <Routes>

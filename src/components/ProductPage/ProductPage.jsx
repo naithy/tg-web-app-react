@@ -43,8 +43,6 @@ const ProductPage = () => {
             newItems = [...addedItems, product];
         }
 
-        setAddedItems(newItems)
-
         if(newItems.length === 0) {
             tg.MainButton.hide();
         } else {
