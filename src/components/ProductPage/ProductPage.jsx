@@ -56,10 +56,9 @@ const ProductPage = () => {
     }
 
     const onRemove = (product) => {
-        const alreadyRemoved = addedItems.find(item => item.id !== product.id);
-
-    }
-
+        const newItems = addedItems.filter(item => item.id !== product.id);
+        setAddedItems(newItems);
+    };
 
     const params = useParams();
     const prodId = params.id;
