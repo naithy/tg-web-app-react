@@ -9,12 +9,12 @@ const HqdItem = ({product, className, onAdd}) => {
     }
 
     return (
-        <a className={'toItemPage'} href={'hqd/id' + product.id}>
+        <a className={'toItemPage'} href={'hqd/' + product.id}>
             <div className={'hqdcontainer'}>
                 <div className={'product ' + className}>
                     <img className={'hqdimg'} src={product.img}/>
                     <div className={'hqdcontainertext'}>
-                        <div className={'hqdtitle'}>{product.title}</div>
+                        <div className={`hqdtitle`}>{product.title}</div>
                         {/*<div className={'description'}>{product.description}</div>*/}
                         <div className={'price'}>
                             <span>{product.price + 'р.'}</span>

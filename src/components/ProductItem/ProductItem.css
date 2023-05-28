@@ -1,0 +1,64 @@
+body {
+}
+
+.underline {
+    position : relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.underline::after {
+    content : "";
+    position : absolute;
+    width : 102%;
+    height : 3px;
+    background-color: tomato;
+    border-radius: 30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.choicecontainer {
+    max-width: 372px;
+    background: #a0a0a0;
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 7px;
+}
+
+.option {
+    margin-left: 10px;
+    align-items: center;
+    height: 50px;
+    display: flex;
+}
+
+.addBtn {
+    outline: none;
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 7px;
+}
+
+p {
+    margin-left: 4px;
+}
+
+.producttext {
+    align-items: center;
+    line-height: 35px;
+    height: 35px;
+    width: 100%;
+    margin-left: 10px;
+    border-bottom: #32a1ce 1px solid;
+}
+
+.last {
+    border-bottom: 0;
+}
