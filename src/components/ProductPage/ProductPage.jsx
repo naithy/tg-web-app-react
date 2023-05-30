@@ -17,7 +17,7 @@ const ProductPage = () => {
 
     tg.BackButton.show()
     tg.BackButton.onClick(() => {
-        history(-1);
+        history('/');
     })
 
     return (
