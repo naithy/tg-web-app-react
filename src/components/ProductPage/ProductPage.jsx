@@ -1,6 +1,7 @@
 import {useTelegram} from "../../hooks/useTelegram";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import button from "../Button/Button";
+import React from "react";
 
 const productsData = [
     { title: 'gang box x 800', price: 900, flavors: ['vanilla', 'cherry', 'apple'] },
@@ -10,7 +11,9 @@ const productsData = [
 ];
 
 
+
 const ProductPage = () => {
+    const history = useNavigate();
     const totalPrice = parseFloat(localStorage.getItem('totalPrice'));
 
     const {tg} = useTelegram();
@@ -29,6 +32,9 @@ const ProductPage = () => {
 
     return (
         <div className={'list'}>
+            <div className={'block'}>
+                <button onClick={() => {history(-1)}}>Go back</button>
+            </div>
             {productsData.map((product, index) => (
                 <div className={'HqdItem'}>
                     <a href={`/product/${index}`} className={'toItemPage'}>

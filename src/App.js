@@ -17,9 +17,11 @@ function App() {
   return (
     <div className="App">
         <Routes>
-            <Route index element={<CategoryList/>}/>
-            <Route path="/hqd" element={<ProductPage/>}/>
-            <Route path="/product/:productId" element={<ProductItem/>}/>
+            <Route>
+                <Route index element={<CategoryList/>}/>
+                <Route path="/hqd" element={<ProductPage/>}/>
+                <Route path="/product/:productId" element={<ProductItem/>}/>
+            </Route>
         </Routes>
     </div>
   );

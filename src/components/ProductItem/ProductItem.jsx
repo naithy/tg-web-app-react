@@ -13,6 +13,9 @@ const productsData = [
 ];
 
 const ProductItem = () => {
+
+    const history = useNavigate();
+
     const { productId } = useParams();
     const product = productsData[productId];
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || {});
@@ -101,7 +104,7 @@ const ProductItem = () => {
                     </div>
                 ))}
             </div>
-            <button><Link to={'/hqd'}>Go back!</Link></button>
+            <button onClick={() => {history(-1)}}>Go back</button>
         </div>
     );
 };
