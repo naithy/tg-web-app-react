@@ -22,10 +22,6 @@ const ProductItem = () => {
         history(-1);
     })
 
-    tg.BackButton.onClick(() => {
-        history('/hqd', {state: {totalPrice, cart}});
-    })
-
     const { productId } = useParams();
     const product = productsData[productId];
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
