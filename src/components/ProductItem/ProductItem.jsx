@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
@@ -14,17 +14,16 @@ const productsData = [
 
 
 const ProductItem = () => {
+    const {tg} = useTelegram();
+
     tg.BackButton.show()
 
     tg.BackButton.onClick(() => {
         history(-1);
     })
 
-
-    const {tg} = useTelegram();
     const history = useNavigate();
-    let location = useLocation();
-    console.log(location.totalPrice)
+
 
     tg.BackButton.onClick(() => {
         history('/hqd', {state: {totalPrice, cart}});
@@ -86,7 +85,7 @@ const ProductItem = () => {
 
         setTotalPrice(totalPrice);
 
-        sessionStorage.setItem('totalPrice', totalPrice)
+        sessionStorage.setItem('totalPrice', JSON.stringify(totalPrice))
         sessionStorage.setItem('cart', JSON.stringify(cart));
 
         if(parseFloat(sessionStorage.getItem('totalPrice')) === 0) {
