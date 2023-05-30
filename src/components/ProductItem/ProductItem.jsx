@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useParams, useNavigate, Link} from 'react-router-dom';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
@@ -15,8 +15,12 @@ const productsData = [
 
 const ProductItem = () => {
     const {tg} = useTelegram();
-
     const history = useNavigate();
+    let {state} = useLocation();
+
+    tg.BackButton.onClick(() => {
+        history('/hqd', {state: {'totalPrice': totalPrice, 'cart': cart}});
+    })
 
     const { productId } = useParams();
     const product = productsData[productId];
@@ -74,10 +78,11 @@ const ProductItem = () => {
 
         setTotalPrice(totalPrice);
 
+        state = {totalPrice: totalPrice, cart: cart}
         localStorage.setItem('totalPrice', totalPrice)
         localStorage.setItem('cart', JSON.stringify(cart));
 
-        if(parseFloat(localStorage.getItem('totalPrice')) === 0) {
+        if(state.totalPrice === 0) {
             tg.MainButton.hide()
         } else {
             tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
@@ -105,6 +110,7 @@ const ProductItem = () => {
                         </div>
                     </div>
                 ))}
+                <button onClick={() => history('/hqd', {state: {'totalPrice': totalPrice, 'cart': cart}})}>back</button>
             </div>
         </div>
     );

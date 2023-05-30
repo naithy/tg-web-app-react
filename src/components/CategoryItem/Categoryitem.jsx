@@ -1,11 +1,12 @@
 import React from 'react';
 import './Categoryitem.css';
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 const Categoryitem = ({category, className}) => {
+    const {state} = useLocation();
 
     return (
-        <Link className={'nextPage'} to={`/${category.id}`}>
+        <Link className={'nextPage'} to={`/${category.id}`} state={state}>
             <div className={'category ' + className}>
                 <div className={'categoryimg'}>
                     <img src={category.img}/>
