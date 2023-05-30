@@ -14,13 +14,11 @@ const productsData = [
 const ProductPage = () => {
     const {tg} = useTelegram();
     const history = useNavigate();
-    if(tg.BackButton.isVisible) {
+
         tg.BackButton.onClick(() => {
             history('/');
         })
         tg.BackButton.show()
-    }
-
 
     return (
         <div className={'list'}>
