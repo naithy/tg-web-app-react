@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import {useParams, useNavigate, Link} from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
@@ -11,8 +11,6 @@ const productsData = [
     { title: 'voopoo', price: 950, flavors: ['mango'] },
     { title: 'vaporesso', price: 900 },
 ];
-
-const history = useNavigate();
 
 const ProductItem = () => {
     const { productId } = useParams();
@@ -85,7 +83,6 @@ const ProductItem = () => {
         tg.MainButton.show();
     }
 
-
     return (
         <div className={'productcontainer'}>
             <div className={'title'}>
@@ -104,7 +101,7 @@ const ProductItem = () => {
                     </div>
                 ))}
             </div>
-            <button onClick={() => history(-1)}></button>
+            <button><Link to={'/hqd'}>Go back!</Link></button>
         </div>
     );
 };

@@ -9,23 +9,10 @@ const productsData = [
     { title: 'vaporesso', price: 900 },
 ];
 
-const history = useNavigate();
 
 const ProductPage = () => {
-    const {tg} = useTelegram();
     const totalPrice = parseFloat(localStorage.getItem('totalPrice'));
 
-    if(totalPrice === 0) {
-        tg.MainButton.hide();
-        tg.MainButton.setParams({
-            text: `Купить`,
-            "color": "#31b545"
-        })
-    } else {
-        tg.MainButton.setParams({text: `Купить ${totalPrice}`,
-            "color": "#31b545"});
-        tg.MainButton.show();
-    }
 
     return (
         <div className={'list'}>
@@ -47,7 +34,6 @@ const ProductPage = () => {
                     </a>
                 </div>
             ))}
-            <button onClick={() => history(-1)}></button>
         </div>
     );
 };
