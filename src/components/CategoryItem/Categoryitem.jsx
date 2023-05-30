@@ -1,17 +1,18 @@
 import React from 'react';
 import './Categoryitem.css';
+import {Link} from "react-router-dom";
 
 const Categoryitem = ({category, className}) => {
 
     return (
-        <a className={'nextPage'} href={`/${category.id}`}>
+        <Link className={'nextPage'} to={`/${category.id}`}>
             <div className={'category ' + className}>
                 <div className={'categoryimg'}>
                     <img src={category.img}/>
                 </div>
                 <div className={'categorytitle'}>{category.title}</div>
             </div>
-        </a>
+        </Link>
     );
 };
 

@@ -1,5 +1,5 @@
 import {useTelegram} from "../../hooks/useTelegram";
-import {useLocation, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import button from "../Button/Button";
 import React from "react";
 
@@ -23,7 +23,7 @@ const ProductPage = () => {
             </div>
             {productsData.map((product, index) => (
                 <div className={'HqdItem'}>
-                    <a href={`/product/${index}`} className={'toItemPage'}>
+                    <Link to={`/product/${index}`} className={'toItemPage'}>
                         <div className={'hqdcontainer'}>
                             <div className={'product item'}>
                                 <img className={'hqdimg'} src={product.img} alt={'parilka'}/>
@@ -36,7 +36,7 @@ const ProductPage = () => {
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 </div>
             ))}
         </div>
