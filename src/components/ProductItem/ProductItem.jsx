@@ -81,10 +81,10 @@ const ProductItem = () => {
 
         location = {totalPrice, cart}
 
-        if(location.state?.totalPrice === 0 && !!!location.state?.totalPrice) {
+        if(location.totalPrice === 0) {
             tg.MainButton.hide()
         } else {
-            tg.MainButton.setParams({text: `Купить ${location.state?.totalPrice}`,
+            tg.MainButton.setParams({text: `Купить ${location.totalPrice}`,
                 "color": "#31b545"});
             tg.MainButton.show();
         }
