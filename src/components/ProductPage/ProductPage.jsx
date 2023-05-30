@@ -21,7 +21,7 @@ const ProductPage = () => {
 
 
     tg.BackButton.onClick(() => {
-        history('/', {state: {cart: location.state?.cart, totalPrice: location.state?.totalPrice}});
+        history(-1);
     })
 
     return (
