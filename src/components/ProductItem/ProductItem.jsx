@@ -48,6 +48,15 @@ const ProductItem = () => {
             newCart[productId][flavor] = { title: product.title, price: product.price, count: 1 };
         }
         setCart(newCart);
+
+        if(totalPrice === 0) {
+            tg.MainButton.hide()
+        } else {
+            tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
+                "color": "#31b545"});
+            tg.MainButton.show();
+        }
+
     };
 
     const handleRemoveFromCart = (flavor) => {
@@ -62,6 +71,15 @@ const ProductItem = () => {
             }
             setCart(newCart);
         }
+
+        if(totalPrice === 0) {
+            tg.MainButton.hide()
+        } else {
+            tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
+                "color": "#31b545"});
+            tg.MainButton.show();
+        }
+
     };
 
     useEffect(() => {
@@ -76,15 +94,6 @@ const ProductItem = () => {
         }, 0);
 
         setTotalPrice(totalPrice);
-
-        if(totalPrice === 0) {
-            tg.MainButton.hide()
-        } else {
-            tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
-                "color": "#31b545"});
-            tg.MainButton.show();
-        }
-
         localStorage.setItem('totalPrice', totalPrice)
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
