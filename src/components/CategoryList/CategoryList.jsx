@@ -6,6 +6,7 @@ import vape from '../../pics/vape.png'
 import liquid from '../../pics/liquid.png'
 import atomizer from '../../pics/atomizer.png'
 import AnimatedPage from "../../AnimatedPage";
+import {useTelegram} from "../../hooks/useTelegram";
 
 
 const categories = [
@@ -16,6 +17,9 @@ const categories = [
 ]
 
 const CategoryList = () => {
+    const {tg} = useTelegram();
+    tg.BackButton.hide()
+
     return (
         <div className={'list'}>
             {categories.map(item => (

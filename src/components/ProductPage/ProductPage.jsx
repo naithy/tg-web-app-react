@@ -13,6 +13,14 @@ const productsData = [
 
 
 const ProductPage = () => {
+    const {tg} = useTelegram();
+
+    tg.BackButton.show()
+
+    tg.BackButton.onClick(() => {
+        history(-1);
+    })
+
     const history = useNavigate();
     const totalPrice = parseFloat(localStorage.getItem('totalPrice'));
 
