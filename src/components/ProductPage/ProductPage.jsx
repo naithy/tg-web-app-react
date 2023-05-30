@@ -13,6 +13,19 @@ const productsData = [
 const ProductPage = () => {
     const totalPrice = parseFloat(localStorage.getItem('totalPrice'));
 
+    const {tg, queryId} = useTelegram();
+
+    if(totalPrice === 0) {
+        tg.MainButton.hide();
+        tg.MainButton.setParams({
+            text: `Купить`,
+            "color": "#31b545"
+        })
+    } else {
+        tg.MainButton.setParams({text: `Купить ${totalPrice}`,
+            "color": "#31b545"});
+        tg.MainButton.show();
+    }
 
     return (
         <div className={'list'}>
