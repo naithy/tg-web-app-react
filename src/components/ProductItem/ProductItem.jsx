@@ -75,7 +75,10 @@ const ProductItem = () => {
 
         setTotalPrice(totalPrice);
 
-        if(totalPrice === 0) {
+        localStorage.setItem('totalPrice', totalPrice)
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        if(parseFloat(localStorage.getItem('totalPrice')) === 0) {
             tg.MainButton.hide()
         } else {
             tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
@@ -83,8 +86,6 @@ const ProductItem = () => {
             tg.MainButton.show();
         }
 
-        localStorage.setItem('totalPrice', totalPrice)
-        localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
 
