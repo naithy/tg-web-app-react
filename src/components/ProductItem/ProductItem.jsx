@@ -16,22 +16,23 @@ const productsData = [
 const ProductItem = () => {
     const {tg} = useTelegram();
     const history = useNavigate();
-    let {state} = useLocation();
+    let location = useLocation();
+    console.log(location)
 
     tg.BackButton.onClick(() => {
-        history('/hqd', {state: {'totalPrice': totalPrice, 'cart': cart}});
+        history('/hqd', {state: {totalPrice, cart}});
     })
 
     const { productId } = useParams();
     const product = productsData[productId];
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || {});
+    const [cart, setCart] = useState(location.state?.totalPrice || {});
     const [totalPrice, setTotalPrice] = useState(() => {
-        const storedTotalPrice = localStorage.getItem('totalPrice');
+        const storedTotalPrice = location.state?.totalPrice;
         return storedTotalPrice ? parseFloat(storedTotalPrice) : 0;
     });
 
     useEffect(() => {
-        const storedCart = JSON.parse(localStorage.getItem('cart'));
+        const storedCart = location.state?.cart;
         if (storedCart) {
             setCart(storedCart);
             setTotalPrice(Object.keys(storedCart).reduce((total, productId) => (
@@ -78,14 +79,12 @@ const ProductItem = () => {
 
         setTotalPrice(totalPrice);
 
-        state = {totalPrice: totalPrice, cart: cart}
-        localStorage.setItem('totalPrice', totalPrice)
-        localStorage.setItem('cart', JSON.stringify(cart));
+        location = {totalPrice, cart}
 
-        if(state.totalPrice === 0) {
+        if(location.state?.totalPrice === 0) {
             tg.MainButton.hide()
         } else {
-            tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
+            tg.MainButton.setParams({text: `Купить ${location.state?.totalPrice}`,
                 "color": "#31b545"});
             tg.MainButton.show();
         }
@@ -110,7 +109,7 @@ const ProductItem = () => {
                         </div>
                     </div>
                 ))}
-                <button onClick={() => history('/hqd', {state: {'totalPrice': totalPrice, 'cart': cart}})}>back</button>
+                <button onClick={() => history('/hqd', {state: {totalPrice, cart}})}>back</button>
             </div>
         </div>
     );

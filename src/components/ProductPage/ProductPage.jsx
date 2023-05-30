@@ -13,7 +13,7 @@ const productsData = [
 
 
 const ProductPage = () => {
-    const { state } = useLocation();
+    const location = useLocation();
 
     const {tg} = useTelegram();
     const history = useNavigate();
@@ -23,17 +23,14 @@ const ProductPage = () => {
 
 
     tg.BackButton.onClick(() => {
-        history('/hqd', {state: {state}});
+        history('/', {state: {cart: location.state?.cart, totalPrice: location.state?.totalPrice}});
     })
-
-
-    const totalPrice = parseFloat(localStorage.getItem('totalPrice'));
 
     return (
         <div className={'list'}>
             {productsData.map((product, index) => (
                 <div className={'HqdItem'}>
-                    <Link to={`/product/${index}`} className={'toItemPage'} state={state}>
+                    <Link to={`/product/${index}`} className={'toItemPage'} state={{cart: location.state?.cart, totalPrice: location.state?.totalPrice}}>
                         <div className={'hqdcontainer'}>
                             <div className={'product item'}>
                                 <img className={'hqdimg'} src={product.img} alt={'parilka'}/>
