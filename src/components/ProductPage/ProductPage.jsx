@@ -13,6 +13,12 @@ const productsData = [
 
 const ProductPage = () => {
     const {tg} = useTelegram();
+    const history = useNavigate();
+
+    tg.BackButton.hide()
+    tg.BackButton.onClick(() => {
+        history(-1);
+    })
 
     return (
         <div className={'list'}>
