@@ -1,5 +1,5 @@
 import {useTelegram} from "../../hooks/useTelegram";
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import React from "react";
 
 const productsData = [
@@ -12,14 +12,10 @@ const productsData = [
 
 
 const ProductPage = () => {
-    const location = useLocation();
-
     const {tg} = useTelegram();
     const history = useNavigate();
 
     tg.BackButton.show()
-
-
     tg.BackButton.onClick(() => {
         history(-1);
     })
