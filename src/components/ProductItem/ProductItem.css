@@ -23,7 +23,7 @@ body {
 
 .choicecontainer {
     max-width: 372px;
-    background: #a0a0a0;
+    background: var(--tg-theme-secondary-bg-color);
     width: 90%;
     position: relative;
     left: 50%;
