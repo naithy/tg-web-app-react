@@ -1,5 +1,5 @@
 body {
-    background: var(--tg-theme-secondary-bg-color);
+    background: var(--tg-theme-bg-color);
 }
 
 .title {
@@ -21,7 +21,7 @@ body {
 
 .choicecontainer {
     max-width: 380px;
-    background: var(--tg-theme-bg-color);
+    background: var(--tg-theme-secondary-bg-color);
     width: 90%;
     position: relative;
     left: 50%;
