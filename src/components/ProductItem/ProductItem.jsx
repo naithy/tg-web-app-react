@@ -75,6 +75,8 @@ const ProductItem = () => {
 
         }, 0);
 
+        setTotalPrice(totalPrice);
+
         if(totalPrice === 0) {
             tg.MainButton.hide()
         } else {
@@ -83,7 +85,6 @@ const ProductItem = () => {
             tg.MainButton.show();
         }
 
-        setTotalPrice(totalPrice);
         localStorage.setItem('totalPrice', totalPrice)
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
