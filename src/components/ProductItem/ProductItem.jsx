@@ -15,6 +15,8 @@ const productsData = [
 
 const ProductItem = () => {
 
+    const {tg} = useTelegram();
+
     const history = useNavigate();
 
     const { productId } = useParams();
@@ -64,10 +66,23 @@ const ProductItem = () => {
 
     useEffect(() => {
         const totalPrice = Object.keys(cart).reduce((sum, pId) => {
+
+
+
             return sum + Object.keys(cart[pId]).reduce((pSum, flavor) => {
                 return pSum + cart[pId][flavor].price * cart[pId][flavor].count;
             }, 0);
+
         }, 0);
+
+        if(totalPrice === 0) {
+            tg.MainButton.hide()
+        } else {
+            tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
+                "color": "#31b545"});
+            tg.MainButton.show();
+        }
+
         setTotalPrice(totalPrice);
         localStorage.setItem('totalPrice', totalPrice)
         localStorage.setItem('cart', JSON.stringify(cart));

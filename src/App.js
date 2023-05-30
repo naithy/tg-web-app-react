@@ -10,13 +10,7 @@ import ProductItem from "./components/ProductItem/ProductItem";
 function App() {
     const {tg} = useTelegram()
 
-    if((parseFloat(localStorage.getItem('totalPrice')) === 0)) {
-        tg.MainButton.hide();
-    } else {
-        tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
-            "color": "#31b545"});
-        tg.MainButton.show();
-    }
+    
 
     useEffect(() => {
         tg.ready();
