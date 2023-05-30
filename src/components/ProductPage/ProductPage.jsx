@@ -13,7 +13,7 @@ const productsData = [
 const ProductPage = () => {
     const totalPrice = parseFloat(localStorage.getItem('totalPrice'));
 
-    const {tg, queryId} = useTelegram();
+    const {tg} = useTelegram();
 
     if(totalPrice === 0) {
         tg.MainButton.hide();
