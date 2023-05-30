@@ -11,7 +11,7 @@ body {
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--tg-theme-secondary-bg-color);
+    background: var(--tg-theme-bg-color);
     min-width: 380px;
     text-align: center;
     border-radius: 0 0 7px 7px;
