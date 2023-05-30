@@ -14,7 +14,6 @@ const productsData = [
 
 const ProductPage = () => {
     const {tg} = useTelegram();
-
     tg.BackButton.show()
 
     tg.BackButton.onClick(() => {
