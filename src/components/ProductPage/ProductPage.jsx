@@ -15,7 +15,7 @@ const ProductPage = () => {
     const {tg} = useTelegram();
     const history = useNavigate();
 
-    tg.BackButton.hide()
+    tg.BackButton.show()
     tg.BackButton.onClick(() => {
         history(-1);
     })
