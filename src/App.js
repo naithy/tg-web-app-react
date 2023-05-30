@@ -3,8 +3,8 @@ import React, {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import {Route, Routes} from "react-router-dom";
 import CategoryList from "./components/CategoryList/CategoryList";
-import HqdList from "./components/HqdList/HqdList";
 import ProductPage from "./components/ProductPage/ProductPage";
+import ProductItem from "./components/ProductItem/ProductItem";
 
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
     <div className="App">
         <Routes>
             <Route index element={<CategoryList/>}/>
-            <Route path="/hqd" element={<HqdList/>}/>
-            <Route path="/hqd/:id" element={<ProductPage/>}/>
+            <Route path="/hqd" element={<ProductPage/>}/>
+            <Route path="/product/:productId" element={<ProductItem/>}/>
         </Routes>
     </div>
   );

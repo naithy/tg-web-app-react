@@ -1,18 +1,73 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
-import {useNavigate} from "react-router-dom";
 
-const ProductItem = ({product, productCount, onAdd, onRemove}) => {
-    const history = useNavigate()
 
-    const onAddHandler = () => {
-        onAdd(product);
-    }
+const productsData = [
+    { title: 'gang box x 800', price: 900, flavors: ['vanilla', 'cherry', 'apple'] },
+    { title: 'lost mary b5000', price: 1000, flavors: ['vanilla', 'cherry', 'blueberry'] },
+    { title: 'voopoo', price: 950, flavors: ['mango'] },
+    { title: 'vaporesso', price: 900 },
+];
 
-    const onRemoveHandler = () => {
-        onRemove(product);
-    }
+const ProductItem = () => {
+    const { productId } = useParams();
+    const product = productsData[productId];
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || {});
+    const [totalPrice, setTotalPrice] = useState(() => {
+        const storedTotalPrice = localStorage.getItem('totalPrice');
+        return storedTotalPrice ? parseFloat(storedTotalPrice) : 0;
+    });
+
+    useEffect(() => {
+        const storedCart = JSON.parse(localStorage.getItem('cart'));
+        if (storedCart) {
+            setCart(storedCart);
+            setTotalPrice(Object.keys(storedCart).reduce((total, productId) => (
+                total + Object.values(storedCart[productId]).reduce((sum, { price, count }) => sum + price * count, 0)
+            ), 0));
+        }
+    }, []);
+
+    const handleAddToCart = (flavor) => {
+        const newCart = { ...cart };
+        if (newCart[productId] && newCart[productId][flavor]) {
+            newCart[productId][flavor].count++;
+        } else {
+            if (!newCart[productId]) {
+                newCart[productId] = {};
+            }
+            newCart[productId][flavor] = { title: product.title, price: product.price, count: 1 };
+        }
+        setCart(newCart);
+    };
+
+    const handleRemoveFromCart = (flavor) => {
+        const newCart = { ...cart };
+        if (newCart[productId] && newCart[productId][flavor]) {
+            newCart[productId][flavor].count--;
+            if (newCart[productId][flavor].count === 0) {
+                delete newCart[productId][flavor];
+                if (Object.keys(newCart[productId]).length === 0) {
+                    delete newCart[productId];
+                }
+            }
+            setCart(newCart);
+        }
+    };
+
+    useEffect(() => {
+        const totalPrice = Object.keys(cart).reduce((sum, pId) => {
+            return sum + Object.keys(cart[pId]).reduce((pSum, flavor) => {
+                return pSum + cart[pId][flavor].price * cart[pId][flavor].count;
+            }, 0);
+        }, 0);
+        setTotalPrice(totalPrice);
+        localStorage.setItem('totalPrice', totalPrice)
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
+
 
 
     return (
@@ -21,28 +76,19 @@ const ProductItem = ({product, productCount, onAdd, onRemove}) => {
                 <h3 className={'underline'}>{product.title}</h3>
             </div>
             <div className={'choicecontainer'}>
-                {(!!!product.option && product.count > 0) ? ((product.options).map(item => (
+                {product.flavors.map((flavor) => (
                     <div className={'option'}>
-                        {productCount === 0 ? (
-                            <Button className={'addBtn'} onClick={onAddHandler}>+</Button>
-                        ) : (
-                            <div className={'btns'}>
-                                <Button className={'addBtn'} onClick={onAddHandler}>+</Button>
-                                <Button className={'rmvBtn'} onClick={onRemoveHandler}>-</Button>
-                            </div>
-                        )}
-
-
-                        <div className={'producttext'}>
-                            <p>{item} {product.price}</p>
+                        <div className={'btns'}>
+                            <Button className={'addBtn'} onClick={() => handleAddToCart(flavor)}>+</Button>
+                            <Button className={'rmvBtn'} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                         </div>
-                    </div>)
-                )) : <div>Нет в наличии</div>
-                }
+                        <div className={'producttext'}>
+                            <p>{flavor} {product.price} - {cart[productId] && cart[productId][flavor] ? cart[productId][flavor].count : 0}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <button onClick={() => history(-1)}>Go back</button>
         </div>
     );
 };
-
 export default ProductItem;

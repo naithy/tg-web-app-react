@@ -5,6 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 import AnimatedPage from "../../AnimatedPage";
 import {useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export const products = [
     {id: '1', title: 'DRAGBAR B5000', price: 900,
@@ -96,12 +97,14 @@ const HqdList = () => {
     return (
         <AnimatedPage>
             <div className={'list'}>
-                {products.map(item => (
-                    <HqdItem
-                        product={item}
-                        onAdd={onAdd}
-                        className={'item'}
-                    />
+                {products.map((item,index) => (
+                    <Link to={`hqd/product/${index}`}>
+                        <HqdItem
+                            product={item}
+                            onAdd={onAdd}
+                            className={'item'}
+                        />
+                    </Link>
                 ))}
                 <div>
                     <button onClick={() => history(-1)}>Go back</button>
