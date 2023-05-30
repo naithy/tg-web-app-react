@@ -3,10 +3,10 @@ import './Categoryitem.css';
 import {Link, useLocation, useNavigate} from "react-router-dom";
 
 const Categoryitem = ({category, className}) => {
-    const {state} = useLocation();
+    const location = useLocation();
 
     return (
-        <Link className={'nextPage'} to={`/${category.id}`} state={state}>
+        <Link className={'nextPage'} to={`/${category.id}`} state={{cart: location.state?.cart, totalPrice: location.state?.totalPrice}}>
             <div className={'category ' + className}>
                 <div className={'categoryimg'}>
                     <img src={category.img}/>

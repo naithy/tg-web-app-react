@@ -17,7 +17,7 @@ const ProductItem = () => {
     const {tg} = useTelegram();
     const history = useNavigate();
     let location = useLocation();
-    console.log(location)
+    console.log(location.state?.totalPrice)
 
     tg.BackButton.onClick(() => {
         history('/hqd', {state: {totalPrice, cart}});
@@ -81,7 +81,7 @@ const ProductItem = () => {
 
         location = {totalPrice, cart}
 
-        if(location.state?.totalPrice === 0) {
+        if(location.state?.totalPrice === 0 && !!!location.state?.totalPrice) {
             tg.MainButton.hide()
         } else {
             tg.MainButton.setParams({text: `Купить ${location.state?.totalPrice}`,
