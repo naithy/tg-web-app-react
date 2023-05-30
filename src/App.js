@@ -10,6 +10,8 @@ import ProductItem from "./components/ProductItem/ProductItem";
 function App() {
     const {tg} = useTelegram()
 
+    tg.enableClosingConfirmation();
+
     tg.MainButton.onClick(() => {
         tg.openInvoice();
     });
