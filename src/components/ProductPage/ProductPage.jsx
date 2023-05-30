@@ -1,6 +1,5 @@
 import {useTelegram} from "../../hooks/useTelegram";
 import {Link, useLocation, useNavigate} from "react-router-dom";
-import button from "../Button/Button";
 import React from "react";
 
 const productsData = [
@@ -19,7 +18,6 @@ const ProductPage = () => {
     const history = useNavigate();
 
     tg.BackButton.show()
-    console.log(useLocation())
 
 
     tg.BackButton.onClick(() => {
@@ -30,7 +28,7 @@ const ProductPage = () => {
         <div className={'list'}>
             {productsData.map((product, index) => (
                 <div className={'HqdItem'}>
-                    <Link to={`/product/${index}`} className={'toItemPage'} state={{cart: location.state?.cart, totalPrice: location.state?.totalPrice}}>
+                    <Link to={`/product/${index}`} className={'toItemPage'}>
                         <div className={'hqdcontainer'}>
                             <div className={'product item'}>
                                 <img className={'hqdimg'} src={product.img} alt={'parilka'}/>

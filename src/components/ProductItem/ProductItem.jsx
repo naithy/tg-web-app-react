@@ -17,7 +17,7 @@ const ProductItem = () => {
     const {tg} = useTelegram();
     const history = useNavigate();
     let location = useLocation();
-    console.log(location.state?.totalPrice)
+    console.log(location.totalPrice)
 
     tg.BackButton.onClick(() => {
         history('/hqd', {state: {totalPrice, cart}});
@@ -25,14 +25,14 @@ const ProductItem = () => {
 
     const { productId } = useParams();
     const product = productsData[productId];
-    const [cart, setCart] = useState(location.state?.totalPrice || {});
+    const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
     const [totalPrice, setTotalPrice] = useState(() => {
-        const storedTotalPrice = location.state?.totalPrice;
+        const storedTotalPrice = parseFloat(sessionStorage.getItem('totalPrice'));
         return storedTotalPrice ? storedTotalPrice : 0;
     });
 
     useEffect(() => {
-        const storedCart = location.state?.cart;
+        const storedCart = JSON.parse(sessionStorage.getItem('cart'));
         if (storedCart) {
             setCart(storedCart);
             setTotalPrice(Object.keys(storedCart).reduce((total, productId) => (
@@ -79,9 +79,10 @@ const ProductItem = () => {
 
         setTotalPrice(totalPrice);
 
-        location = {totalPrice, cart}
+        sessionStorage.setItem('totalPrice', totalPrice)
+        sessionStorage.setItem('cart', JSON.stringify(cart));
 
-        if(location.totalPrice === 0) {
+        if(parseFloat(sessionStorage.getItem('totalPrice')) === 0) {
             tg.MainButton.hide()
         } else {
             tg.MainButton.setParams({text: `Купить ${location.totalPrice}`,

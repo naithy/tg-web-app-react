@@ -6,7 +6,7 @@ const Categoryitem = ({category, className}) => {
     const location = useLocation();
 
     return (
-        <Link className={'nextPage'} to={`/${category.id}`} state={{cart: location.state?.cart, totalPrice: location.state?.totalPrice}}>
+        <Link className={'nextPage'} to={`/${category.id}`}>
             <div className={'category ' + className}>
                 <div className={'categoryimg'}>
                     <img src={category.img}/>
