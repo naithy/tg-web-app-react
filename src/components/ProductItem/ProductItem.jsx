@@ -14,8 +14,9 @@ const productsData = [
 
 
 const ProductItem = () => {
-
     const {tg} = useTelegram();
+
+    tg.BackButton.show()
 
     const history = useNavigate();
 
