@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
+import {useTelegram} from "../../hooks/useTelegram";
 
 
 const productsData = [
@@ -10,6 +11,8 @@ const productsData = [
     { title: 'voopoo', price: 950, flavors: ['mango'] },
     { title: 'vaporesso', price: 900 },
 ];
+
+const history = useNavigate();
 
 const ProductItem = () => {
     const { productId } = useParams();
@@ -68,6 +71,19 @@ const ProductItem = () => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
+    const tg = useTelegram();
+
+    if(totalPrice === 0) {
+        tg.MainButton.hide();
+        tg.MainButton.setParams({
+            text: `Купить`,
+            "color": "#31b545"
+        })
+    } else {
+        tg.MainButton.setParams({text: `Купить ${totalPrice}`,
+            "color": "#31b545"});
+        tg.MainButton.show();
+    }
 
 
     return (
@@ -88,6 +104,7 @@ const ProductItem = () => {
                     </div>
                 ))}
             </div>
+            <button onClick={() => history(-1)}></button>
         </div>
     );
 };

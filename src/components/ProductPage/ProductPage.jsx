@@ -1,5 +1,6 @@
 import {useTelegram} from "../../hooks/useTelegram";
-
+import {useNavigate} from "react-router-dom";
+import button from "../Button/Button";
 
 const productsData = [
     { title: 'gang box x 800', price: 900, flavors: ['vanilla', 'cherry', 'apple'] },
@@ -7,6 +8,8 @@ const productsData = [
     { title: 'voopoo', price: 950, flavors: ['mango'] },
     { title: 'vaporesso', price: 900 },
 ];
+
+const history = useNavigate();
 
 const ProductPage = () => {
     const {tg} = useTelegram();
@@ -44,6 +47,7 @@ const ProductPage = () => {
                     </a>
                 </div>
             ))}
+            <button onClick={() => history(-1)}></button>
         </div>
     );
 };
