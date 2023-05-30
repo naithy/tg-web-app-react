@@ -18,6 +18,10 @@ const ProductItem = () => {
 
     tg.BackButton.show()
 
+    tg.BackButton.onClick(() => {
+        history(-1);
+    })
+
     const history = useNavigate();
 
     const { productId } = useParams();
