@@ -1,4 +1,9 @@
 body {
+    background: var(--tg-theme-secondary-bg-color);
+}
+
+.title {
+    line-height: 50px;
 }
 
 .underline {
@@ -6,24 +11,17 @@ body {
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
-}
-
-.underline::after {
-    content : "";
-    position : absolute;
-    width : 102%;
-    height : 3px;
-    background-color: tomato;
-    border-radius: 30px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    background: var(--tg-theme-secondary-bg-color);
+    min-width: 380px;
+    text-align: center;
+    border-radius: 0 0 7px 7px;
+    height: 50px;
+    vertical-align: middle;
 }
 
 .choicecontainer {
-    max-width: 372px;
-    background: var(--tg-theme-secondary-bg-color);
+    max-width: 380px;
+    background: var(--tg-theme-bg-color);
     width: 90%;
     position: relative;
     left: 50%;
