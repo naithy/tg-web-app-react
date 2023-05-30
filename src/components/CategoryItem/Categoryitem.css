@@ -1,5 +1,6 @@
 * {
     font-family: Arial, sans-serif;
+    color: var(--tg-theme-text-color);
 }
 
 a:active,
@@ -23,7 +24,7 @@ a {
 
 .categoryimg {
     text-align: center;
-    background: var(--tg-theme-secondary-bg-color);
+    background: var(--tg-theme-bg-color);
     height: 110px;
     border-radius: 7px;
 }
