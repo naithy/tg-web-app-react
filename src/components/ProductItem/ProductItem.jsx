@@ -15,12 +15,12 @@ const productsData = [
 
 const ProductItem = () => {
     const {tg} = useTelegram();
-    tg.BackButton.onClick(() => {
-        history(-1);
-    })
 
     const history = useNavigate();
 
+    tg.BackButton.onClick(() => {
+        history(-1);
+    })
 
     tg.BackButton.onClick(() => {
         history('/hqd', {state: {totalPrice, cart}});
