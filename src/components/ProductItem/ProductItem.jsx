@@ -12,6 +12,20 @@ const productsData = [
     { title: 'vaporesso', price: 900 },
 ];
 
+const {tg} = useTelegram();
+
+if(parseFloat(localStorage.getItem('totalPrice') === 0)) {
+    tg.MainButton.hide();
+    tg.MainButton.setParams({
+        text: `Купить`,
+        "color": "#31b545"
+    })
+} else {
+    tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
+        "color": "#31b545"});
+    tg.MainButton.show();
+}
+
 const ProductItem = () => {
 
     const history = useNavigate();
@@ -72,19 +86,6 @@ const ProductItem = () => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
-    const {tg} = useTelegram();
-
-    if(totalPrice === 0) {
-        tg.MainButton.hide();
-        tg.MainButton.setParams({
-            text: `Купить`,
-            "color": "#31b545"
-        })
-    } else {
-        tg.MainButton.setParams({text: `Купить ${totalPrice}`,
-            "color": "#31b545"});
-        tg.MainButton.show();
-    }
 
     return (
         <div className={'productcontainer'}>
