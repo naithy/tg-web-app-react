@@ -106,7 +106,6 @@ const ProductItem = () => {
                     </div>
                 ))}
             </div>
-            <button onClick={() => {history(-1)}}>Go back</button>
         </div>
     );
 };

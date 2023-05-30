@@ -26,9 +26,6 @@ const ProductPage = () => {
 
     return (
         <div className={'list'}>
-            <div className={'block'}>
-                <button onClick={() => {history(-1)}}>Go back</button>
-            </div>
             {productsData.map((product, index) => (
                 <div className={'HqdItem'}>
                     <Link to={`/product/${index}`} className={'toItemPage'}>
