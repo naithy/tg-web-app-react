@@ -11,7 +11,7 @@ function App() {
     const {tg} = useTelegram()
 
     tg.MainButton.onClick(() => {
-        alert('ss')
+        tg.openInvoice();
     });
 
     useEffect(() => {
