@@ -28,7 +28,7 @@ const ProductItem = () => {
     const [cart, setCart] = useState(location.state?.totalPrice || {});
     const [totalPrice, setTotalPrice] = useState(() => {
         const storedTotalPrice = location.state?.totalPrice;
-        return storedTotalPrice ? parseFloat(storedTotalPrice) : 0;
+        return storedTotalPrice ? storedTotalPrice : 0;
     });
 
     useEffect(() => {
