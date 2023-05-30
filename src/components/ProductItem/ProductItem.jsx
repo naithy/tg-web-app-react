@@ -103,7 +103,6 @@ const ProductItem = () => {
                         </div>
                     </div>
                 ))}
-                <button onClick={() => history('/hqd', {state: {totalPrice, cart}})}>back</button>
             </div>
         </div>
     );
