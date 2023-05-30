@@ -8,6 +8,7 @@ import ProductItem from "./components/ProductItem/ProductItem";
 
 
 function App() {
+    const {tg} = useTelegram()
 
     if(parseFloat(localStorage.getItem('totalPrice') === 0)) {
         tg.MainButton.hide();
@@ -20,8 +21,6 @@ function App() {
             "color": "#31b545"});
         tg.MainButton.show();
     }
-
-    const {onToggleButton, tg} = useTelegram()
 
     useEffect(() => {
         tg.ready();
