@@ -10,7 +10,9 @@ import ProductItem from "./components/ProductItem/ProductItem";
 function App() {
     const {tg} = useTelegram()
 
-    tg.MainButton.onClick(tg.openInvoice())
+    tg.MainButton.onClick(() => {
+        alert('ss')
+    });
 
     useEffect(() => {
         tg.ready();
