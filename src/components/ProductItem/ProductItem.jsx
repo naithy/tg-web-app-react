@@ -20,7 +20,7 @@ const ProductItem = () => {
 
     const { productId } = useParams();
     const product = productsData[productId];
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || {});
+    const [cart, setCart] = useState({});
     const [totalPrice, setTotalPrice] = useState(() => {
         const storedTotalPrice = localStorage.getItem('totalPrice');
         return storedTotalPrice ? parseFloat(storedTotalPrice) : 0;
@@ -77,10 +77,10 @@ const ProductItem = () => {
         localStorage.setItem('totalPrice', totalPrice)
         localStorage.setItem('cart', JSON.stringify(cart));
 
-        if(parseFloat(localStorage.getItem('totalPrice')) === 0) {
+        if(totalPrice === 0) {
             tg.MainButton.hide()
         } else {
-            tg.MainButton.setParams({text: `Купить ${localStorage.getItem('totalPrice')}`,
+            tg.MainButton.setParams({text: `Купить ${totalPrice}`,
                 "color": "#31b545"});
             tg.MainButton.show();
         }
