@@ -14,6 +14,13 @@ const productsData = [
 
 
 const ProductItem = () => {
+    tg.BackButton.show()
+
+    tg.BackButton.onClick(() => {
+        history(-1);
+    })
+
+
     const {tg} = useTelegram();
     const history = useNavigate();
     let location = useLocation();
