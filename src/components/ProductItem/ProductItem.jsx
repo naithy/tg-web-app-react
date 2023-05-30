@@ -16,12 +16,6 @@ const productsData = [
 const ProductItem = () => {
     const {tg} = useTelegram();
 
-    const history = useNavigate();
-
-    tg.BackButton.onClick(() => {
-        history(-1);
-    })
-
     const { productId } = useParams();
     const product = productsData[productId];
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
