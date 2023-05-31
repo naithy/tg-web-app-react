@@ -9,15 +9,14 @@ import ProductItem from "./components/ProductItem/ProductItem";
 
 function App() {
     const {tg, queryId} = useTelegram()
-
+    const Price = 2000;
     useEffect(() => {
         tg.ready();
     })
 
     const onSendData = useCallback(() => {
         const data = {
-            cart: sessionStorage.getItem('cart'),
-            totalPrice: 2000,
+            totalPrice: Price,
             queryId,
         }
         fetch('http://77.105.172.20:8000/web-data', {
@@ -27,7 +26,7 @@ function App() {
             },
             body: JSON.stringify(data)
         })
-    }, [sessionStorage.getItem('cart')])
+    }, [Price])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
