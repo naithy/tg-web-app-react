@@ -5,16 +5,18 @@ import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 
 
-const productsData = [
-    { title: 'gang box x 800', price: 900, flavors: ['vanilla', 'cherry', 'apple'] },
-    { title: 'lost mary b5000', price: 1000, flavors: ['vanilla', 'cherry', 'blueberry'] },
-    { title: 'voopoo', price: 950, flavors: ['mango'] },
-    { title: 'vaporesso', price: 900 },
-];
+
 
 
 const ProductItem = () => {
     const {tg} = useTelegram();
+
+    const productsData = [
+        { title: 'gang box x 800', price: 900, flavors: ['vanilla', 'cherry', 'apple'] },
+        { title: 'lost mary b5000', price: 1000, flavors: ['vanilla', 'cherry', 'blueberry'] },
+        { title: 'voopoo', price: 950, flavors: ['mango'] },
+        { title: 'vaporesso', price: 900 },
+    ];
 
     const { productId } = useParams();
     const product = productsData[productId];
@@ -28,62 +30,74 @@ const ProductItem = () => {
         const storedCart = JSON.parse(sessionStorage.getItem('cart'));
         if (storedCart) {
             setCart(storedCart);
-            setTotalPrice(Object.keys(storedCart).reduce((total, productId) => (
-                total + Object.values(storedCart[productId]).reduce((sum, { price, count }) => sum + price * count, 0)
-            ), 0));
+            const total = calculateTotalPrice(storedCart);
+            setTotalPrice(total);
+            sessionStorage.setItem('totalPrice', JSON.stringify(total));
         }
     }, []);
 
     const handleAddToCart = (flavor) => {
         const newCart = { ...cart };
-        if (newCart[productId] && newCart[productId][flavor]) {
-            newCart[productId][flavor].count++;
+        if (newCart[productId] && newCart[productId].flavors[flavor]) {
+            newCart[productId].flavors[flavor]++;
         } else {
             if (!newCart[productId]) {
                 newCart[productId] = {};
+                newCart[productId].title = product.title;
+                newCart[productId].price = product.price;
+                newCart[productId].flavors = {};
             }
-            newCart[productId][flavor] = { title: product.title, price: product.price, count: 1 };
+            newCart[productId].flavors[flavor] = 1;
         }
         setCart(newCart);
-    };
+        sessionStorage.setItem('cart', JSON.stringify(newCart));
+        const total = calculateTotalPrice(newCart);
+        setTotalPrice(total);
+        sessionStorage.setItem('totalPrice', JSON.stringify(total));
+    }
 
     const handleRemoveFromCart = (flavor) => {
         const newCart = { ...cart };
-        if (newCart[productId] && newCart[productId][flavor]) {
-            newCart[productId][flavor].count--;
-            if (newCart[productId][flavor].count === 0) {
-                delete newCart[productId][flavor];
-                if (Object.keys(newCart[productId]).length === 0) {
+        if (newCart[productId] && newCart[productId].flavors[flavor]) {
+            newCart[productId].flavors[flavor]--;
+            if (newCart[productId].flavors[flavor] === 0) {
+                delete newCart[productId].flavors[flavor];
+                if (Object.keys(newCart[productId].flavors).length === 0) {
                     delete newCart[productId];
                 }
             }
             setCart(newCart);
+            sessionStorage.setItem('cart', JSON.stringify(newCart));
+            const total = calculateTotalPrice(newCart);
+            setTotalPrice(total);
+            sessionStorage.setItem('totalPrice', JSON.stringify(total));
         }
+    }
+
+    const calculateTotalPrice = (cart) => {
+        let total = 0;
+        for (let productId in cart) {
+            if (cart.hasOwnProperty(productId)) {
+                const product = cart[productId];
+                const price = product.price;
+                for (let flavor in product.flavors) {
+                    if (product.flavors.hasOwnProperty(flavor)) {
+                        const count = product.flavors[flavor];
+                        total += count * price;
+                    }
+                }
+            }
+        }
+        return total;
     };
 
-    useEffect(() => {
-        const totalPrice = Object.keys(cart).reduce((sum, pId) => {
-
-            return sum + Object.keys(cart[pId]).reduce((pSum, flavor) => {
-                return pSum + cart[pId][flavor].price * cart[pId][flavor].count;
-            }, 0);
-
-        }, 0);
-
-        setTotalPrice(totalPrice);
-
-        sessionStorage.setItem('totalPrice', JSON.stringify(totalPrice))
-        sessionStorage.setItem('cart', JSON.stringify(cart));
-
-        if(parseFloat(sessionStorage.getItem('totalPrice')) === 0) {
-            tg.MainButton.hide()
-        } else {
-            tg.MainButton.setParams({text: `Купить ${sessionStorage.getItem('totalPrice')}`,
-                "color": "#31b545"});
-            tg.MainButton.show();
-        }
-
-    }, [cart]);
+    if(parseFloat(sessionStorage.getItem('totalPrice')) === 0) {
+        tg.MainButton.hide()
+    } else {
+        tg.MainButton.setParams({text: `Купить ${sessionStorage.getItem('totalPrice')}`,
+            "color": "#31b545"});
+        tg.MainButton.show();
+    }
 
 
     return (
@@ -99,7 +113,7 @@ const ProductItem = () => {
                             <Button className={'rmvBtn'} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                         </div>
                         <div className={'producttext'}>
-                            <p>{flavor} {product.price} - {cart[productId] && cart[productId][flavor] ? cart[productId][flavor].count : 0}</p>
+                            <p>{flavor} {product.price} - {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}</p>
                         </div>
                     </div>
                 ))}
