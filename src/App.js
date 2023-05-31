@@ -26,16 +26,18 @@ function App() {
     }, [])
 
 
-    tg.MainButton.onClick(onSendData())
-    // useEffect(() => {
-    //     tg.onEvent('mainButtonClicked', onSendData)
-    //     return () => {
-    //         tg.offEvent('mainButtonClicked', onSendData)
-    //     }
-    // }, [onSendData])
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
 
 
     tg.enableClosingConfirmation();
+
+    tg.MainButton.onClick(() => {
+    });
 
     useEffect(() => {
         tg.ready();
