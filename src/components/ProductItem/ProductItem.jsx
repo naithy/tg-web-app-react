@@ -91,7 +91,7 @@ const ProductItem = () => {
         return total;
     };
 
-    if(!sessionStorage.getItem('totalPrice')) {
+    if(!sessionStorage.getItem('totalPrice') || sessionStorage.getItem('totalPrice') === 0) {
         tg.MainButton.hide()
     } else {
         tg.MainButton.setParams({text: `Купить ${parseFloat(sessionStorage.getItem('totalPrice'))}`,
