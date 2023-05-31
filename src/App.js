@@ -17,7 +17,7 @@ function App() {
     const onSendData = useCallback(() => {
         const data = {
             cart: sessionStorage.getItem('cart'),
-            totalPrice: sessionStorage.getItem('totalPrice'),
+            totalPrice: 2000,
             queryId,
         }
         fetch('http://77.105.172.20:8000/web-data', {
