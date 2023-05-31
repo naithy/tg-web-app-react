@@ -23,7 +23,7 @@ function App() {
             },
             body: JSON.stringify(data)
         })
-    }, [JSON.parse(sessionStorage.cart)])
+    }, [])
 
 
     useEffect(() => {
