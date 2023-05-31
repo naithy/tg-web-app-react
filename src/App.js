@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import {Route, Routes} from "react-router-dom";
 import CategoryList from "./components/CategoryList/CategoryList";
@@ -9,6 +9,29 @@ import ProductItem from "./components/ProductItem/ProductItem";
 
 function App() {
     const {tg} = useTelegram()
+
+    const onSendData = useCallback(() => {
+        const data = {
+            cart: JSON.parse(sessionStorage.cart),
+            totalPrice: JSON.parse(sessionStorage.totalPrice)
+        }
+        fetch('77.105.172.20/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+    }, [])
+
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
 
     tg.enableClosingConfirmation();
 
