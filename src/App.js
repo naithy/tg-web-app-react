@@ -9,11 +9,28 @@ import ProductItem from "./components/ProductItem/ProductItem";
 
 function App() {
     const {tg} = useTelegram()
+    let requestURL = new URL(`${window.location.origin}/create_invoice_link`);
+    requestURL.searchParams.set('description', requestParams['description']);
+    requestURL.searchParams.set('prices', requestParams['prices']);
+    requestURL.searchParams.set('payload', requestParams['payload']);
+    requestURL.searchParams.set('initDataHash', requestParams['initDataHash']);
+    requestURL.searchParams.set('dataCheckString', requestParams['dataCheckString']);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', requestURL);
+    xhr.send();
+    xhr.onload = function() {
+        window.Telegram.WebApp.openInvoice(JSON.parse(xhr.response).result);
+    }
 
     tg.enableClosingConfirmation();
 
     tg.MainButton.onClick(() => {
-        tg.openInvoice();
+        xhr.open('GET', requestURL);
+        xhr.send();
+        xhr.onload = function() {
+            window.Telegram.WebApp.openInvoice(JSON.parse(xhr.response).result);
+        }
     });
 
     useEffect(() => {
