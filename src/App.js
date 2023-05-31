@@ -16,18 +16,25 @@ function App() {
 
     const onSendData = useCallback(() => {
         const data = {
-            cart: sessionStorage.cart,
-            totalPrice: sessionStorage.totalPrice,
+            cart: sessionStorage.getItem('cart'),
+            totalPrice: sessionStorage.getItem('totalPrice'),
             queryId,
         }
         fetch('http://77.105.172.20:8000/web-data', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-    }, [])
+    }, [sessionStorage.getItem('cart')])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
 
 
     useEffect(() => {
