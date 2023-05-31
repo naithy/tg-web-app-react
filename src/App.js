@@ -10,6 +10,10 @@ import ProductItem from "./components/ProductItem/ProductItem";
 function App() {
     const {tg, queryId} = useTelegram()
 
+    useEffect(() => {
+        tg.ready();
+    })
+
     const onSendData = useCallback(() => {
         const data = {
             cart: JSON.parse(sessionStorage.cart),
@@ -38,10 +42,6 @@ function App() {
 
     tg.MainButton.onClick(() => {
     });
-
-    useEffect(() => {
-        tg.ready();
-    })
 
   return (
     <div className="App">
