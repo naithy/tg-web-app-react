@@ -8,12 +8,13 @@ import ProductItem from "./components/ProductItem/ProductItem";
 
 
 function App() {
-    const {tg} = useTelegram()
+    const {tg, queryId} = useTelegram()
 
     const onSendData = useCallback(() => {
         const data = {
             cart: JSON.parse(sessionStorage.cart),
-            totalPrice: JSON.parse(sessionStorage.totalPrice)
+            totalPrice: JSON.parse(sessionStorage.totalPrice),
+            queryId,
         }
         fetch('http://77.105.172.20:8000/web-data', {
             method: 'POST',
@@ -22,7 +23,7 @@ function App() {
             },
             body: JSON.stringify(data)
         })
-    }, [])
+    }, [JSON.parse(sessionStorage.cart)])
 
 
     useEffect(() => {
