@@ -15,7 +15,7 @@ function App() {
             cart: JSON.parse(sessionStorage.cart),
             totalPrice: JSON.parse(sessionStorage.totalPrice)
         }
-        fetch('77.105.172.20/web-data', {
+        fetch('http://77.105.172.20:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
