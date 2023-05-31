@@ -37,9 +37,6 @@ function App() {
 
     tg.enableClosingConfirmation();
 
-    tg.MainButton.onClick(() => {
-    });
-
     useEffect(() => {
         tg.ready();
     })
