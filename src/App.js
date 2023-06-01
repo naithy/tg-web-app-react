@@ -27,7 +27,7 @@ function App() {
             cart: Cart,
             queryId,
         }
-        fetch('http://77.105.172.20:8000/web-data', {
+        fetch('http://localhost:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,8 +43,6 @@ function App() {
         }
     }, [onSendData])
 
-    tg.MainButton.onClick(onSendData)
-
     tg.enableClosingConfirmation();
 
 
@@ -54,6 +52,7 @@ function App() {
             <Route index element={<CategoryList/>}/>
             <Route path="/hqd" element={<ProductPage/>}/>
             <Route path="/product/:productId" element={<ProductItem/>}/>
+            <button onClick={onSendData}></button>
         </Routes>
     </div>
   );
