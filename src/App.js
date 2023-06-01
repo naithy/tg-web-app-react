@@ -43,6 +43,7 @@ function App() {
         }
     }, [onSendData])
 
+    tg.MainButton.onClick(onSendData)
     tg.enableClosingConfirmation();
 
 
