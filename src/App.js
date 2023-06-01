@@ -52,7 +52,6 @@ function App() {
             <Route index element={<CategoryList/>}/>
             <Route path="/hqd" element={<ProductPage/>}/>
             <Route path="/product/:productId" element={<ProductItem/>}/>
-            <button onClick={onSendData}></button>
         </Routes>
     </div>
   );
