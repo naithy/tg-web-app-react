@@ -27,7 +27,7 @@ function App() {
             cart: Cart,
             queryId,
         }
-        fetch('http://77.105.172.20/web-data', {
+        fetch('http://77.105.172.20:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
