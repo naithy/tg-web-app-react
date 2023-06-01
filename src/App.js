@@ -27,7 +27,7 @@ function App() {
             cart: Cart,
             queryId,
         }
-        fetch('http://localhost:8000/web-data', {
+        fetch('https://master--magical-moxie-a1c933.netlify.app/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
