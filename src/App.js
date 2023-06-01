@@ -34,7 +34,7 @@ function App() {
             },
             body: JSON.stringify(data)
         })
-    }, [])
+    }, [Cart])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
