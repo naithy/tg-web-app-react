@@ -27,7 +27,7 @@ function App() {
             cart: Cart,
             queryId,
         }
-        fetch('https://master--magical-moxie-a1c933.netlify.app/web-data', {
+        fetch('http://77.105.172.20/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,6 +43,7 @@ function App() {
         }
     }, [onSendData])
 
+    tg.MainButton.onClick
 
     tg.enableClosingConfirmation();
 
