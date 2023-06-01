@@ -8,33 +8,33 @@ import ProductItem from "./components/ProductItem/ProductItem";
 
 
 function App() {
-    const {tg, queryId} = useTelegram()
-    const Price = 2000;
+    const {tg, queryId} = useTelegram();
     useEffect(() => {
         tg.ready();
     })
 
+    let Price, Cart;
+
+    const claimData = () => {
+        Price = parseFloat(sessionStorage.getItem('totalPrice'));
+        Cart = JSON.parse(sessionStorage.getItem('cart'));
+    }
+
     const onSendData = useCallback(() => {
+        claimData()
         const data = {
             totalPrice: Price,
+            cart: Cart,
             queryId,
         }
-        fetch('http://77.105.172.20:8000/web-data', {
+        fetch('http://localhost:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-    }, [Price])
-
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
-
+    }, [])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -46,8 +46,6 @@ function App() {
 
     tg.enableClosingConfirmation();
 
-    tg.MainButton.onClick(() => {
-    });
 
   return (
     <div className="App">

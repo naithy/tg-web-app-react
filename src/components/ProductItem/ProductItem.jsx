@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
@@ -54,6 +54,7 @@ const ProductItem = () => {
         const total = calculateTotalPrice(newCart);
         setTotalPrice(total);
         sessionStorage.setItem('totalPrice', JSON.stringify(total));
+        dispatchEvent(new Event("storage"))
     }
 
     const handleRemoveFromCart = (flavor) => {
@@ -71,6 +72,7 @@ const ProductItem = () => {
             const total = calculateTotalPrice(newCart);
             setTotalPrice(total);
             sessionStorage.setItem('totalPrice', JSON.stringify(total));
+            dispatchEvent(new Event("storage"))
         }
     }
 
@@ -121,4 +123,5 @@ const ProductItem = () => {
         </div>
     );
 };
+
 export default ProductItem;
