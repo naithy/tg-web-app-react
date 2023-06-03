@@ -98,6 +98,7 @@ const ProductItem = () => {
         tg.MainButton.show();
     }
 
+    const max = product.flavors.length - 1;
 
     return (
         <div className={'productcontainer'}>
@@ -105,18 +106,19 @@ const ProductItem = () => {
                 <h3 className={'underline'}>{product.title}</h3>
             </div>
             <div className={'choicecontainer'}>
-                {product.flavors.map((flavor) => (
+                {product.flavors.map((flavor, index) => (
                     <div className={'option'}>
                         <div className={'btns'}>
                             <Button className={'addBtn'} onClick={() => handleAddToCart(flavor)}>+</Button>
                             <Button className={'rmvBtn'} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                         </div>
-                        <div className={'producttext'}>
+                        <div className={index === max ? 'producttext last' : 'producttext'}>
                             <p>{flavor} {product.price} - {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}</p>
                         </div>
                     </div>
                 ))}
             </div>
+            <button onClick={() => {console.log()}}>show</button>
         </div>
     );
 };
