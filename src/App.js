@@ -20,6 +20,7 @@ function App() {
     }
 
     const onSendData = useCallback(() => {
+        console.log(queryId)
         claimData()
         const data = {
             totalPrice: Price,
