@@ -38,7 +38,7 @@ function App() {
 
 
 
-    tg.MainButton.onClick(onSendData)
+    tg.MainButton.onClick(tg.showAlert(queryId))
     tg.enableClosingConfirmation();
 
 
