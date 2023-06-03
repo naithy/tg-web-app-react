@@ -38,9 +38,7 @@ function App() {
 
 
 
-    tg.MainButton.onClick(() => {
-        tg.showAlert('mainbutton clicked')
-    })
+    tg.MainButton.onClick(onSendData())
     tg.enableClosingConfirmation();
 
 
