@@ -61,13 +61,15 @@ p {
 }
 
 .badge {
+    margin-top: 7px;
+    margin-right: 7px;
     animation-duration: 0.25s;
     animation-fill-mode: both;
     animation-timing-function: ease-in-out;
     height: 22px;
     min-width: 22px;
     border-radius: 11px;
-    background: var(--tg-theme-button-color);
+    background: cyan;
     text-align: center;
     line-height: 22px;
     font-weight: 700;
