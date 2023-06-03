@@ -27,7 +27,7 @@ function App() {
             cart: Cart,
             queryId,
         }
-        axios('http://77.105.172.20:8000/web-data')
+        axios.post('http://77.105.172.20:8000/web-data')
             .then(res => {
                 console.log(res)
             }).catch(err => {
