@@ -109,8 +109,8 @@ const ProductItem = () => {
                 {product.flavors.map((flavor, index) => (
                     <div className={'option'}>
                         <div className={'btns'}>
-                            <Button className={'addBtn'} onClick={() => handleAddToCart(flavor)}>+</Button>
-                            <Button className={'rmvBtn'} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                            <Button className={'addBtn'} onClick={() => {handleAddToCart(flavor); window.navigator.vibrate(200)}}>+</Button>
+                            <Button className={'rmvBtn'} onClick={() => {handleRemoveFromCart(flavor); window.navigator.vibrate(200)}}>-</Button>
                         </div>
                         <div className={index === max ? 'producttext last' : 'producttext'}>
                             <p>{flavor} {product.price} - {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}</p>
