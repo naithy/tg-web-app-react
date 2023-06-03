@@ -6,7 +6,12 @@ import {useTelegram} from "../../hooks/useTelegram";
 
 
 const ProductItem = () => {
+
+    const element = document.getElementsByClassName('choicecontainer')
+    let color = window.getComputedStyle(element).background
     const {tg} = useTelegram();
+    tg.showAlert(color)
+
 
     const productsData = [
         { title: 'gang box x 800', price: 900, flavors: ['vanilla', 'cherry', 'apple'] },
