@@ -55,7 +55,7 @@ p {
     height: 35px;
     width: 100%;
     margin-left: 10px;
-    border-bottom: var(--secondary-color);
+    border-bottom: var(--tg-secondary-color);
 }
 
 .last {
