@@ -6,8 +6,9 @@ import CategoryList from "./components/CategoryList/CategoryList";
 import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 
-
 function App() {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
     const {tg, queryId} = useTelegram();
     useEffect(() => {
         tg.ready();
@@ -32,7 +33,8 @@ function App() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            agent
         })
     }, [Cart])
 
