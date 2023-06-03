@@ -36,9 +36,13 @@ function App() {
         })
     }, [Cart])
 
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
 
-
-    tg.MainButton.onClick(tg.showAlert(queryId))
     tg.enableClosingConfirmation();
 
 
