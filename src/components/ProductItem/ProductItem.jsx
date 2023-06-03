@@ -34,7 +34,7 @@ const ProductItem = () => {
     }, []);
 
     const handleAddToCart = (flavor) => {
-        tg.HapticFeedback.Light
+        tg.HapticFeedback.impactOccurred('Light')
         const newCart = { ...cart };
         if (newCart[productId] && newCart[productId].flavors[flavor]) {
             newCart[productId].flavors[flavor]++;
@@ -56,7 +56,7 @@ const ProductItem = () => {
     }
 
     const handleRemoveFromCart = (flavor) => {
-        tg.HapticFeedback.Light
+        tg.HapticFeedback.impactOccurred('Light')
         const newCart = { ...cart };
         if (newCart[productId] && newCart[productId].flavors[flavor]) {
             newCart[productId].flavors[flavor]--;
