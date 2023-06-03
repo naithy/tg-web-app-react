@@ -38,7 +38,7 @@ function App() {
 
 
 
-    tg.MainButton.onClick(onSendData())
+    tg.MainButton.onClick(onSendData)
     tg.enableClosingConfirmation();
 
 
@@ -49,6 +49,7 @@ function App() {
             <Route path="/hqd" element={<ProductPage/>}/>
             <Route path="/product/:productId" element={<ProductItem/>}/>
         </Routes>
+        <button onClick={onSendData}></button>
     </div>
   );
 }
