@@ -55,7 +55,7 @@ p {
     height: 35px;
     width: 100%;
     margin-left: 10px;
-    border-bottom: #32a1ce 1px solid;
+    border-bottom: var(--tg-theme-hint-color);
 }
 
 .last {
