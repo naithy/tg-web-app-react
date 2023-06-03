@@ -23,9 +23,9 @@ function App() {
         console.log(queryId)
         claimData()
         const data = {
-            totalPrice: Price,
-            cart: Cart,
             queryId,
+            totalPrice: Price,
+            cart: Cart
         }
         fetch('https://sakurashopsmr.ru/web-data', {
             method: 'POST',
