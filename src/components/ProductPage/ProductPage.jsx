@@ -21,7 +21,7 @@ const ProductPage = () => {
     return (
         <div className={'list'}>
             {productsData.map((product, index) => (
-                <div className={'HqdItem'}>
+                <div className={'HqdItem'} key={index}>
                     <Link to={`/product/${index}`} className={'toItemPage'}>
                         <div className={'hqdcontainer'}>
                             <div className={'product item'}>

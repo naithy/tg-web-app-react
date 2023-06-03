@@ -51,6 +51,8 @@ p {
 }
 
 .producttext {
+    display: flex;
+    justify-content: space-between;
     line-height: 35px;
     height: 35px;
     width: 100%;
@@ -58,8 +60,132 @@ p {
     border-bottom: var(--tg-secondary-color);
 }
 
+.badge {
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 11px;
+    background: var(--tg-theme-button-color);
+    text-align: center;
+    line-height: 22px;
+    font-weight: 700;
+    font-size: 14px;
+    animation-name: none;
+    color: var(--tg-theme-button-text-color);
+}
+
+@-webkit-keyframes badge-incr {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    40% {
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+
+@keyframes badge-incr {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    40% {
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+
+@-webkit-keyframes badge-incr2 {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    40% {
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+
+@keyframes badge-incr2 {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    40% {
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+
+@-webkit-keyframes badge-decr {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    40% {
+        transform: scale3d(0.8, 0.8, 1);
+    }
+}
+
+@keyframes badge-decr {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    40% {
+        transform: scale3d(0.8, 0.8, 1);
+    }
+}
+
+@-webkit-keyframes badge-decr2 {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    40% {
+        transform: scale3d(0.8, 0.8, 1);
+    }
+}
+
+@keyframes badge-decr2 {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    40% {
+        transform: scale3d(0.8, 0.8, 1);
+    }
+}
+
+@-webkit-keyframes badge-hide {
+    0% {
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        transform: scale3d(0.5, 0.5, 1);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes badge-hide {
+    0% {
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        transform: scale3d(0.5, 0.5, 1);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 .last {
-    border-bottom: 0;
+    border-bottom: none;
 }
 
 .btns {

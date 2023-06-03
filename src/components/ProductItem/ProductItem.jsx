@@ -33,7 +33,42 @@ const ProductItem = () => {
         }
     }, []);
 
+    const [animationNames, setAnimationNames] = useState({});
+    const [style, setStyle] = useState(false)
+    const [style2, setStyle2] = useState(false)
+    const handleIncrement = (flavor) => {
+        if(!style) {
+            setAnimationNames((prevNames) => ({
+                ...prevNames,
+                [`${productId}-${flavor}`]: 'badge-incr',
+            }));
+            setStyle(true)
+        } else {
+            setAnimationNames((prevNames) => ({
+                ...prevNames,
+                [`${productId}-${flavor}`]: 'badge-incr2',
+            }));
+            setStyle(false)
+        }
+    };
+    const handleDecrement = (flavor) => {
+        if(!style) {
+            setAnimationNames((prevNames) => ({
+                ...prevNames,
+                [`${productId}-${flavor}`]: 'badge-decr',
+            }));
+            setStyle(true)
+        } else {
+            setAnimationNames((prevNames) => ({
+                ...prevNames,
+                [`${productId}-${flavor}`]: 'badge-decr2',
+            }));
+            setStyle(false)
+        }
+    };
+
     const handleAddToCart = (flavor) => {
+        handleIncrement(flavor)
         tg.HapticFeedback.impactOccurred('light')
         const newCart = { ...cart };
         if (newCart[productId] && newCart[productId].flavors[flavor]) {
@@ -56,6 +91,7 @@ const ProductItem = () => {
     }
 
     const handleRemoveFromCart = (flavor) => {
+        handleDecrement(flavor)
         tg.HapticFeedback.impactOccurred('light')
         const newCart = { ...cart };
         if (newCart[productId] && newCart[productId].flavors[flavor]) {
@@ -107,15 +143,25 @@ const ProductItem = () => {
             <div className={'title'}>
                 <h3 className={'underline'}>{product.title}</h3>
             </div>
-            <div className={'choicecontainer'}>
+            <div className="choicecontainer">
                 {product.flavors.map((flavor, index) => (
-                    <div className={'option'}>
-                        <div className={'btns'}>
-                            <Button className={'addBtn'} onClick={() => handleAddToCart(flavor)}>+</Button>
-                            <Button className={'rmvBtn'} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                    <div className="option" key={flavor}>
+                        <div className="btns">
+                            <Button className="addBtn" onClick={() => handleAddToCart(flavor)}>+</Button>
+                            <Button className="rmvBtn" onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                         </div>
-                        <div className={index === max ? 'producttext last' : 'producttext'}>
-                            <p>{flavor} {product.price} - {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}</p>
+                        <div className={index === max ? "producttext last" : "producttext"}>
+                            <p>{flavor} {product.price}</p>
+                            <div
+                                id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
+                                className="badge hide"
+                                style={{
+                                    animationName: cart[productId] && cart[productId].flavors[`${flavor}`] ?
+                                        animationNames[`${productId}-${flavor}`] : 'badge-hide',
+                                }}
+                            >
+                                {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}
+                            </div>
                         </div>
                     </div>
                 ))}
