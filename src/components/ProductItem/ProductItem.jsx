@@ -156,7 +156,9 @@ const ProductItem = () => {
                                 id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
                                 className="badge hide"
                                 style={{
-                                    animationName: cart[productId] && cart[productId].flavors[`${flavor}`] ?
+                                    animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
+                                        '0.25s' : '0',
+                                    animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
                                         animationNames[`${productId}-${flavor}`] : 'badge-hide',
                                 }}
                             >

@@ -63,7 +63,6 @@ p {
 .badge {
     margin-top: 5px;
     margin-right: 10px;
-    animation-duration: 0.25s;
     animation-fill-mode: both;
     animation-timing-function: ease-in-out;
     height: 22px;
@@ -159,31 +158,19 @@ p {
 }
 
 @-webkit-keyframes badge-hide {
-    0% {
-        transform: scale3d(1, 1, 1);
-        opacity: 1;
-        visibility: visible;
-    }
-
     100% {
-        transform: scale3d(0.5, 0.5, 1);
         opacity: 0;
         visibility: hidden;
     }
+
 }
 
 @keyframes badge-hide {
-    0% {
-        transform: scale3d(1, 1, 1);
-        opacity: 1;
-        visibility: visible;
-    }
-
     100% {
-        transform: scale3d(0.5, 0.5, 1);
         opacity: 0;
         visibility: hidden;
     }
+
 }
 
 .last {
