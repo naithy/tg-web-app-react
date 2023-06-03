@@ -53,7 +53,6 @@ function App() {
             <Route path="/hqd" element={<ProductPage/>}/>
             <Route path="/product/:productId" element={<ProductItem/>}/>
         </Routes>
-        <button onClick={onSendData}>Send</button>
     </div>
   );
 }

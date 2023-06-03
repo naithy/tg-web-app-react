@@ -118,7 +118,6 @@ const ProductItem = () => {
                     </div>
                 ))}
             </div>
-            <button onClick={() => {console.log()}}>show</button>
         </div>
     );
 };
