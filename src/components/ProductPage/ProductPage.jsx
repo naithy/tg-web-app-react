@@ -9,8 +9,6 @@ const productsData = [
     { title: 'vaporesso', price: 900 },
 ];
 
-
-
 const ProductPage = () => {
     const {tg} = useTelegram();
     const history = useNavigate();

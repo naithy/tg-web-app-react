@@ -5,9 +5,6 @@ import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 
 
-
-
-
 const ProductItem = () => {
     const {tg} = useTelegram();
 

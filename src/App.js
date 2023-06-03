@@ -5,7 +5,6 @@ import {Route, Routes} from "react-router-dom";
 import CategoryList from "./components/CategoryList/CategoryList";
 import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
-import axios from "axios";
 
 function App() {
     const {tg, queryId} = useTelegram();
@@ -27,7 +26,7 @@ function App() {
             cart: Cart,
             queryId,
         }
-        fetch('http://77.105.172.20:8000/web-data', {
+        fetch('https://sakurashopsmr.ru/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
