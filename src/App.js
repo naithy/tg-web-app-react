@@ -27,11 +27,12 @@ function App() {
             cart: Cart,
             queryId,
         }
-        axios.post('http://77.105.172.20:8000/web-data')
-            .then(res => {
-                console.log(res)
-            }).catch(err => {
-                console.log(err)
+        fetch('http://77.105.172.20:8000/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
         })
     }, [Cart])
 
