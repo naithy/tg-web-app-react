@@ -61,8 +61,8 @@ p {
 }
 
 .badge {
-    margin-top: 7px;
-    margin-right: 7px;
+    margin-top: 5px;
+    margin-right: 10px;
     animation-duration: 0.25s;
     animation-fill-mode: both;
     animation-timing-function: ease-in-out;
