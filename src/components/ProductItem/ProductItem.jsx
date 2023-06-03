@@ -34,7 +34,6 @@ const ProductItem = () => {
     }, []);
 
     const handleAddToCart = (flavor) => {
-        window.navigator.vibrate(200)
         const newCart = { ...cart };
         if (newCart[productId] && newCart[productId].flavors[flavor]) {
             newCart[productId].flavors[flavor]++;
@@ -56,7 +55,6 @@ const ProductItem = () => {
     }
 
     const handleRemoveFromCart = (flavor) => {
-        window.navigator.vibrate(200)
         const newCart = { ...cart };
         if (newCart[productId] && newCart[productId].flavors[flavor]) {
             newCart[productId].flavors[flavor]--;
