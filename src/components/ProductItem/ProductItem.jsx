@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 
 
 const ProductItem = () => {
+    const history = useNavigate();
     const {tg} = useTelegram();
 
     const productsData = [
