@@ -23,12 +23,13 @@ body {
 }
 
 .product {
+    align-items: center;
     border-radius: 7px;
     background-color: var(--tg-theme-bg-color);
     display: flex;
     flex-direction: column;
     padding: 15px;
-    width: 150px;
+    width: 160px;
     min-height: 209px;
 }
 
