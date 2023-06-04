@@ -9,7 +9,7 @@ const ProductItem = () => {
     const {tg} = useTelegram();
 
     const productsData = [
-        { title: 'gang box x 800', price: 900, flavors: ['vanilla', 'cherry', 'apple'] },
+        { title: 'gang box x 800', price: 900, flavors: ['Мороженное с лесными ягодами', 'cherry', 'apple'] },
         { title: 'lost mary b5000', price: 1000, flavors: ['vanilla', 'cherry', 'blueberry'] },
         { title: 'voopoo', price: 950, flavors: ['mango'] },
         { title: 'vaporesso', price: 900 },
@@ -155,7 +155,7 @@ const ProductItem = () => {
                             <Button className="rmvBtn" onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                         </div>
                         <div className={index === max ? "producttext last" : "producttext"}>
-                            <p>{flavor} {product.price}</p>
+                            <p>{flavor}</p>
                             <div
                                 id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
                                 className="badge hide"
