@@ -177,3 +177,6 @@ p {
     border-bottom: none;
 }
 
+.btns {
+    display: flex;
+}
