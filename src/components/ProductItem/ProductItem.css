@@ -177,9 +177,3 @@ p {
     border-bottom: none;
 }
 
-.btns {
-    background-color: tomato;
-    border-radius: 7px;
-    display: flex;
-    flex-direction: row;
-}
