@@ -65,7 +65,7 @@ p {
     transition: width .15s ease;
 }
 
-.rmvBtn {display: block; animation: shows 1s;}
+.rmvBtn {display: block; animation: shows .1s;}
 
 .hidebtn {
     display: none;
