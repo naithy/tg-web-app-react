@@ -3,6 +3,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
+import AnimatedPage from "../../AnimatedPage";
 
 
 const ProductItem = () => {
@@ -147,41 +148,43 @@ const ProductItem = () => {
     const max = product.flavors.length - 1;
 
     return (
-        <div className={'productcontainer'}>
-            <div className={'title'}>
-                <img className={'hqdimg2'} src={product.img} alt={'parilka'}/>
-                <div className={'titletext'}>
-                    <h3 className={'underline'}>{product.title}</h3>
-                    <div className={'description'}>{product.description}</div>
-                    <div className={'price'}>{product.price}p.</div>
+        <AnimatedPage>
+            <div className={'productcontainer'}>
+                <div className={'title'}>
+                    <img className={'hqdimg2'} src={product.img} alt={'parilka'}/>
+                    <div className={'titletext'}>
+                        <h3 className={'underline'}>{product.title}</h3>
+                        <div className={'description'}>{product.description}</div>
+                        <div className={'price'}>{product.price}p.</div>
+                    </div>
                 </div>
-            </div>
-            <div className="choicecontainer">
-                {product.flavors.map((flavor, index) => (
-                    <div className="option" key={flavor}>
-                        <div className={'btns'}>
-                            <Button className={`addBtn ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'nonselected' : ''}`} onClick={() => handleAddToCart(flavor)}>+</Button>
-                            <Button className={`rmvBtn ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'hidebtn' : ''}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
-                        </div>
-                        <div className={index === max ? "producttext last" : "producttext"}>
-                            <p>{flavor}</p>
-                            <div
-                                id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
-                                className="badge hide"
-                                style={{
-                                    animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
-                                        '0.25s' : '0',
-                                    animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
-                                        animationNames[`${productId}-${flavor}`] : 'badge-hide',
-                                }}
-                            >
-                                {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}
+                <div className="choicecontainer">
+                    {product.flavors.map((flavor, index) => (
+                        <div className="option" key={flavor}>
+                            <div className={'btns'}>
+                                <Button className={`addBtn ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'nonselected' : ''}`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                                <Button className={`rmvBtn ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'hidebtn' : ''}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                            </div>
+                            <div className={index === max ? "producttext last" : "producttext"}>
+                                <p>{flavor}</p>
+                                <div
+                                    id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
+                                    className="badge hide"
+                                    style={{
+                                        animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
+                                            '0.25s' : '0',
+                                        animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
+                                            animationNames[`${productId}-${flavor}`] : 'badge-hide',
+                                    }}
+                                >
+                                    {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
+        </AnimatedPage>
     );
 };
 
