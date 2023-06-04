@@ -46,14 +46,27 @@
     border-radius: 7px;
 }
 
-.btn {
+.addBtn {
+    transition: width .15s ease;
+}
+
+.btns {
     display: flex;
-    min-width: 36px;
+    min-width: 65px;
     justify-content: space-between;
 }
 
 p {
     margin-left: 4px;
+}
+
+.nonselected {
+    width: 100%;
+    transition: width .15s ease;
+}
+
+.hidebtn {
+    display: none;
 }
 
 .producttext {

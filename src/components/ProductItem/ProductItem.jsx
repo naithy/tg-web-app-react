@@ -151,8 +151,8 @@ const ProductItem = () => {
                 {product.flavors.map((flavor, index) => (
                     <div className="option" key={flavor}>
                         <div className={'btns'}>
-                            <Button className="addBtn" onClick={() => handleAddToCart(flavor)}>+</Button>
-                            <Button className="rmvBtn" onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                            <Button className={`addBtn ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'nonselected' : ''}`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                            <Button className={`rmvBtn ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'hidebtn' : ''}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                         </div>
                         <div className={index === max ? "producttext last" : "producttext"}>
                             <p>{flavor}</p>

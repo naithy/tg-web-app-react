@@ -1,5 +1,6 @@
 .button {
     background: var(--tg-theme-button-color);
+    background: cyan;
     color: var(--tg-theme-button-text-color);
     border: none;
     outline: none;
