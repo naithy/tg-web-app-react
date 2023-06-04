@@ -65,6 +65,8 @@ p {
     transition: width .15s ease;
 }
 
+.rmvBtn {display: block; animation: shows 1s;}
+
 .hidebtn {
     display: none;
 }
@@ -196,6 +198,19 @@ p {
     border-bottom: none;
 }
 
-.btns {
-    display: flex;
+
+@keyframes shows {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
 }
