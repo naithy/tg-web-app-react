@@ -1,5 +1,5 @@
 import {useTelegram} from "../../hooks/useTelegram";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import React from "react";
 import './ProductPage.css'
 import {motion} from "framer-motion";

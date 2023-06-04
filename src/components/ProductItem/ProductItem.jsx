@@ -47,8 +47,7 @@ const ProductItem = () => {
     }, []);
 
     const [animationNames, setAnimationNames] = useState({});
-    const [style, setStyle] = useState(false)
-    const [style2, setStyle2] = useState(false)
+    const [style, setStyle] = useState(false);
     const handleIncrement = (flavor) => {
         if(!style) {
             setAnimationNames((prevNames) => ({
@@ -166,8 +165,8 @@ const ProductItem = () => {
                     {product.flavors.map((flavor, index) => (
                         <div className="option" key={flavor}>
                             <div className={'btns'}>
-                                <Button className={`addBtn ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'nonselected' : ''}`} onClick={() => handleAddToCart(flavor)}>+</Button>
-                                <Button className={`rmvBtn ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'hidebtn' : ''}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                                <Button className={`addBtn ${productId}-${flavor} ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'nonselected' : ''}`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                                <Button className={`rmvBtn ${productId}-${flavor} ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'hidebtn' : ''}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                             </div>
                             <div className={index === max ? "producttext last" : "producttext"}>
                                 <p>{flavor}</p>
