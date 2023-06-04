@@ -150,10 +150,8 @@ const ProductItem = () => {
             <div className="choicecontainer">
                 {product.flavors.map((flavor, index) => (
                     <div className="option" key={flavor}>
-                        <div className="btns">
                             <Button className="addBtn" onClick={() => handleAddToCart(flavor)}>+</Button>
                             <Button className="rmvBtn" onClick={() => handleRemoveFromCart(flavor)}>-</Button>
-                        </div>
                         <div className={index === max ? "producttext last" : "producttext"}>
                             <p>{flavor} {product.price}</p>
                             <div
