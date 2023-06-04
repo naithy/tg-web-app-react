@@ -46,6 +46,12 @@
     border-radius: 7px;
 }
 
+.btn {
+    display: flex;
+    min-width: 36px;
+    justify-content: space-between;
+}
+
 p {
     margin-left: 4px;
 }
