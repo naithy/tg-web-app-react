@@ -11,7 +11,11 @@ const ProductItem = () => {
     const {tg} = useTelegram();
 
     const productsData = [
-        { title: 'gang box x 800', price: 900, flavors: ['Мороженное с лесными ягодами', 'cherry', 'apple'],
+        { title: 'GANG X BOX 8000', price: 1100, flavors: ['' +
+            'Ананас Малина Вишня', 'Бабл-гам', 'Жвачка с лесными ягодами',
+                'Ледяная мятная жвачка', 'Малина Яблоко Мята', 'Ледяная Черника Смородина',
+                'Энергетик с черешней', 'Холодные тропические фрукты'
+            ],
             description: '8000 затяжек',
             img: 'https://sun9-66.userapi.com/impg/daUL-0rsVWF4iFxoIBNOpsYf93LJ_8yOyCnTkA/Qr3P8UJK2_I.jpg?size=1280x1280&quality=96&sign=10b465a1219b01ac2e85cd7a3ee6ebc1&type=album'
         },
