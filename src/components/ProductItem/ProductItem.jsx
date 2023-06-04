@@ -79,6 +79,7 @@ const ProductItem = () => {
         }
     };
 
+
     const handleAddToCart = (flavor) => {
         handleIncrement(flavor)
         tg.HapticFeedback.impactOccurred('light')
@@ -175,7 +176,7 @@ const ProductItem = () => {
                                     className="badge hide"
                                     style={{
                                         animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
-                                            '0.25s' : '0',
+                                            '.3s' : '0',
                                         animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
                                             animationNames[`${productId}-${flavor}`] : 'badge-hide',
                                     }}
