@@ -1,0 +1,43 @@
+* {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin-top: 10px;
+}
+
+.hqdcontainer {
+    position:relative;
+    text-align: center;
+}
+
+.hqdcontainertext {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 56px;
+}
+
+.product {
+    border-radius: 7px;
+    background-color: var(--tg-theme-bg-color);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: 150px;
+    min-height: 209px;
+}
+
+.hqdtitle {
+    padding-top: 5px;
+}
+
+.hqdimg {
+    width: 120px;
+    height: 120px;
+    border-radius: 7px;
+}
+
+.price {
+    font-weight: 700;
+}
