@@ -38,7 +38,7 @@
     display: flex;
 }
 
-.addBtn {
+.addBtn, .rmvBtn {
     outline: none;
     height: 30px;
     width: 30px;
