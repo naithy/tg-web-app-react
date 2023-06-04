@@ -7,7 +7,7 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 
 function App() {
-    const {tg, queryId} = useTelegram();
+    const {tg, queryId, user} = useTelegram();
     useEffect(() => {
         tg.ready();
     })
@@ -20,10 +20,10 @@ function App() {
     }
 
     const onSendData = useCallback(() => {
-        console.log(queryId)
         claimData()
         const data = {
             queryId,
+            user,
             totalPrice: Price,
             cart: Cart
         }
