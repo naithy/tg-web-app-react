@@ -46,8 +46,17 @@ const ProductItem = () => {
         }
     }, []);
 
-    const [animationNames, setAnimationNames] = useState({});
+    const [animationNames, setAnimationNames] = useState({})
+    const [classNames, setClassNames] = useState({})
     const [style, setStyle] = useState(false);
+    const [styleName, setStyleName] = useState(true);
+
+    const handleAdd = (flavor) => {
+        setClassNames((prevNames) => ({
+            ...prevNames,
+            [`${flavor}`]: ''
+        }));
+    }
     const handleIncrement = (flavor) => {
         if(!style) {
             setAnimationNames((prevNames) => ({
@@ -81,6 +90,7 @@ const ProductItem = () => {
 
 
     const handleAddToCart = (flavor) => {
+        handleAdd(flavor)
         handleIncrement(flavor)
         tg.HapticFeedback.impactOccurred('light')
         const newCart = { ...cart };
@@ -166,8 +176,8 @@ const ProductItem = () => {
                     {product.flavors.map((flavor, index) => (
                         <div className="option" key={flavor}>
                             <div className={'btns'}>
-                                <Button className={`addBtn ${productId}-${flavor} ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'nonselected' : ''}`} onClick={() => handleAddToCart(flavor)}>+</Button>
-                                <Button className={`rmvBtn ${productId}-${flavor} ${!cart[productId] || cart[productId].flavors[`${flavor}`] === 0 ? 'hidebtn' : ''}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                                <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                                <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                             </div>
                             <div className={index === max ? "producttext last" : "producttext"}>
                                 <p>{flavor}</p>
