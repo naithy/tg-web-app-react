@@ -39,13 +39,12 @@ function App() {
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
-        tg.close()
         return () => {
             tg.offEvent('mainButtonClicked', onSendData)
-            tg.close()
         }
     }, [onSendData])
 
+    tg.MainButton.onClick(() => tg.close());
     tg.enableClosingConfirmation();
 
 
