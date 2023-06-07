@@ -7,7 +7,7 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 
 function App() {
-    const {tg, queryId, user, chat} = useTelegram();
+    const {tg, queryId, user, chat, onClose} = useTelegram();
     useEffect(() => {
         tg.ready();
     })
@@ -39,6 +39,7 @@ function App() {
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
+        tg.close()
         return () => {
             tg.offEvent('mainButtonClicked', onSendData)
         }
