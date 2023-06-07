@@ -42,6 +42,7 @@ function App() {
         tg.close()
         return () => {
             tg.offEvent('mainButtonClicked', onSendData)
+            tg.close()
         }
     }, [onSendData])
 
