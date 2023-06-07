@@ -7,7 +7,7 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 
 function App() {
-    const {tg, queryId, user} = useTelegram();
+    const {tg, queryId, user, chat} = useTelegram();
     useEffect(() => {
         tg.ready();
     })
@@ -25,7 +25,8 @@ function App() {
             queryId,
             user,
             totalPrice: Price,
-            cart: Cart
+            cart: Cart,
+            chat
         }
         fetch('https://sakurashopsmr.ru/web-data', {
             method: 'POST',
@@ -56,6 +57,7 @@ function App() {
             <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/product/:productId" element={<ProductItem/>}/>
         </Routes>
+        <button onClick={onSendData}>Send</button>
     </div>
   );
 }

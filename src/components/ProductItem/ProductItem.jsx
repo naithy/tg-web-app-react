@@ -7,6 +7,7 @@ import AnimatedPage from "../../AnimatedPage";
 
 
 const ProductItem = () => {
+
     const history = useNavigate();
     const {tg} = useTelegram();
 
