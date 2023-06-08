@@ -70,9 +70,8 @@ const Checkout = () => {
         }
 
         if (isAdult && !!savedNumber) {
-            console.log("GOOOOOOOO")
             tg.MainButton.setParams({
-                text: `Посмотреть заказ`,
+                text: `Оформить заказ ${Price} р.`,
                 color: `#31b545`
             });
             tg.MainButton.show();
