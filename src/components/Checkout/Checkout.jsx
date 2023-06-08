@@ -41,15 +41,23 @@ const Checkout = () => {
     const [savedBirthday, setSavedBirthday] = useState('');
     const [savedNumber, setSavedNumber] = useState();
     const handleBirthdayComplete = (value) => {
-        setIsAdult(checkAge(value));
-        setSavedBirthday(value);
-        console.log(isAdult)
-        checkAndSetButton();
+        if (value.length < 10) {
+            setIsAdult(false)
+            setSavedBirthday('');
+        } else {
+            setIsAdult(checkAge(value));
+            setSavedBirthday(value);
+            checkAndSetButton();
+        }
     };
 
     const handleNumberComplete = (value) => {
-        setSavedNumber(value);
-        checkAndSetButton();
+        if (value.length < 18) {
+            setSavedNumber('')
+        } else {
+            setSavedNumber(value);
+            checkAndSetButton();
+        }
     };
 
     useEffect(() => {
@@ -97,7 +105,7 @@ const Checkout = () => {
                     className={'dateinput'}
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
                     mask={Date}
-                    onComplete={(value) => {handleBirthdayComplete(value)}}
+                    onAccept={(value) => {handleBirthdayComplete(value)}}
                 />
                 <IMaskInput
                     type={'tel'}
@@ -105,7 +113,7 @@ const Checkout = () => {
                     className={'numberinput'}
                     placeholder={'Телефон'}
                     mask={PhoneMask}
-                    onComplete={(value) => {handleNumberComplete(value)}}
+                    onAccept={(value) => {handleNumberComplete(value)}}
                 />
             </div>
         </div>
