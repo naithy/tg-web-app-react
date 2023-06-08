@@ -22,7 +22,7 @@ const Checkout = () => {
         history(-1);
     })
 
-    const [date, setDate] = useState(new Date())
+    const PhoneMask = "+{7}(000)000-00-00";
 
     return (
         <div className={'checkout'}>
