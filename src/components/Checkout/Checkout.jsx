@@ -75,7 +75,7 @@ const Checkout = () => {
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
                     mask={Date}
                     onComplete={(value) => {isAdult = checkAge(value)
-                        value = savedBirthday
+                        savedBirthday = value
                     }}
                 />
                 <IMaskInput
@@ -84,7 +84,7 @@ const Checkout = () => {
                     className={'numberinput'}
                     placeholder={'Телефон'}
                     mask={PhoneMask}
-                    onComplete={(value) => value = savedNumber}
+                    onComplete={(value) => savedNumber = value}
                 />
             </div>
         </div>
