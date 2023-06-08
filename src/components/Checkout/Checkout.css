@@ -58,6 +58,10 @@ body {
     justify-content: space-between;
 }
 
+.orderproducttext {
+    color: var(--tg-theme-hint-color)
+}
+
 .colortext {
     color: #eaab3c;
     font-weight: 700;
