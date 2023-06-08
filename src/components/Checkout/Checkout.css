@@ -11,7 +11,7 @@ body {
     padding-bottom: 10px;
 }
 
-.ordertext {
+.ordertitletext {
     margin-top: 20px;
     margin-left: 20px;
     font-weight: 700;
@@ -41,4 +41,12 @@ body {
     padding-left: 20px;
     outline:none;
     font-size: 15px;
+}
+
+.order {
+    background: var(--tg-theme-bg-color);
+}
+
+.ordertext {
+    padding-left: 20px;
 }
