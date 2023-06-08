@@ -23,12 +23,13 @@ body {
     margin-right: 20px;
     border: none;
     background-color: transparent;
-    color: greenyellow;
+    color: #46ae58;
     font-weight: 700;
     font-size: 13px;
 }
 
 .inputs {
+    margin-top: 15px;
     background: var(--tg-theme-bg-color);
 }
 
@@ -49,4 +50,18 @@ body {
 
 .ordertext {
     padding-left: 20px;
+}
+
+.orderproduct {
+    display: flex;
+    justify-content: space-between;
+}
+
+.colortext {
+    color: #eaab3c;
+    font-weight: 700;
+}
+
+.totalprice {
+    padding-right: 20px;
 }

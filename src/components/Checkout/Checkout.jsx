@@ -38,7 +38,10 @@ const Checkout = () => {
                 <div className={'ordertext'} key={key}>
                     <h4>{Cart[key].title}</h4>
                     {Object.entries(Cart[key].flavors).map(([name, amount]) =>(
-                        <p>{name} {amount}x {amount >= 3 ? (parseFloat(Cart[key].price) - 100) * amount : parseFloat(Cart[key].price) * amount}</p>
+                        <div className={'orderproduct'}>
+                            <div className={'orderproducttext'}>{name} <span className="colortext">{amount}x</span></div>
+                            <div className={'totalprice'}>{amount >= 3 ? (parseFloat(Cart[key].price) - 100) * amount + ' р.': parseFloat(Cart[key].price) * amount + ' р.'}</div>
+                        </div>
                     ))}
                 </div>)}
             </div>
