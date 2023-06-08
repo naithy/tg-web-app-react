@@ -37,12 +37,13 @@ const Checkout = () => {
         return Math.abs(ageDate.getUTCFullYear() - 1970) >= 18;
     }
 
-    const [isAdult, setIsAdult] = useState(false);
+    const [isAdult, setIsAdult] = useState();
     const [savedBirthday, setSavedBirthday] = useState('');
-    const [savedNumber, setSavedNumber] = useState('');
+    const [savedNumber, setSavedNumber] = useState();
     const handleBirthdayComplete = (value) => {
         setIsAdult(checkAge(value));
         setSavedBirthday(value);
+        console.log(isAdult)
         checkAndSetButton();
     };
 
@@ -56,7 +57,7 @@ const Checkout = () => {
             tg.MainButton.hide();
         }
 
-        if (isAdult && savedNumber) {
+        if (isAdult && !!savedNumber) {
             console.log("GOOOOOOOO")
             tg.MainButton.setParams({
                 text: `Посмотреть заказ`,
