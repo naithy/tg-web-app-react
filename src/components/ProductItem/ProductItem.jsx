@@ -5,9 +5,7 @@ import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 import AnimatedPage from "../../AnimatedPage";
 
-
 const ProductItem = () => {
-
     const history = useNavigate();
     const {tg} = useTelegram();
 
@@ -26,8 +24,10 @@ const ProductItem = () => {
     ];
 
     tg.BackButton.onClick(() => {
-        history(-1);
-    })
+        useEffect(() => {
+            history(-1);
+        })
+    }, [history])
 
     const { productId } = useParams();
     const product = productsData[productId];
