@@ -1,12 +1,15 @@
 import './App.css';
 import React, {useCallback, useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useNavigate} from "react-router-dom";
 import CategoryList from "./components/CategoryList/CategoryList";
 import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
+import Checkout from "./components/Checkout/Checkout";
 
 function App() {
+    const history = useNavigate()
+
     const {tg, queryId, user, chat, onClose} = useTelegram();
     useEffect(() => {
         tg.ready();
@@ -38,11 +41,11 @@ function App() {
     }, [Cart])
 
     useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
+        tg.onEvent('mainButtonClicked', history('/checkout'))
         return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
+            tg.offEvent('mainButtonClicked', history('/checkout'))
         }
-    }, [onSendData])
+    },[])
 
     tg.MainButton.onClick(() => tg.close());
     tg.enableClosingConfirmation();
@@ -57,6 +60,7 @@ function App() {
             <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/product/:productId" element={<ProductItem/>}/>
+            <Route path="checkout" element={<Checkout/>}/>
         </Routes>
         <button onClick={onSendData}>Send</button>
     </div>

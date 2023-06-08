@@ -1,0 +1,17 @@
+.ordertitle {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 0 20px;
+    background: var(--tg-theme-bg-color);
+}
+
+.ordertext {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.editorder {
+    border: none;
+    background-color: transparent;
+    color: greenyellow;
+}
