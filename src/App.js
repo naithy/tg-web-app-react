@@ -62,7 +62,6 @@ function App() {
             <Route path="/product/:productId" element={<ProductItem/>}/>
             <Route path="checkout" element={<Checkout/>}/>
         </Routes>
-        <button onClick={onSendData}>Send</button>
     </div>
   );
 }
