@@ -11,16 +11,17 @@ body {
 }
 
 .ordertext {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 20px;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .editorder {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-right: 20px;
     border: none;
     background-color: transparent;
     color: greenyellow;
+    font-weight: 700;
 }
