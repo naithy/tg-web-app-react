@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .ordertitle {
     display: flex;
     justify-content: space-between;
@@ -6,12 +11,14 @@
 }
 
 .ordertext {
+    margin-top: 10px;
     margin-left: 20px;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .editorder {
+    margin-top: 10px;
     margin-right: 20px;
     border: none;
     background-color: transparent;
