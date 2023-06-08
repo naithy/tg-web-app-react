@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
-import DatePicker from "react-native-date-picker";
+import { IMaskInput } from 'react-imask';
 
 const Checkout = () => {
 
@@ -30,7 +30,18 @@ const Checkout = () => {
                 <div className={'ordertext'}>Ваш заказ</div>
                 <button className={'editorder'}>Изменить</button>
             </div>
-            <DatePicker date={date} onDateChange={setDate}/>
+            <IMaskInput
+                id={"dateinput"}
+                className={'dateinput'}
+                placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
+                mask={Date}
+            />
+            <IMaskInput
+                id={"numberinput"}
+                className={'numberinput'}
+                placeholder={'Телефон'}
+                mask={Number}
+            />
         </div>
     );
 };

@@ -28,7 +28,10 @@ body {
     font-size: 13px;
 }
 
-.datepicker {
+.dateinput, .numberinput {
+    height: 35px;
+    width: 100%;
     background: inherit;
     border: none;
+    background: var(--tg-theme-bg-color);
 }
