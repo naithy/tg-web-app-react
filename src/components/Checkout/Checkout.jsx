@@ -24,11 +24,24 @@ const Checkout = () => {
 
     const PhoneMask = "+{7} (000) 000-00-00";
 
+    let Price = parseFloat(sessionStorage.getItem('totalPrice'));
+    let Cart = JSON.parse(sessionStorage.getItem('cart'));
+
     return (
         <div className={'checkout'}>
             <div className={'ordertitle'}>
                 <div className={'ordertext'}>Ваш заказ</div>
                 <button className={'editorder'}>Изменить</button>
+            </div>
+            <div className={'order'}>
+                {Object.keys(Cart).map((key) =>
+                <div key={key}>
+                    <h3>{Cart[key].title}</h3>
+                    <p>{Cart[key].price} руб.</p>
+                    {Object.entries(Cart[key].flavors).map(([name, amount]) =>(
+                        <p>{name} - {amount}</p>
+                    ))}
+                </div>)}
             </div>
             <div className={'inputs'}>
                 <IMaskInput
