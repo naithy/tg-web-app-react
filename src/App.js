@@ -40,14 +40,14 @@ function App() {
         })
     }, [Cart])
 
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', history('/checkout'))
-        return () => {
-            tg.offEvent('mainButtonClicked', history('/checkout'))
-        }
-    },[])
+    // useEffect(() => {
+    //     tg.onEvent('mainButtonClicked', history('/checkout'))
+    //     return () => {
+    //         tg.offEvent('mainButtonClicked', history('/checkout'))
+    //     }
+    // },[])
 
-    tg.MainButton.onClick(() => tg.close());
+    tg.MainButton.onClick(() => history('/checkout'));
     tg.enableClosingConfirmation();
 
 
