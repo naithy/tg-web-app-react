@@ -43,7 +43,7 @@ const Checkout = () => {
                     id={'numberinput'}
                     className={'numberinput'}
                     placeholder={'Телефон'}
-                    mask={Number}
+                    mask={PhoneMask}
                 />
             </div>
         </div>
