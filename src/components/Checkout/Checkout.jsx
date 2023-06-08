@@ -30,18 +30,20 @@ const Checkout = () => {
                 <div className={'ordertext'}>Ваш заказ</div>
                 <button className={'editorder'}>Изменить</button>
             </div>
-            <IMaskInput
-                id={"dateinput"}
-                className={'dateinput'}
-                placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
-                mask={Date}
-            />
-            <IMaskInput
-                id={"numberinput"}
-                className={'numberinput'}
-                placeholder={'Телефон'}
-                mask={Number}
-            />
+            <div className={'inputs'}>
+                <IMaskInput
+                    id={"dateinput"}
+                    className={'dateinput'}
+                    placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
+                    mask={Date}
+                />
+                <IMaskInput
+                    id={"numberinput"}
+                    className={'numberinput'}
+                    placeholder={'Телефон'}
+                    mask={Number}
+                />
+            </div>
         </div>
     );
 };
