@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
+import {DatePicker} from "@skbkontur/react-ui";
 
 const Checkout = () => {
 
@@ -21,25 +22,22 @@ const Checkout = () => {
         history(-1);
     })
 
-    const onChange = (e) => {
-        const currentYear = new Date().getFullYear();
-        const year = e.target.value.split("-")[0];
-        const age = currentYear - year;
-    }
-
     return (
         <div className={'checkout'}>
             <div className={'ordertitle'}>
                 <div className={'ordertext'}>Ваш заказ</div>
                 <button className={'editorder'}>Изменить</button>
             </div>
-            <input
-                type="date"
-                className="form-control shadow-none"
-                placeholder="mm/dd/yyyy"
-                aria-describedby="button-addon2"
-                onChange={onChange}
+            <DatePicker
+                enableTodayLink
             />
+            {/*<input*/}
+            {/*    type="date"*/}
+            {/*    className="form-control shadow-none"*/}
+            {/*    placeholder="mm/dd/yyyy"*/}
+            {/*    aria-describedby="button-addon2"*/}
+            {/*    onChange={onChange}*/}
+            {/*/>*/}
         </div>
     );
 };
