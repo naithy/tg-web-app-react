@@ -155,7 +155,7 @@ const ProductItem = () => {
     if(!sessionStorage.getItem('totalPrice') || parseFloat(sessionStorage.getItem('totalPrice')) === 0) {
         tg.MainButton.hide()
     } else {
-        tg.MainButton.setParams({text: `Купить ${parseFloat(sessionStorage.getItem('totalPrice'))}`,
+        tg.MainButton.setParams({text: `Посмотреть заказ`,
             "color": "#31b545"});
         tg.MainButton.show();
     }
