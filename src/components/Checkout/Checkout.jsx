@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
+import DatePicker from "react-native-date-picker";
 
 const Checkout = () => {
 
@@ -21,13 +22,15 @@ const Checkout = () => {
         history(-1);
     })
 
+    const [date, setDate] = useState(new Date())
+
     return (
         <div className={'checkout'}>
             <div className={'ordertitle'}>
                 <div className={'ordertext'}>Ваш заказ</div>
                 <button className={'editorder'}>Изменить</button>
             </div>
-            <input type={"date"} className={"datepicker-input"}/>
+            <DatePicker date={date} onDateChange={setDate}/>
         </div>
     );
 };

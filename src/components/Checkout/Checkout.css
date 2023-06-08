@@ -28,3 +28,7 @@ body {
     font-size: 13px;
 }
 
+.datepicker {
+    background: inherit;
+    border: none;
+}
