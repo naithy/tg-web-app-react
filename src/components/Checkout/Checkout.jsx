@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
-import {DatePicker} from "@skbkontur/react-ui";
 
 const Checkout = () => {
 
@@ -28,16 +27,7 @@ const Checkout = () => {
                 <div className={'ordertext'}>Ваш заказ</div>
                 <button className={'editorder'}>Изменить</button>
             </div>
-            <DatePicker
-                enableTodayLink
-            />
-            {/*<input*/}
-            {/*    type="date"*/}
-            {/*    className="form-control shadow-none"*/}
-            {/*    placeholder="mm/dd/yyyy"*/}
-            {/*    aria-describedby="button-addon2"*/}
-            {/*    onChange={onChange}*/}
-            {/*/>*/}
+            <input type={"date"} className={"datepicker-input"}/>
         </div>
     );
 };
