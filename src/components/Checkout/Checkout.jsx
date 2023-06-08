@@ -31,7 +31,7 @@ const Checkout = () => {
         <div className={'checkout'}>
             <div className={'ordertitle'}>
                 <div className={'ordertitletext'}>Ваш заказ</div>
-                <button className={'editorder'}>Изменить</button>
+                <button className={'editorder'} onClick={history(-1)}>Изменить</button>
             </div>
             <div className={'order'}>
                 {Object.keys(Cart).map((key) =>
