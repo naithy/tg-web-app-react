@@ -37,9 +37,32 @@ const Checkout = () => {
         return Math.abs(ageDate.getUTCFullYear() - 1970) >= 18;
     }
 
-    let isAdult;
-    let savedBirthday;
-    let savedNumber;
+    const [isAdult, setIsAdult] = useState(false);
+    const [savedBirthday, setSavedBirthday] = useState('');
+    const [savedNumber, setSavedNumber] = useState('');
+    const handleBirthdayComplete = (value) => {
+        setIsAdult(checkAge(value));
+        setSavedBirthday(value);
+        checkAndSetButton();
+    };
+
+    const handleNumberComplete = (value) => {
+        setSavedNumber(value);
+        checkAndSetButton();
+    };
+
+    const checkAndSetButton = () => {
+        if (!isAdult || !savedNumber) {
+            tg.MainButton.hide();
+        } else {
+            console.log("GOOOOOOOO")
+            tg.MainButton.setParams({
+                text: `Посмотреть заказ`,
+                color: `#31b545`
+            });
+            tg.MainButton.show();
+        }
+    };
 
     return (
         <div className={'checkout'}>
@@ -68,14 +91,7 @@ const Checkout = () => {
                     mask={Date}
                     onComplete={(value) => {isAdult = checkAge(value)
                         savedBirthday = value
-                        if(!isAdult && !savedNumber) {
-                            tg.MainButton.hide()
-                        } else {
-                            console.log("GOOOOOOOO")
-                            tg.MainButton.setParams({text: `Посмотреть заказ`,
-                                "color": "#31b545"});
-                            tg.MainButton.show();
-                        }
+
                     }}
                 />
                 <IMaskInput
