@@ -43,8 +43,7 @@ const Checkout = () => {
     const [savedNumber, setSavedNumber] = useState();
     const handleBirthdayComplete = (value) => {
         if (value.length < 10) {
-            setIsAdult(false)
-            setSavedBirthday('');
+
         } else {
             setIsAdult(checkAge(value));
             setSavedBirthday(value);
@@ -56,7 +55,7 @@ const Checkout = () => {
 
     const handleNumberComplete = (value) => {
         if (value.length < 18) {
-            setSavedNumber('')
+
         } else {
             setSavedNumber(value);
             localStorage.setItem('savedNumber', value)
