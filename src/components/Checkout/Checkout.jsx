@@ -131,7 +131,7 @@ const Checkout = () => {
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
                     mask={Date}
                     onAccept={(value) => {handleBirthdayComplete(value)}}
-                    value={savedNumber}
+                    value={savedBirthday}
                 />
                 <IMaskInput
                     type={'tel'}
