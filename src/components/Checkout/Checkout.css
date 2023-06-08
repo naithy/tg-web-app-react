@@ -34,6 +34,7 @@ body {
 }
 
 .dateinput, .numberinput {
+    color: var(--tg-theme-hint-color);
     height: 50px;
     width: 100%;
     background: inherit;
@@ -41,7 +42,7 @@ body {
     border-radius: 0;
     padding-left: 20px;
     outline:none;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .order {
