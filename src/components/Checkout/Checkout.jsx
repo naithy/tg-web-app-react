@@ -17,6 +17,7 @@ const Checkout = () => {
         history(-1);
     }
 
+    tg.BackButton.show()
     tg.BackButton.onClick(() => {
         history(-1);
     })
@@ -47,6 +48,8 @@ const Checkout = () => {
         } else {
             setIsAdult(checkAge(value));
             setSavedBirthday(value);
+            localStorage.setItem('isAdult', checkAge(value) || false)
+            localStorage.setItem('savedBirthday', value)
             checkAndSetButton();
         }
     };
@@ -56,9 +59,23 @@ const Checkout = () => {
             setSavedNumber('')
         } else {
             setSavedNumber(value);
+            localStorage.setItem('savedNumber', value)
             checkAndSetButton();
         }
     };
+
+    useEffect(() => {
+        const savedBirthdayValue = localStorage.getItem('savedBirthday');
+        const savedNumberValue = localStorage.getItem('savedNumber');
+
+        if (savedBirthdayValue) {
+            setSavedBirthday(savedBirthdayValue);
+        }
+
+        if (savedNumberValue) {
+            setSavedNumber(savedNumberValue);
+        }
+    }, []);
 
     useEffect(() => {
         checkAndSetButton();
@@ -114,6 +131,7 @@ const Checkout = () => {
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
                     mask={Date}
                     onAccept={(value) => {handleBirthdayComplete(value)}}
+                    value={savedNumber}
                 />
                 <IMaskInput
                     type={'tel'}
@@ -122,6 +140,7 @@ const Checkout = () => {
                     placeholder={'Телефон'}
                     mask={PhoneMask}
                     onAccept={(value) => {handleNumberComplete(value)}}
+                    value={savedNumber}
                 />
             </div>
         </div>
