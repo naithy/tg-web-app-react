@@ -3,7 +3,7 @@ import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
-
+import moment from "moment";
 const Checkout = () => {
 
     const {tg} = useTelegram();
@@ -26,6 +26,18 @@ const Checkout = () => {
 
     let Price = parseFloat(sessionStorage.getItem('totalPrice'));
     let Cart = JSON.parse(sessionStorage.getItem('cart'));
+
+    const [birthdate, setBirthdate] = useState('');
+
+    const checkAge = (birthdate) => {
+        const age = moment().diff(moment(birthdate, 'DD.MM.YYYY'), 'years');
+        return age >= 18;
+    }
+
+    const handleInputChange = (event) => {
+        setBirthdate(event.target.value);
+        console.log(checkAge(event.target.value)); // проверяем возраст в консоли при изменении поля
+    }
 
     return (
         <div className={'checkout'}>
@@ -52,6 +64,7 @@ const Checkout = () => {
                     className={'dateinput'}
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
                     mask={Date}
+                    onInput={handleInputChange}
                 />
                 <IMaskInput
                     type={'tel'}
