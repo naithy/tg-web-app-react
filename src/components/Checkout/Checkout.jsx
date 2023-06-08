@@ -79,6 +79,15 @@ const Checkout = () => {
 
     };
 
+    const inputs = document.querySelectorAll('input[type=text]');
+    inputs.forEach((input) => {
+        input.addEventListener('blur', function() {
+            setTimeout(() => {
+                input.blur();
+            }, 100);
+        });
+    });
+
     return (
         <div className={'checkout'}>
             <div className={'ordertitle'}>
