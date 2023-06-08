@@ -1,7 +1,17 @@
 import React from 'react';
 import './Checkout.css'
+import {useNavigate} from "react-router-dom";
+import {useTelegram} from "../../hooks/useTelegram";
 
 const Checkout = () => {
+
+    const {tg} = useTelegram();
+    const history = useNavigate();
+
+    tg.BackButton.onClick(() => {
+        history(-1);
+    })
+
     return (
         <div className={'checkout'}>
             <div className={'ordertitle'}>
