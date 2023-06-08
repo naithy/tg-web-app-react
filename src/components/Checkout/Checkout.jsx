@@ -40,9 +40,13 @@ const Checkout = () => {
     let isAdult;
     let savedBirthday;
     let savedNumber;
-    if(isAdult && savedNumber) {
+
+    if(!isAdult && !savedNumber) {
+        tg.MainButton.hide()
+    } else {
         tg.MainButton.setParams({text: `Посмотреть заказ`,
             "color": "#31b545"});
+        tg.MainButton.show();
     }
 
     return (
