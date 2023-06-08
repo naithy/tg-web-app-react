@@ -10,7 +10,7 @@ import Checkout from "./components/Checkout/Checkout";
 function App() {
     const history = useNavigate()
 
-    const {tg, queryId, user, chat, onClose} = useTelegram();
+    const {tg, queryId, user, chat} = useTelegram();
     useEffect(() => {
         tg.ready();
     })

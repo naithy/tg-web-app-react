@@ -22,7 +22,7 @@ const Checkout = () => {
         history(-1);
     })
 
-    const PhoneMask = "+{7}(000)000-00-00";
+    const PhoneMask = "+{7} (000) 000-00-00";
 
     return (
         <div className={'checkout'}>
