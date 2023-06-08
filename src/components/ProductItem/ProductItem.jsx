@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
@@ -24,10 +24,9 @@ const ProductItem = () => {
     ];
 
     tg.BackButton.onClick(() => {
-        useEffect(() => {
-            history(-1);
-        })
-    }, [history])
+        history(-1);
+        window.history.go(-1);
+    });
 
     const { productId } = useParams();
     const product = productsData[productId];
