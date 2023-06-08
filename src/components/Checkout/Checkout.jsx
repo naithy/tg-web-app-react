@@ -32,14 +32,14 @@ const Checkout = () => {
             <div className={'ordertitle'}>
                 <div className={'ordertext'}>Ваш заказ</div>
                 <button className={'editorder'}>Изменить</button>
-                <input
-                    type="date"
-                    className="form-control shadow-none"
-                    placeholder="mm/dd/yyyy"
-                    aria-describedby="button-addon2"
-                    onChange={onChange}
-                />
             </div>
+            <input
+                type="date"
+                className="form-control shadow-none"
+                placeholder="mm/dd/yyyy"
+                aria-describedby="button-addon2"
+                onChange={onChange}
+            />
         </div>
     );
 };
