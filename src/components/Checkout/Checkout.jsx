@@ -3,7 +3,6 @@ import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
-import moment from "moment";
 const Checkout = () => {
 
     const {tg} = useTelegram();
@@ -29,21 +28,28 @@ const Checkout = () => {
 
     const [birthdate, setBirthdate] = useState('');
 
-    const checkAge = (birthdate) => {
-        const age = moment().diff(moment(birthdate, 'DD.MM.YYYY'), 'years');
-        return age >= 18;
+    function checkAge(birthdate) {
+        const [day, month, year] = birthdate.split('.').map(str => parseInt(str, 10));
+        const birthdateObj = new Date(year, month - 1, day + 1);
+        const ageDiffMs = Date.now() - birthdateObj.getTime();
+        const ageDate = new Date(ageDiffMs);
+
+        return Math.abs(ageDate.getUTCFullYear() - 1970) >= 18;
     }
 
-    const handleInputChange = (event) => {
-        setBirthdate(event.target.value);
-        console.log(checkAge(event.target.value)); // проверяем возраст в консоли при изменении поля
+    let isAdult;
+    let savedBirthday;
+    let savedNumber;
+    if(isAdult && savedNumber) {
+        tg.MainButton.setParams({text: `Посмотреть заказ`,
+            "color": "#31b545"});
     }
 
     return (
         <div className={'checkout'}>
             <div className={'ordertitle'}>
                 <div className={'ordertitletext'}>Ваш заказ</div>
-                <button className={'editorder'} onClick={history(-1)}>Изменить</button>
+                <button className={'editorder'} onClick={() => history(-1)}>Изменить</button>
             </div>
             <div className={'order'}>
                 {Object.keys(Cart).map((key) =>
@@ -64,7 +70,9 @@ const Checkout = () => {
                     className={'dateinput'}
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
                     mask={Date}
-                    onInput={handleInputChange}
+                    onComplete={(value) => {isAdult = checkAge(value)
+                        value = savedBirthday
+                    }}
                 />
                 <IMaskInput
                     type={'tel'}
@@ -72,6 +80,7 @@ const Checkout = () => {
                     className={'numberinput'}
                     placeholder={'Телефон'}
                     mask={PhoneMask}
+                    onComplete={(value) => value = savedNumber}
                 />
             </div>
         </div>
