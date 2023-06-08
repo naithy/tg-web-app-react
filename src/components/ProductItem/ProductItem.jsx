@@ -6,7 +6,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import AnimatedPage from "../../AnimatedPage";
 
 const ProductItem = () => {
-    const history = useNavigate();
+    const navigate = useNavigate();
     const {tg} = useTelegram();
 
     const productsData = [
@@ -24,7 +24,7 @@ const ProductItem = () => {
     ];
 
     tg.BackButton.onClick(() => {
-        history(-1);
+        navigate(-1);
         window.history.go(-1);
     });
 
