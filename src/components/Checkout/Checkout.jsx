@@ -54,7 +54,9 @@ const Checkout = () => {
     const checkAndSetButton = () => {
         if (!isAdult || !savedNumber) {
             tg.MainButton.hide();
-        } else {
+        }
+
+        if (isAdult && savedNumber) {
             console.log("GOOOOOOOO")
             tg.MainButton.setParams({
                 text: `Посмотреть заказ`,
@@ -62,6 +64,7 @@ const Checkout = () => {
             });
             tg.MainButton.show();
         }
+
     };
 
     return (
@@ -89,7 +92,7 @@ const Checkout = () => {
                     className={'dateinput'}
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
                     mask={Date}
-                    onComplete={(value) => {handleBirthdayComplete}}
+                    onComplete={(value) => {handleBirthdayComplete(value)}}
                 />
                 <IMaskInput
                     type={'tel'}
@@ -97,7 +100,7 @@ const Checkout = () => {
                     className={'numberinput'}
                     placeholder={'Телефон'}
                     mask={PhoneMask}
-                    onComplete={(value) => {handleNumberComplete}}
+                    onComplete={(value) => {handleNumberComplete(value)}}
                 />
             </div>
         </div>
