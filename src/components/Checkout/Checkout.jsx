@@ -52,6 +52,10 @@ const Checkout = () => {
         checkAndSetButton();
     };
 
+    useEffect(() => {
+        checkAndSetButton();
+    }, [isAdult, savedNumber])
+
     const checkAndSetButton = () => {
         if (!isAdult || !savedNumber) {
             tg.MainButton.hide();
