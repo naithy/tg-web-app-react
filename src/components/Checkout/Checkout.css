@@ -8,6 +8,7 @@ body {
     justify-content: space-between;
     width: 100%;
     background: var(--tg-theme-bg-color);
+    padding-top: 10px;
 }
 
 .ordertext {
