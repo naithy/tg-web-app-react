@@ -70,7 +70,7 @@ const Checkout = () => {
 
     useEffect(() => {
         const savedBirthdayValue = localStorage.getItem('savedBirthday');
-        const savedNumberValue = parseFloat(localStorage.getItem('savedNumber'));
+        const savedNumberValue = localStorage.getItem('savedNumber');
 
         if (savedBirthdayValue) {
             setSavedBirthday(savedBirthdayValue);
