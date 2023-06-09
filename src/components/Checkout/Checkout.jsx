@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
 const Checkout = () => {
 
-    const {tg} = useTelegram();
+    const {tg, user} = useTelegram();
     const history = useNavigate();
 
     useEffect(() => {
@@ -62,6 +62,24 @@ const Checkout = () => {
             checkAndSetButton();
         }
     };
+    if (JSON.parse(localStorage.getItem('savedNumber')) && JSON.parse(localStorage.getItem('savedBirthday'))) {
+        const onSendData = useCallback(() => {
+            const data = {
+                user,
+                totalPrice: Price,
+                cart: Cart,
+                birthday: JSON.parse(localStorage.getItem('savedNumber')),
+                number: JSON.parse(localStorage.getItem('savedBirthday'))
+            }
+            fetch('https://sakurashopsmr.ru/web-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+        }, [Cart])
+    }
 
     useEffect(() => {
         const savedBirthdayValue = localStorage.getItem('savedBirthday');
