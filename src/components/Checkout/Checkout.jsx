@@ -126,14 +126,16 @@ const Checkout = () => {
         })
     }, [Cart])
 
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        tg.onEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-            tg.offEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
-        }
-    }, [onSendData])
+    if (Cart && localStorage.getItem('savedBirthday') && localStorage.getItem('savedNumber')) {
+        useEffect(() => {
+            tg.onEvent('mainButtonClicked', onSendData)
+            tg.onEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
+            return () => {
+                tg.offEvent('mainButtonClicked', onSendData)
+                tg.offEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
+            }
+        }, [onSendData])
+    }
 
     return (
         <div className={'checkout'}>
