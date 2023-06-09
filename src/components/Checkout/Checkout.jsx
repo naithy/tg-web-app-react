@@ -58,7 +58,7 @@ const Checkout = () => {
         if (value.length < 18) {
 
         } else {
-            setSavedNumber(value);
+            setSavedNumber(JSON.stringify(value));
             localStorage.setItem('savedNumber',  JSON.stringify(value))
             checkAndSetButton();
         }
