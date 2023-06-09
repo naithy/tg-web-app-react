@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './Checkout.css'
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
 const Checkout = () => {
 
-    const {tg} = useTelegram();
+    const {tg, user} = useTelegram();
     const history = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         window.addEventListener('popstate', handlePopstate);
@@ -103,6 +104,34 @@ const Checkout = () => {
             }, 100);
         });
     });
+
+    const onSendData = useCallback(() => {
+        const data = {
+            user,
+            totalPrice: Price,
+            cart: Cart,
+            birthday: JSON.parse(localStorage.getItem('savedBirthday')),
+            number: JSON.parse(localStorage.getItem('savedNumber'))
+        }
+        fetch('https://sakurashopsmr.ru/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [Cart])
+
+    if (location.pathname !== '/checkout') {
+        tg.MainButton.onClick(() => history('/checkout'));
+    } else {
+        useEffect(() => {
+            tg.onEvent('mainButtonClicked', onSendData)
+            return () => {
+                tg.offEvent('mainButtonClicked', onSendData)
+            }
+        },[onSendData])
+    }
 
     return (
         <div className={'checkout'}>

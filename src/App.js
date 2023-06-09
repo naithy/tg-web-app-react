@@ -8,48 +8,13 @@ import ProductItem from "./components/ProductItem/ProductItem";
 import Checkout from "./components/Checkout/Checkout";
 
 function App() {
-    const history = useNavigate()
 
     const {tg, queryId, user, chat} = useTelegram();
     useEffect(() => {
         tg.ready();
     })
 
-    let Price, Cart;
-
-    const claimData = () => {
-        Price = parseFloat(sessionStorage.getItem('totalPrice'));
-        Cart = JSON.parse(sessionStorage.getItem('cart'));
-    }
-
-    const onSendData = useCallback(() => {
-        claimData()
-        const data = {
-            queryId,
-            user,
-            totalPrice: Price,
-            cart: Cart,
-            chat
-        }
-        fetch('https://sakurashopsmr.ru/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [Cart])
-
-    // useEffect(() => {
-    //     tg.onEvent('mainButtonClicked', history('/checkout'))
-    //     return () => {
-    //         tg.offEvent('mainButtonClicked', history('/checkout'))
-    //     }
-    // },[])
-
-    tg.MainButton.onClick(() => history('/checkout'));
     tg.enableClosingConfirmation();
-
 
   return (
     <div className="App">
