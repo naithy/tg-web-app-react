@@ -48,7 +48,7 @@ const Checkout = () => {
             setIsAdult(checkAge(value));
             setSavedBirthday(value);
             localStorage.setItem('isAdult', checkAge(value) || false)
-            localStorage.setItem('savedBirthday', value)
+            localStorage.setItem('savedBirthday', JSON.stringify(value))
             checkAndSetButton();
         }
     };
@@ -58,7 +58,7 @@ const Checkout = () => {
 
         } else {
             setSavedNumber(value);
-            localStorage.setItem('savedNumber', value)
+            localStorage.setItem('savedNumber', JSON.stringify(value))
             checkAndSetButton();
         }
     };
