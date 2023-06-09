@@ -82,11 +82,11 @@ const Checkout = () => {
     }, [isAdult, savedNumber])
 
     const checkAndSetButton = () => {
-        if (!isAdult || !savedNumber) {
+        if (!localStorage.getItem('isAdult') || !localStorage.getItem('savedNumber')) {
             tg.MainButton.hide();
         }
 
-        if (isAdult && !!savedNumber) {
+        if (localStorage.getItem('isAdult') && !!localStorage.getItem('savedNumber')) {
             tg.MainButton.setParams({
                 text: `Оформить заказ ${Price} р.`,
                 color: `#31b545`
