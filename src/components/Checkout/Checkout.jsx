@@ -127,12 +127,12 @@ const Checkout = () => {
         console.log('fetched')
     }, [Cart])
 
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
+    // useEffect(() => {
+    //     tg.onEvent('mainButtonClicked', onSendData)
+    //     return () => {
+    //         tg.offEvent('mainButtonClicked', onSendData)
+    //     }
+    // }, [onSendData])
 
     return (
         <div className={'checkout'}>
@@ -172,6 +172,7 @@ const Checkout = () => {
                     value={savedNumber}
                 />
             </div>
+            <button onClick={onSendData}>Send</button>
         </div>
     );
 };
