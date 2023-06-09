@@ -17,6 +17,8 @@ function App() {
     })
     if (location.pathname !== '/checkout') {
         tg.onEvent('mainButtonClicked', history('/checkout'))
+    } else {
+        tg.offEvent('mainButtonClicked', history('/checkout'))
     }
     tg.enableClosingConfirmation();
 
