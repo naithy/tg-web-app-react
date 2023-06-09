@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useCallback, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import CategoryList from "./components/CategoryList/CategoryList";

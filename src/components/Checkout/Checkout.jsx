@@ -62,8 +62,15 @@ const Checkout = () => {
             checkAndSetButton();
         }
     };
+
+    const claimData = () => {
+        Price = parseFloat(sessionStorage.getItem('totalPrice'));
+        Cart = JSON.parse(sessionStorage.getItem('cart'));
+    }
+
     if (JSON.parse(localStorage.getItem('savedNumber')) && JSON.parse(localStorage.getItem('savedBirthday'))) {
         const onSendData = useCallback(() => {
+            claimData()
             const data = {
                 user,
                 totalPrice: Price,
