@@ -24,7 +24,6 @@ const ProductItem = () => {
         { title: 'vaporesso', price: 900 },
     ];
 
-    tg.BackButton.show()
     tg.BackButton.onClick(() => {
         navigate(-1);
         window.history.go(-1);
