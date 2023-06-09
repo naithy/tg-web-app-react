@@ -1,11 +1,11 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
 const Checkout = () => {
 
-    const {tg, queryId, user} = useTelegram();
+    const {tg} = useTelegram();
     const history = useNavigate();
 
     useEffect(() => {
@@ -24,12 +24,8 @@ const Checkout = () => {
 
     const PhoneMask = "+{7} (000) 000-00-00";
 
-    let Price, Cart;
-
-    const claimData = () => {
-        Price = parseFloat(sessionStorage.getItem('totalPrice'));
-        Cart = JSON.parse(sessionStorage.getItem('cart'));
-    }
+    let Price = parseFloat(sessionStorage.getItem('totalPrice'));
+    let Cart = JSON.parse(sessionStorage.getItem('cart'));
 
     const [birthdate, setBirthdate] = useState('');
 
@@ -90,7 +86,6 @@ const Checkout = () => {
         }
 
         if (isAdult && !!savedNumber) {
-            claimData()
             tg.MainButton.setParams({
                 text: `Оформить заказ ${Price} р.`,
                 color: `#31b545`
@@ -100,9 +95,6 @@ const Checkout = () => {
 
     };
 
-    const dateInputRef = useRef(null)
-
-
     const inputs = document.querySelectorAll('input[type=text]');
     inputs.forEach((input) => {
         input.addEventListener('blur', function() {
@@ -111,32 +103,6 @@ const Checkout = () => {
             }, 100);
         });
     });
-
-    const onSendData = useCallback(() => {
-        claimData()
-        const data = {
-            user,
-            totalPrice: Price,
-            cart: Cart,
-            birthday: JSON.parse(localStorage.getItem('savedNumber')),
-            number: JSON.parse(localStorage.getItem('savedBirthday'))
-        }
-        fetch('https://sakurashopsmr.ru/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [Cart])
-
-    // useEffect(() => {
-    //     tg.onEvent('mainButtonClicked', onSendData)
-    //     return () => {
-    //         tg.offEvent('mainButtonClicked', onSendData)
-    //     }
-    // }, [onSendData])
-
 
     return (
         <div className={'checkout'}>
@@ -162,7 +128,6 @@ const Checkout = () => {
                     id={'dateinput'}
                     className={'dateinput'}
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
-                    ref={dateInputRef}
                     mask={Date}
                     onAccept={(value) => {handleBirthdayComplete(value)}}
                     value={savedBirthday}
