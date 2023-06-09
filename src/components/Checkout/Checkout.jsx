@@ -114,7 +114,7 @@ const Checkout = () => {
             user,
             totalPrice: Price,
             cart: Cart,
-            birthday: JSON.parse(localStorage.getItem('savedNumber')),
+            birthday: JSON.parse(localStorage.getItem('savedBirthday')),
             number: JSON.parse(localStorage.getItem('savedNumber'))
         }
         fetch('https://sakurashopsmr.ru/web-data', {
