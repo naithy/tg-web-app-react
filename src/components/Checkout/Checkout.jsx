@@ -138,12 +138,6 @@ const Checkout = () => {
         }, [onSendData])
     }
 
-    if (path === '/checkout') {
-        console.log('yes', path)
-    } else {
-        console.log('no', path)
-    }
-
     return (
         <div className={'checkout'}>
             <div className={'ordertitle'}>
@@ -182,7 +176,7 @@ const Checkout = () => {
                     value={savedNumber}
                 />
             </div>
-            <button onClick={}></button>
+            <div>{path}</div>
         </div>
     );
 };
