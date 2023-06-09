@@ -17,7 +17,7 @@ function App() {
     })
 
 
-    tg.MainButton.onClick(history('/checkout'))
+    tg.MainButton.onClick(history('checkout'))
 
     tg.enableClosingConfirmation();
 
