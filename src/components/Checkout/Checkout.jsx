@@ -66,14 +66,14 @@ const Checkout = () => {
 
     useEffect(() => {
         const savedBirthdayValue = localStorage.getItem('savedBirthday');
-        const savedNumberValue = localStorage.getItem('savedNumber');
+        const savedNumberValue = JSON.parse(localStorage.getItem('savedNumber'));
 
         if (savedBirthdayValue) {
             setSavedBirthday(savedBirthdayValue);
         }
 
         if (savedNumberValue) {
-            setSavedNumber(JSON.stringify(savedNumberValue));
+            setSavedNumber(savedNumberValue);
         }
     }, []);
 
