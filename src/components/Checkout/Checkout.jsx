@@ -24,7 +24,7 @@ const Checkout = () => {
 
     const PhoneMask = "+{7} (000) 000-00-00";
 
-    let Price, Cart, savedNumberLocalStorage, savedBirthdayLocalStorage;
+    let Price, Cart;
 
     const claimData = () => {
         Price = parseFloat(sessionStorage.getItem('totalPrice'));
