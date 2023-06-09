@@ -8,7 +8,6 @@ import AnimatedPage from "../../AnimatedPage";
 const ProductItem = () => {
     const navigate = useNavigate();
     const {tg} = useTelegram();
-    const history = useNavigate();
 
     const productsData = [
         { title: 'GANG X BOX 8000', price: 1100, flavors: ['' +
@@ -24,6 +23,7 @@ const ProductItem = () => {
         { title: 'vaporesso', price: 900 },
     ];
 
+    tg.BackButton.show()
     tg.BackButton.onClick(() => {
         navigate(-1);
         window.history.go(-1);
@@ -162,13 +162,6 @@ const ProductItem = () => {
         tg.MainButton.setParams({text: `Посмотреть заказ`,
             "color": "#31b545"});
         tg.MainButton.show();
-        useEffect(() => {
-            tg.onEvent('mainButtonClicked', history('/checkout'))
-            return () => {
-                tg.offEvent('mainButtonClicked', history('/checkout'))
-            }
-        })
-
     }
 
     const max = product.flavors.length - 1;
