@@ -126,9 +126,11 @@ const Checkout = () => {
         tg.MainButton.onClick(() => history('/checkout'));
     } else {
         useEffect(() => {
-            tg.onEvent('mainButtonClicked', onSendData)
+            tg.onEvent('mainButtonClicked', onSendData, tg.showAlert('Заказ оформлен, ожидайте связи с менеджером'), tg.close())
+            tg.onEvent('MainButtonClicked')
+
             return () => {
-                tg.offEvent('mainButtonClicked', onSendData)
+                tg.offEvent('mainButtonClicked', onSendData, tg.showAlert('Заказ оформлен, ожидайте связи с менеджером'), tg.close())
             }
         },[onSendData])
     }
