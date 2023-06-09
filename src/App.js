@@ -17,7 +17,7 @@ function App() {
     })
 
 
-    tg.MainButton.onClick(history('checkout'))
+    tg.MainButton.onClick(history('/checkout'))
 
     tg.enableClosingConfirmation();
 
@@ -31,7 +31,7 @@ function App() {
             <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/product/:productId" element={<ProductItem/>}/>
-            <Route path="/checkout" element={<Checkout/>}/>
+            <Route path="checkout" element={<Checkout/>}/>
         </Routes>
     </div>
   );
