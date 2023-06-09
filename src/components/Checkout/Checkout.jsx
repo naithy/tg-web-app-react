@@ -22,7 +22,7 @@ const Checkout = () => {
         history(-1);
     })
 
-    const PhoneMask = "+{7} (000) 000-00-00";
+    const PhoneMask = "70000000000";
 
     let Price = parseFloat(sessionStorage.getItem('totalPrice'));
     let Cart = JSON.parse(sessionStorage.getItem('cart'));
@@ -114,7 +114,7 @@ const Checkout = () => {
             user,
             totalPrice: Price,
             cart: Cart,
-            birthday: JSON.parse(JSON.stringify(localStorage.getItem('savedNumber'))),
+            birthday: JSON.parse(localStorage.getItem('savedNumber')),
             number: JSON.parse(JSON.stringify(localStorage.getItem('savedBirthday')))
         }
         fetch('https://sakurashopsmr.ru/web-data', {
