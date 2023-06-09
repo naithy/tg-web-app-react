@@ -117,7 +117,6 @@ const Checkout = () => {
     const onSendData = useCallback(() => {
         claimData()
         const data = {
-            queryId,
             user,
             totalPrice: Price,
             cart: Cart,

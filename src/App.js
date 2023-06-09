@@ -30,6 +30,7 @@ function App() {
             <Route path="/product/:productId" element={<ProductItem/>}/>
             <Route path="checkout" element={<Checkout/>}/>
         </Routes>
+        <button onClick={history('/checkout')}>Checkout</button>
     </div>
   );
 }
