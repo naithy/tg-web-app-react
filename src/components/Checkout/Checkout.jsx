@@ -110,7 +110,7 @@ const Checkout = () => {
         });
     });
 
-    export const onSendData = useCallback(() => {
+    const onSendData = useCallback(() => {
         const data = {
             user,
             totalPrice: Price,
