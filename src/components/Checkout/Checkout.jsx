@@ -125,6 +125,7 @@ const Checkout = () => {
             },
             body: JSON.stringify(data)
         })
+        console.log('fetched')
     }, [Cart])
 
     useEffect(() => {
