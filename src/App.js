@@ -28,7 +28,7 @@ function App() {
             <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/product/:productId" element={<ProductItem/>}/>
-            <Route exact path="checkout" element={<Checkout/>}/>
+            <Route exact path="/checkout" element={<Checkout/>}/>
         </Routes>
     </div>
   );
