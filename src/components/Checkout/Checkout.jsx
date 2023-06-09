@@ -176,7 +176,7 @@ const Checkout = () => {
                     value={savedNumber}
                 />
             </div>
-            <div>{path}</div>
+            <div> path :{path}</div>
         </div>
     );
 };
