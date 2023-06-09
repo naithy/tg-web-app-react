@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import './Checkout.css'
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
 const Checkout = () => {
 
-    const {tg} = useTelegram();
+    const {tg, queryId, user} = useTelegram();
     const history = useNavigate();
 
     useEffect(() => {
@@ -24,8 +24,14 @@ const Checkout = () => {
 
     const PhoneMask = "+{7} (000) 000-00-00";
 
-    let Price = parseFloat(sessionStorage.getItem('totalPrice'));
-    let Cart = JSON.parse(sessionStorage.getItem('cart'));
+    let Price, Cart, savedNumberLocalStorage, savedBirthdayLocalStorage;
+
+    const claimData = () => {
+        Price = parseFloat(sessionStorage.getItem('totalPrice'));
+        Cart = JSON.parse(sessionStorage.getItem('cart'));
+        savedNumberLocalStorage = JSON.parse(localStorage.getItem('savedNumber'));
+        savedBirthdayLocalStorage = JSON.parse(localStorage.getItem('savedBirthday'));
+    }
 
     const [birthdate, setBirthdate] = useState('');
 
@@ -86,6 +92,7 @@ const Checkout = () => {
         }
 
         if (isAdult && !!savedNumber) {
+            claimData()
             tg.MainButton.setParams({
                 text: `Оформить заказ ${Price} р.`,
                 color: `#31b545`
@@ -95,6 +102,9 @@ const Checkout = () => {
 
     };
 
+    const dateInputRef = useRef(null)
+
+
     const inputs = document.querySelectorAll('input[type=text]');
     inputs.forEach((input) => {
         input.addEventListener('blur', function() {
@@ -103,6 +113,33 @@ const Checkout = () => {
             }, 100);
         });
     });
+
+    const onSendData = useCallback(() => {
+        claimData()
+        const data = {
+            queryId,
+            user,
+            totalPrice: Price,
+            cart: Cart,
+            birthday: savedBirthdayLocalStorage,
+            number: savedNumberLocalStorage
+        }
+        fetch('https://sakurashopsmr.ru/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [Cart])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
 
     return (
         <div className={'checkout'}>
@@ -128,6 +165,7 @@ const Checkout = () => {
                     id={'dateinput'}
                     className={'dateinput'}
                     placeholder={'Дата рождения (ДД.ММ.ГГГГ)'}
+                    ref={dateInputRef}
                     mask={Date}
                     onAccept={(value) => {handleBirthdayComplete(value)}}
                     value={savedBirthday}
