@@ -69,11 +69,11 @@ const Checkout = () => {
         const savedNumberValue = localStorage.getItem('savedNumber');
 
         if (savedBirthdayValue) {
-            setSavedBirthday(savedBirthdayValue);
+            setSavedBirthday(JSON.stringify(savedBirthdayValue));
         }
 
         if (savedNumberValue) {
-            setSavedNumber(savedNumberValue);
+            setSavedNumber(JSON.stringify(savedNumberValue));
         }
     }, []);
 
