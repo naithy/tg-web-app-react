@@ -110,7 +110,7 @@ const Checkout = () => {
         });
     });
 
-    const onSendData = useCallback(() => {
+    export const onSendData = useCallback(() => {
         const data = {
             user,
             totalPrice: Price,
@@ -127,16 +127,16 @@ const Checkout = () => {
         })
     }, [Cart])
 
-     if (location.pathname === '/checkout') {
-         useEffect(() => {
-             tg.onEvent('mainButtonClicked', onSendData)
-             tg.onEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
-             return () => {
-                 tg.offEvent('mainButtonClicked', onSendData)
-                 tg.offEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
-             }
-         }, [onSendData])
-     }
+     // if (location.pathname === '/checkout') {
+     //     useEffect(() => {
+     //         tg.onEvent('mainButtonClicked', onSendData)
+     //         tg.onEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
+     //         return () => {
+     //             tg.offEvent('mainButtonClicked', onSendData)
+     //             tg.offEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
+     //         }
+     //     }, [onSendData])
+     // }
 
     return (
         <div className={'checkout'}>
