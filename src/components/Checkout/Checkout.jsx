@@ -73,13 +73,13 @@ const Checkout = () => {
         }
 
         if (savedNumberValue) {
-            setSavedNumber(savedNumberValue);
+            setSavedNumber(JSON.stringify(savedNumberValue));
         }
     }, []);
 
     useEffect(() => {
         checkAndSetButton();
-    }, [isAdult, JSON.stringify(savedNumber)])
+    }, [isAdult, savedNumber])
 
     const checkAndSetButton = () => {
         if (!JSON.parse(localStorage.getItem('isAdult')) || !JSON.parse(localStorage.getItem('savedNumber'))) {
