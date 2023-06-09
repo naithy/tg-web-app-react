@@ -124,13 +124,13 @@ const Checkout = () => {
 
     if (location.pathname !== '/checkout') {
         tg.MainButton.onClick(() => history('/checkout'));
-    } else {
-        useEffect(() => {
-            tg.onEvent('mainButtonClicked', onSendData)
-            return () => {
-                tg.offEvent('mainButtonClicked', onSendData)
-            }
-        },[onSendData])
+    // } else {
+    //     useEffect(() => {
+    //         tg.onEvent('mainButtonClicked', onSendData)
+    //         return () => {
+    //             tg.offEvent('mainButtonClicked', onSendData)
+    //         }
+    //     },[onSendData])
     }
 
     return (
