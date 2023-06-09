@@ -162,6 +162,7 @@ const ProductItem = () => {
         tg.MainButton.setParams({text: `Посмотреть заказ`,
             "color": "#31b545"});
         tg.MainButton.show();
+        tg.MainButton.onClick(() => navigate('/checkout'));
     }
 
     const max = product.flavors.length - 1;
