@@ -1,13 +1,13 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import './Checkout.css'
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
 const Checkout = () => {
 
     const {tg, user} = useTelegram();
     const history = useNavigate();
-    const { path } = useParams();
+    const location = useLocation();
 
     useEffect(() => {
         window.addEventListener('popstate', handlePopstate);
@@ -176,7 +176,7 @@ const Checkout = () => {
                     value={savedNumber}
                 />
             </div>
-            <div> path :{path}</div>
+            <div> path :{location.pathname}</div>
         </div>
     );
 };
