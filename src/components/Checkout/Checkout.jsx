@@ -22,7 +22,7 @@ const Checkout = () => {
         history(-1);
     })
 
-    const PhoneMask = "+{7} (000) 000-00-00";
+    const PhoneMask = "{8} (000) 000-00-00";
 
     let Price = parseFloat(sessionStorage.getItem('totalPrice'));
     let Cart = JSON.parse(sessionStorage.getItem('cart'));
@@ -67,6 +67,24 @@ const Checkout = () => {
         Price = parseFloat(sessionStorage.getItem('totalPrice'));
         Cart = JSON.parse(sessionStorage.getItem('cart'));
     }
+
+    const onSendData = useCallback(() => {
+        claimData()
+        const data = {
+            user,
+            totalPrice: Price,
+            cart: Cart,
+            birthday: JSON.parse(localStorage.getItem('savedNumber')),
+            number: JSON.parse(localStorage.getItem('savedBirthday'))
+        }
+        fetch('https://sakurashopsmr.ru/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [Cart])
 
     useEffect(() => {
         const savedBirthdayValue = localStorage.getItem('savedBirthday');
