@@ -6,7 +6,6 @@ import CategoryList from "./components/CategoryList/CategoryList";
 import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 import Checkout from "./components/Checkout/Checkout";
-import {onSendData} from "./components/Checkout/Checkout";
 
 function App() {
     const history = useNavigate();
