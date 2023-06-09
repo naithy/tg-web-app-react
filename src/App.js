@@ -15,11 +15,11 @@ function App() {
     useEffect(() => {
         tg.ready();
     })
+
     if (location.pathname !== '/checkout') {
-        tg.onEvent('mainButtonClicked', history('/checkout'))
-    } else {
-        tg.offEvent('mainButtonClicked', history('/checkout'))
+        tg.MainButton.onClick(history('/checkout'))
     }
+
     tg.enableClosingConfirmation();
 
 
