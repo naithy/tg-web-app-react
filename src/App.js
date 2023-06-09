@@ -27,7 +27,6 @@ function App() {
             <Route path="/product/:productId" element={<ProductItem/>}/>
             <Route path="checkout" element={<Checkout/>}/>
         </Routes>
-        <div>DOLBAEB</div>
     </div>
   );
 }
