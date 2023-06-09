@@ -68,24 +68,6 @@ const Checkout = () => {
         Cart = JSON.parse(sessionStorage.getItem('cart'));
     }
 
-    const onSendData = useCallback(() => {
-        claimData()
-        const data = {
-            user,
-            totalPrice: Price,
-            cart: Cart,
-            birthday: JSON.parse(localStorage.getItem('savedNumber')),
-            number: JSON.parse(localStorage.getItem('savedBirthday'))
-        }
-        fetch('https://sakurashopsmr.ru/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [Cart])
-
     useEffect(() => {
         const savedBirthdayValue = localStorage.getItem('savedBirthday');
         const savedNumberValue = localStorage.getItem('savedNumber');
@@ -126,6 +108,31 @@ const Checkout = () => {
             }, 100);
         });
     });
+
+    const onSendData = useCallback(() => {
+        claimData()
+        const data = {
+            user,
+            totalPrice: Price,
+            cart: Cart,
+            birthday: JSON.parse(localStorage.getItem('savedNumber')),
+            number: JSON.parse(localStorage.getItem('savedBirthday'))
+        }
+        fetch('https://sakurashopsmr.ru/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }, [Cart])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
 
     return (
         <div className={'checkout'}>
