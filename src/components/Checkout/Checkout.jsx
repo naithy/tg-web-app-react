@@ -1,12 +1,13 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import './Checkout.css'
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
 const Checkout = () => {
 
     const {tg, user} = useTelegram();
     const history = useNavigate();
+    const { path } = useParams();
 
     useEffect(() => {
         window.addEventListener('popstate', handlePopstate);
@@ -126,16 +127,16 @@ const Checkout = () => {
         })
     }, [Cart])
 
-    if (Cart && localStorage.getItem('savedBirthday') && localStorage.getItem('savedNumber')) {
-        useEffect(() => {
-            tg.onEvent('mainButtonClicked', onSendData)
-            tg.onEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
-            return () => {
-                tg.offEvent('mainButtonClicked', onSendData)
-                tg.offEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
-            }
-        }, [onSendData])
-    }
+    // if (Cart && localStorage.getItem('savedBirthday') && localStorage.getItem('savedNumber')) {
+    //     useEffect(() => {
+    //         tg.onEvent('mainButtonClicked', onSendData)
+    //         tg.onEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
+    //         return () => {
+    //             tg.offEvent('mainButtonClicked', onSendData)
+    //             tg.offEvent('mainButtonClicked', tg.showAlert('Заказ был оформлен, ожидайте связи с менеджером'))
+    //         }
+    //     }, [onSendData])
+    // }
 
     return (
         <div className={'checkout'}>
@@ -175,6 +176,7 @@ const Checkout = () => {
                     value={savedNumber}
                 />
             </div>
+            <div>{path}</div>
         </div>
     );
 };
