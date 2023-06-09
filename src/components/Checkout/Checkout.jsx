@@ -41,7 +41,7 @@ const Checkout = () => {
 
     const [isAdult, setIsAdult] = useState();
     const [savedBirthday, setSavedBirthday] = useState('');
-    const [savedNumber, setSavedNumber] = useState('');
+    const [savedNumber, setSavedNumber] = useState();
     const handleBirthdayComplete = (value) => {
         if (value.length < 10) {
 
@@ -59,7 +59,7 @@ const Checkout = () => {
 
         } else {
             setSavedNumber(value);
-            localStorage.setItem('savedNumber', JSON.stringify(value))
+            localStorage.setItem('savedNumber', value)
             checkAndSetButton();
         }
     };
@@ -69,11 +69,11 @@ const Checkout = () => {
         const savedNumberValue = localStorage.getItem('savedNumber');
 
         if (savedBirthdayValue) {
-            setSavedBirthday(JSON.stringify(savedBirthdayValue));
+            setSavedBirthday(savedBirthdayValue);
         }
 
         if (savedNumberValue) {
-            setSavedNumber(JSON.stringify(savedNumberValue));
+            setSavedNumber(savedNumberValue);
         }
     }, []);
 
