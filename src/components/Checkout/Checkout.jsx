@@ -1,13 +1,12 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Checkout.css'
-import {useNavigate, useLocation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
 const Checkout = () => {
 
-    const {tg, user} = useTelegram();
+    const {tg} = useTelegram();
     const history = useNavigate();
-    const location = useLocation();
 
     useEffect(() => {
         window.addEventListener('popstate', handlePopstate);
@@ -49,7 +48,7 @@ const Checkout = () => {
             setIsAdult(checkAge(value));
             setSavedBirthday(value);
             localStorage.setItem('isAdult', checkAge(value) || false)
-            localStorage.setItem('savedBirthday', JSON.stringify(value))
+            localStorage.setItem('savedBirthday', value)
             checkAndSetButton();
         }
     };
@@ -59,15 +58,10 @@ const Checkout = () => {
 
         } else {
             setSavedNumber(value);
-            localStorage.setItem('savedNumber', JSON.stringify(value))
+            localStorage.setItem('savedNumber', value)
             checkAndSetButton();
         }
     };
-
-    // const claimData = () => {
-    //     Price = parseFloat(sessionStorage.getItem('totalPrice'));
-    //     Cart = JSON.parse(sessionStorage.getItem('cart'));
-    // }
 
     useEffect(() => {
         const savedBirthdayValue = localStorage.getItem('savedBirthday');
@@ -109,25 +103,6 @@ const Checkout = () => {
             }, 100);
         });
     });
-
-    const onSendData = useCallback(() => {
-        const data = {
-            user,
-            totalPrice: Price,
-            cart: Cart,
-            birthday: JSON.parse(localStorage.getItem('savedBirthday')),
-            number: JSON.parse(localStorage.getItem('savedNumber'))
-        }
-        fetch('https://sakurashopsmr.ru/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [Cart])
-
-
 
     return (
         <div className={'checkout'}>
