@@ -163,7 +163,13 @@ const ProductItem = () => {
         tg.MainButton.setParams({text: `Посмотреть заказ`,
             "color": "#31b545"});
         tg.MainButton.show();
-        tg.MainButton.onClick(history('/checkout'))
+        useEffect(() => {
+            tg.onEvent('mainButtonClicked', history('/checkout'))
+            return () => {
+                tg.offEvent('mainButtonClicked', history('/checkout'))
+            }
+        })
+
     }
 
     const max = product.flavors.length - 1;
