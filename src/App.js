@@ -9,7 +9,7 @@ import Checkout from "./components/Checkout/Checkout";
 
 function App() {
 
-    const {tg, queryId, user, chat} = useTelegram();
+    const {tg} = useTelegram();
     useEffect(() => {
         tg.ready();
     })
