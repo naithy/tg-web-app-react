@@ -58,7 +58,7 @@ const Checkout = () => {
 
         } else {
             setSavedNumber(value);
-            localStorage.setItem('savedNumber', value)
+            localStorage.setItem('savedNumber', JSON.stringify(value))
             checkAndSetButton();
         }
     };
