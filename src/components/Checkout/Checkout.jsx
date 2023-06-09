@@ -29,8 +29,6 @@ const Checkout = () => {
     const claimData = () => {
         Price = parseFloat(sessionStorage.getItem('totalPrice'));
         Cart = JSON.parse(sessionStorage.getItem('cart'));
-        savedNumberLocalStorage = JSON.parse(localStorage.getItem('savedNumber'));
-        savedBirthdayLocalStorage = JSON.parse(localStorage.getItem('savedBirthday'));
     }
 
     const [birthdate, setBirthdate] = useState('');
@@ -120,8 +118,8 @@ const Checkout = () => {
             user,
             totalPrice: Price,
             cart: Cart,
-            birthday: savedBirthdayLocalStorage,
-            number: savedNumberLocalStorage
+            birthday: JSON.parse(localStorage.getItem('savedNumber')),
+            number: JSON.parse(localStorage.getItem('savedBirthday'))
         }
         fetch('https://sakurashopsmr.ru/web-data', {
             method: 'POST',
