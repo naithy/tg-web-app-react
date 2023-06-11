@@ -171,6 +171,7 @@ const Checkout = () => {
                     value={savedNumber}
                 />
             </div>
+            <button onClick={onSendData}>Send</button>
         </div>
     );
 };
