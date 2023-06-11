@@ -107,7 +107,7 @@ const Checkout = () => {
 
     const onSendData = useCallback(() => {
         const data = {
-
+            user,
             totalPrice: Price,
             cart: Cart,
             birthday: JSON.parse(localStorage.getItem('savedBirthday')),
@@ -120,7 +120,6 @@ const Checkout = () => {
             },
             body: JSON.stringify(data)
         })
-        console.log("fetched!!!!!!")
     }, [Cart])
 
     if (location.pathname !== '/checkout') {
@@ -172,7 +171,6 @@ const Checkout = () => {
                     value={savedNumber}
                 />
             </div>
-            <button onClick={onSendData}>Send</button>
         </div>
     );
 };
