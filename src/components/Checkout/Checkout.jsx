@@ -5,7 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import { IMaskInput } from 'react-imask';
 const Checkout = () => {
 
-    const {tg, user} = useTelegram();
+    const {tg, user, queryId} = useTelegram();
     const history = useNavigate();
     const location = useLocation();
 
@@ -105,33 +105,33 @@ const Checkout = () => {
         });
     });
 
-    const onSendData = useCallback(() => {
+    const onSendData = async () => {
         const data = {
-            user,
             totalPrice: Price,
             cart: Cart,
             birthday: JSON.parse(localStorage.getItem('savedBirthday')),
             number: JSON.parse(localStorage.getItem('savedNumber'))
-        }
-        fetch('https://sakurashopsmr.ru/web-data', {
+        };
+        const response = await fetch('https://sakurashopsmr.ru/web-data', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        })
-    }, [Cart])
-
-    if (location.pathname !== '/checkout') {
-        tg.MainButton.onClick(() => history('/checkout'));
-    } else {
-        useEffect(() => {
-            tg.onEvent('mainButtonClicked', onSendData)
-            return () => {
-                tg.offEvent('mainButtonClicked', onSendData)
-            }
-        },[onSendData])
-    }
+        });
+        if (response.ok) {
+            // отправляем пользователю окно с подтверждением
+            tg.answerCallbackQuery({
+                callback_query_id: this.update.callback_query.id,
+                text: "Операция выполнена успешно"
+            });
+        } else {
+            tg.answerCallbackQuery({
+                callback_query_id: this.update.callback_query.id,
+                text: "Упс, что-то пошло не так. Попробуйте еще раз"
+            });
+        }
+    };
 
     return (
         <div className={'checkout'}>
