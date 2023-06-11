@@ -120,6 +120,9 @@ const Checkout = () => {
             },
             body: JSON.stringify(data)
         })
+
+        tg.showAlert("Заказ оформлен, ожидайте связи с менеджером");
+
     }, [Cart])
 
     if (location.pathname !== '/checkout') {
