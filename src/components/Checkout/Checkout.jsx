@@ -126,22 +126,11 @@ const Checkout = () => {
         tg.MainButton.onClick(() => history('/checkout'));
     } else {
         useEffect(() => {
-            tg.on('callback_query', async (callbackQuery) => {
-                const { message, data } = callbackQuery
-                if (data === 'mainButtonClicked') {
-                    await onSendData()
-
-                    await tg.answerCallbackQuery(callbackQuery.id, {
-                        text: 'Data sent successfully',
-                        show_alert: true,
-                    })
-                }
-            })
-
+            tg.onEvent('mainButtonClicked', onSendData)
             return () => {
-                tg.off('callback_query', onButtonClick)
+                tg.offEvent('mainButtonClicked', onSendData)
             }
-        }, [onSendData])
+        },[onSendData])
     }
 
     return (
