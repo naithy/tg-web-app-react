@@ -107,7 +107,7 @@ const Checkout = () => {
 
     const onSendData = useCallback(() => {
         const data = {
-            user,
+
             totalPrice: Price,
             cart: Cart,
             birthday: JSON.parse(localStorage.getItem('savedBirthday')),
