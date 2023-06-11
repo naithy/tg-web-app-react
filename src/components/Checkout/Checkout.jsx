@@ -122,6 +122,7 @@ const Checkout = () => {
         })
 
         tg.showAlert("Заказ оформлен, ожидайте связи с менеджером");
+        tg.close()
 
     }, [Cart])
 
