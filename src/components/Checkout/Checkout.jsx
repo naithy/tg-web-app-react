@@ -120,6 +120,7 @@ const Checkout = () => {
             },
             body: JSON.stringify(data)
         })
+        console.log("fetched!!!!!!")
     }, [Cart])
 
     if (location.pathname !== '/checkout') {
