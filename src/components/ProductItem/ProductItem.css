@@ -10,7 +10,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 95%;
     background: var(--tg-theme-bg-color);
     border-radius: 7px;
 }
@@ -33,7 +33,7 @@
 .choicecontainer {
     margin-top: 20px;
     background: var(--tg-theme-bg-color);
-    width: 100%;
+    width: 95%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
