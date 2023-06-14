@@ -9,6 +9,8 @@ import Checkout from "./components/Checkout/Checkout";
 import {TailSpin} from "react-loader-spinner";
 
 function App() {
+    const color = getComputedStyle(document.documentElement)
+        .getPropertyValue('--tg-theme-button-color')
 
     const [productsData, setProductsData] = useState([]);
     const [isFetched, setIsFetched] = useState(false)
@@ -17,6 +19,7 @@ function App() {
             const response = await fetch("https://sakurashopsmr.ru/product?category=disposable");
             const data = await response.json();
             setProductsData(data);
+            await new Promise(r => setTimeout(r, 20000000))
         } catch (error) {
             console.log("Ошибка загрузки данных", error);
         }
@@ -24,6 +27,7 @@ function App() {
 
     useEffect(async () => {
         await fetchData()
+
         setIsFetched(true)
     }, []);
 
@@ -54,7 +58,7 @@ function App() {
             <TailSpin
                 height="80"
                 width="80"
-                color="#FFC0CB"
+                color={`${color}`}
                 ariaLabel="tail-spin-loading"
                 radius="1"
                 wrapperStyle={{}}
