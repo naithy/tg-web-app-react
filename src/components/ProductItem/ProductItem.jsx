@@ -31,7 +31,7 @@ const ProductItem = () => {
 
     const { productId } = useParams();
 
-    const product = productsData[productId];
+    const product = productsData[productId] || {};
 
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
     const [totalPrice, setTotalPrice] = useState(() => {
