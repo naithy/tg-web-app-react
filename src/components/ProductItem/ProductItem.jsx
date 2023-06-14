@@ -176,7 +176,7 @@ const ProductItem = ({productsData}) => {
                                 <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                             </div>
                             <div className={"producttext"}>
-                                <p>{quantity !== 0 ? flavor: ''}</p>
+                                <p>{parseFloat(quantity) !== 0 ? flavor: ''}</p>
                                 <div
                                     id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
                                     className="badge hide"
