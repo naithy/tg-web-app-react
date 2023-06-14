@@ -22,6 +22,8 @@ function App() {
 
     const [productsData, setProductsData] = useState([]);
 
+    console.log(productsData)
+
     const {tg} = useTelegram();
     useEffect(() => {
         tg.ready();
