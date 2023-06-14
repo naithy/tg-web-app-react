@@ -53,7 +53,7 @@ useEffect(() => {
             transition={{duration: 0.5}}
         >
             <div className={'list'}>
-                {productsData.map((product, index) => (
+                {productsData2.map((product, index) => (
                     <div className={'HqdItem'} key={index}>
                         <Link to={`/product/${index}`} className={'toItemPage'}>
                             <div className={'hqdcontainer'}>
