@@ -3,20 +3,9 @@ import {Link, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import './ProductPage.css'
 import {motion} from "framer-motion";
+import ProductItem from "../ProductItem/ProductItem";
 
-const ProductPage = () => {
-
-    const [productsData, setProductsData] = useState([]);
-
-    useEffect(() => {
-        fetch('https://sakurashopsmr.ru/product?category=disposable')
-            .then(response => response.json())
-            .then(data => {
-                setProductsData(data);
-            })
-            .catch(error => console.error('Error fetching products:', error));
-
-    }, []);
+const ProductPage = (productsData) => {
 
     const {tg} = useTelegram();
     const history = useNavigate();
@@ -43,7 +32,7 @@ const ProductPage = () => {
             <div className={'list'}>
                 {productsData.map((product, index) => (
                     <div className={'HqdItem'} key={index}>
-                        <Link to={`/product/${index}`} className={'toItemPage'}>
+                        <Link to={`/product/${index}`} className={'toItemPage'} component={ProductItem}>
                             <div className={'hqdcontainer'}>
                                 <div className={'product item'}>
                                     <img className={'hqdimg'} src={product.img} alt={'parilka'}/>

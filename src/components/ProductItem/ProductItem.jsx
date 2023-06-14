@@ -5,20 +5,20 @@ import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 import AnimatedPage from "../../AnimatedPage";
 
-const ProductItem = () => {
+const ProductItem = (productsData) => {
 
-    const [productsData, setProductsData] = useState([]);
-
-    useEffect(() => {
-        console.log('working')
-        fetch('https://sakurashopsmr.ru/product?category=disposable')
-            .then(response => response.json())
-            .then(data => {
-                setProductsData(data);
-            })
-            .catch(error => console.error('Error fetching products:', error));
-
-    }, [productsData]);
+    // const [productsData, setProductsData] = useState([]);
+    //
+    // useEffect(() => {
+    //     console.log('working')
+    //     fetch('https://sakurashopsmr.ru/product?category=disposable')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setProductsData(data);
+    //         })
+    //         .catch(error => console.error('Error fetching products:', error));
+    //
+    // }, [productsData]);
 
     const navigate = useNavigate();
     const {tg} = useTelegram();
@@ -161,8 +161,10 @@ const ProductItem = () => {
     if(!sessionStorage.getItem('totalPrice') || parseFloat(sessionStorage.getItem('totalPrice')) === 0) {
         tg.MainButton.hide()
     } else {
-        tg.MainButton.setParams({text: `Посмотреть заказ`,
-            "color": "#31b545"});
+        tg.MainButton.setParams({
+            text: `Посмотреть заказ`,
+            "color": "#31b545"
+        });
         tg.MainButton.show();
         tg.MainButton.onClick(() => navigate('/checkout'));
     }
