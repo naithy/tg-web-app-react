@@ -19,17 +19,17 @@ const ProductPage = () => {
 
     const [productsData2, setProductsData] = useState([]);
 
-// useEffect(() => {
-//     fetch('/product?category=disposable')
-//         .then((response) => response.json())
-//         .then((data) => {
-//             setProductsData(data);
-//         })
-//         .catch((error) => {
-//             console.error('Error fetching products:', error);
-//         });
-//     console.log(productsData2)
-// }, []);
+useEffect(() => {
+    fetch('/product?category=disposable')
+        .then((response) => response.json())
+        .then((data) => {
+            setProductsData(data);
+        })
+        .catch((error) => {
+            console.error('Error fetching products:', error);
+        });
+    console.log(productsData2)
+}, []);
 
     const {tg} = useTelegram();
     const history = useNavigate();
