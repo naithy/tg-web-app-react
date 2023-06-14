@@ -18,8 +18,9 @@ const ProductPage = () => {
         }
     }
 
-    useEffect(() => {
-        fetchData().then(console.log('fetched'))
+    useEffect(async () => {
+        await fetchData()
+        console.log('fetched')
     }, []);
 
     const {tg} = useTelegram();
