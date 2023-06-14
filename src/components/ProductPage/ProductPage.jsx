@@ -19,7 +19,7 @@ const ProductPage = () => {
     }
 
     useEffect(() => {
-        fetchData()
+        fetchData().then(console.log('fetched'))
     }, []);
 
     const {tg} = useTelegram();
