@@ -8,26 +8,44 @@ import ProductItem from "./components/ProductItem/ProductItem";
 import Checkout from "./components/Checkout/Checkout";
 
 function App() {
+
+    const [productsData, setProductsData] = useState([]);
+
+
+    useEffect(() => {
+        fetch('https://sakurashopsmr.ru/product?category=disposable')
+            .then(response => response.json())
+            .then(data => {
+                setProductsData(data);
+            })
+            .catch(error => console.error('Error fetching products:', error));
+
+    }, []);
+
     const {tg} = useTelegram();
     useEffect(() => {
         tg.ready();
     })
 
     tg.enableClosingConfirmation();
+if (productsData.length === 0) {
+    return <div>Loading... </div>
+} else {
+    return (
+        <div className="App">
+            <Routes>
+                <Route index element={<CategoryList/>}/>
+                <Route path="/hqd" element={<ProductPage/>}/>
+                <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
+                <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
+                <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
+                <Route path="/product/:productId" element={<ProductItem/>}/>
+                <Route path="checkout" element={<Checkout/>}/>
+            </Routes>
+        </div>
+    );
+}
 
-  return (
-    <div className="App">
-        <Routes>
-            <Route index element={<CategoryList/>}/>
-            <Route path="/hqd" element={<ProductPage/>}/>
-            <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
-            <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
-            <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
-            <Route path="/product/:productId" element={<ProductItem/>}/>
-            <Route path="checkout" element={<Checkout/>}/>
-        </Routes>
-    </div>
-  );
 }
 
 export default App;
