@@ -8,7 +8,6 @@ import AnimatedPage from "../../AnimatedPage";
 const ProductItem = () => {
 
     const [productsData, setProductsData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         console.log('working')
@@ -16,11 +15,10 @@ const ProductItem = () => {
             .then(response => response.json())
             .then(data => {
                 setProductsData(data);
-                setIsLoading(false);
             })
             .catch(error => console.error('Error fetching products:', error));
 
-    }, []);
+    }, [productsData]);
 
     const navigate = useNavigate();
     const {tg} = useTelegram();
@@ -30,9 +28,10 @@ const ProductItem = () => {
         navigate(-1);
         window.history.go(-1);
     });
-if (!isLoading) {
+
     const { productId } = useParams();
-    const product = productsData[productId];
+
+    const product = productsData[productId] || {};
 
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
     const [totalPrice, setTotalPrice] = useState(() => {
@@ -208,10 +207,6 @@ if (!isLoading) {
             </div>
         </AnimatedPage>
     );
-} else {
-    return <div>Loading...</div>
-}
-
 };
 
 export default ProductItem;
