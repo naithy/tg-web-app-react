@@ -16,7 +16,7 @@ import {motion} from "framer-motion";
 const [productsData, setProductsData] = useState([]);
 
 useEffect(() => {
-    fetch('/products?category=disposable')
+    fetch('/product?category=disposable')
         .then((response) => response.json())
         .then((data) => {
             setProductsData(data);
@@ -49,26 +49,26 @@ const ProductPage = () => {
             exit="exit"
             transition={{duration: 0.5}}
         >
-            {/*<div className={'list'}>*/}
-            {/*    {productsData.map((product, index) => (*/}
-            {/*        <div className={'HqdItem'} key={index}>*/}
-            {/*            <Link to={`/product/${index}`} className={'toItemPage'}>*/}
-            {/*                <div className={'hqdcontainer'}>*/}
-            {/*                    <div className={'product item'}>*/}
-            {/*                        <img className={'hqdimg'} src={product.img} alt={'parilka'}/>*/}
-            {/*                        <div className={'hqdcontainertext'}>*/}
-            {/*                            <div className={`hqdtitle`}>{product.title}</div>*/}
-            {/*                            /!*<div className={'description'}>{product.description}</div>*!/*/}
-            {/*                            <div className={'price'}>*/}
-            {/*                                <span>{product.price + 'р.'}</span>*/}
-            {/*                            </div>*/}
-            {/*                        </div>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            </Link>*/}
-            {/*        </div>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
+            <div className={'list'}>
+                {productsData.map((product, index) => (
+                    <div className={'HqdItem'} key={index}>
+                        <Link to={`/product/${index}`} className={'toItemPage'}>
+                            <div className={'hqdcontainer'}>
+                                <div className={'product item'}>
+                                    <img className={'hqdimg'} src={product.img} alt={'parilka'}/>
+                                    <div className={'hqdcontainertext'}>
+                                        <div className={`hqdtitle`}>{product.title}</div>
+                                        {/*<div className={'description'}>{product.description}</div>*/}
+                                        <div className={'price'}>
+                                            <span>{product.price + 'р.'}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                ))}
+            </div>
         </motion.div>
     );
 };
