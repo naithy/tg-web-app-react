@@ -18,7 +18,6 @@ const ProductItem = () => {
                 setProductsData(data);
             })
             .catch(error => console.error('Error fetching products:', error));
-        console.log(productsData)
     }, []);
 
     tg.BackButton.show()
@@ -29,7 +28,7 @@ const ProductItem = () => {
 
     const { productId } = useParams();
     const product = productsData[productId];
-    console.log(product)
+    console.log(productsData)
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
     const [totalPrice, setTotalPrice] = useState(() => {
         const storedTotalPrice = parseFloat(sessionStorage.getItem('totalPrice'));
