@@ -21,11 +21,11 @@ function App() {
         <div className="App">
             <Routes>
                 <Route index element={<CategoryList/>}/>
-                <Route path="/hqd" element={<ProductPage productsDataBD={productsDataBD}/>}/>
+                <Route path="/hqd" element={<ProductPage/>}/>
                 <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
                 <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
                 <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
-                <Route path="/product/:productId" element={<ProductItem productsDataBD={productsDataBD}/>}/>
+                <Route path="/product/:productId" element={<ProductItem/>}/>
                 <Route path="checkout" element={<Checkout/>}/>
             </Routes>
         </div>
