@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 import AnimatedPage from "../../AnimatedPage";
 
-const ProductItem = (productsData) => {
+const ProductItem = ({productsData}) => {
 
     // const [productsData, setProductsData] = useState([]);
     //
