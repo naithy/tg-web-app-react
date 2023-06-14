@@ -7,6 +7,8 @@ import ProductItem from "../ProductItem/ProductItem";
 
 const ProductPage = (productsData) => {
 
+    console.log(productsData)
+
     const {tg} = useTelegram();
     const history = useNavigate();
 
