@@ -34,7 +34,6 @@ function App() {
     tg.enableClosingConfirmation();
 
     if (isFetched) {
-        console.log(productsData)
 
         return (
             <div className="App">
