@@ -16,7 +16,6 @@ const ProductItem = () => {
             .then(response => response.json())
             .then(data => {
                 setProductsData(data);
-                const { productId } = useParams();
                 setIsLoading(false);
             })
             .catch(error => console.error('Error fetching products:', error));
@@ -32,6 +31,9 @@ const ProductItem = () => {
         window.history.go(-1);
     });
 if (!isLoading) {
+    const { productId } = useParams();
+    const product = productsData[productId];
+
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
     const [totalPrice, setTotalPrice] = useState(() => {
         const storedTotalPrice = parseFloat(sessionStorage.getItem('totalPrice'));
