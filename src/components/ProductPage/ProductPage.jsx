@@ -5,7 +5,7 @@ import './ProductPage.css'
 import {motion} from "framer-motion";
 import ProductItem from "../ProductItem/ProductItem";
 
-const ProductPage = () => {
+const ProductPage = (productsData) => {
 
 
     const {tg} = useTelegram();
