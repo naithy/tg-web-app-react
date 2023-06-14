@@ -16,6 +16,7 @@ const ProductItem = () => {
             .then(response => response.json())
             .then(data => {
                 setProductsData(data);
+                console.log(data)
             })
             .catch(error => console.error('Error fetching products:', error));
     }, []);
