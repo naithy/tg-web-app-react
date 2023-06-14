@@ -10,17 +10,12 @@ const ProductItem = () => {
     const {tg} = useTelegram();
 
     const productsData = [
-        { title: 'GANG X BOX 8000', price: 1100, flavors: [
-            'Ананас Малина Вишня', 'Бабл-гам', 'Жвачка с лесными ягодами',
-                'Ледяная мятная жвачка', 'Малина Яблоко Мята', 'Ледяная Черника Смородина',
-                'Энергетик с черешней', 'Холодные тропические фрукты'
-            ],
+        { title: 'GANG X BOX 8000', price: 1100, flavors: {
+            'Ананас Малина Вишня' : 20, 'Бабл-гам': 10,
+        },
             description: '8000 затяжек',
             img: 'https://sun9-66.userapi.com/impg/daUL-0rsVWF4iFxoIBNOpsYf93LJ_8yOyCnTkA/Qr3P8UJK2_I.jpg?size=1280x1280&quality=96&sign=10b465a1219b01ac2e85cd7a3ee6ebc1&type=album'
         },
-        { title: 'lost mary b5000', price: 1000, flavors: ['vanilla', 'cherry', 'blueberry'] },
-        { title: 'voopoo', price: 950, flavors: ['mango'] },
-        { title: 'vaporesso', price: 900 },
     ];
 
     tg.BackButton.show()
@@ -179,7 +174,7 @@ const ProductItem = () => {
                     </div>
                 </div>
                 <div className="choicecontainer">
-                    {product.flavors.map((flavor, index) => (
+                    {product.entries(flavors).map(([flavor, quantity]) => (
                         <div className="option" key={flavor}>
                             <div className={'btns'}>
                                 <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
