@@ -170,41 +170,41 @@ const ProductItem = () => {
 
     return (
         <AnimatedPage>
-            {/*<div className={'productcontainer'}>*/}
-            {/*    <div className={'title'}>*/}
-            {/*        <img className={'hqdimg2'} src={product.img} alt={'parilka'}/>*/}
-            {/*        <div className={'titletext'}>*/}
-            {/*            <h3 className={'underline'}>{product.title}</h3>*/}
-            {/*            <div className={'description'}>{product.description}</div>*/}
-            {/*            <div className={'price'}>{product.price}p.</div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="choicecontainer">*/}
-            {/*        {Object.entries(product.flavors).map(([flavor, quantity]) => (*/}
-            {/*            <div className="option" key={flavor}>*/}
-            {/*                <div className={'btns'}>*/}
-            {/*                    <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>*/}
-            {/*                    <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>*/}
-            {/*                </div>*/}
-            {/*                <div className={"producttext"}>*/}
-            {/*                    <p>{flavor}</p>*/}
-            {/*                    <div*/}
-            {/*                        id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор*/}
-            {/*                        className="badge hide"*/}
-            {/*                        style={{*/}
-            {/*                            animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?*/}
-            {/*                                '0.1s' : '0',*/}
-            {/*                            animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?*/}
-            {/*                                animationNames[`${productId}-${flavor}`] : 'badge-hide',*/}
-            {/*                        }}*/}
-            {/*                    >*/}
-            {/*                        {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        ))}*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className={'productcontainer'}>
+                <div className={'title'}>
+                    <img className={'hqdimg2'} src={product.img} alt={'parilka'}/>
+                    <div className={'titletext'}>
+                        <h3 className={'underline'}>{product.title}</h3>
+                        <div className={'description'}>{product.description}</div>
+                        <div className={'price'}>{product.price}p.</div>
+                    </div>
+                </div>
+                <div className="choicecontainer">
+                    {Object.entries(product.flavors).map(([flavor, quantity]) => (
+                        <div className="option" key={flavor}>
+                            <div className={'btns'}>
+                                <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                                <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                            </div>
+                            <div className={"producttext"}>
+                                <p>{flavor}</p>
+                                <div
+                                    id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
+                                    className="badge hide"
+                                    style={{
+                                        animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
+                                            '0.1s' : '0',
+                                        animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
+                                            animationNames[`${productId}-${flavor}`] : 'badge-hide',
+                                    }}
+                                >
+                                    {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </AnimatedPage>
     );
 };
