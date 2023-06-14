@@ -22,13 +22,9 @@ const ProductPage = () => {
 
 useEffect(() => {
     fetch('/product?category=disposable')
-        .then((data) => {
-            setProductsData(data);
-            console.log(data)
-        })
-        .catch((error) => {
-            console.error('Error fetching products:', error);
-        });
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error fetching products:', e));
 
 }, []);
 
