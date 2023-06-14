@@ -18,7 +18,7 @@ const ProductItem = () => {
                 setProductsData(data);
             })
             .catch(error => console.error('Error fetching products:', error));
-
+        console.log(productsData)
     }, []);
 
     tg.BackButton.show()
