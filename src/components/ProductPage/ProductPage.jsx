@@ -24,7 +24,7 @@ useEffect(() => {
     fetch('https://sakurashopsmr.ru/product?category=disposable')
         .then(response => response.json())
         .then(data => {
-            setProductData(data);
+            setProductsData(data);
         })
         .catch(error => console.error('Error fetching products:', error));
 
