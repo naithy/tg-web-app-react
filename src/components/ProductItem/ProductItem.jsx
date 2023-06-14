@@ -26,6 +26,7 @@ const ProductItem = () => {
 
     const { productId } = useParams();
     const product = productsData[productId];
+    console.log(product)
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
     const [totalPrice, setTotalPrice] = useState(() => {
         const storedTotalPrice = parseFloat(sessionStorage.getItem('totalPrice'));
@@ -160,7 +161,6 @@ const ProductItem = () => {
         tg.MainButton.onClick(() => navigate('/checkout'));
     }
 
-    const max = product.flavors.length - 1;
 
     return (
         <AnimatedPage>
