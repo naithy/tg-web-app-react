@@ -5,9 +5,22 @@ import './ProductPage.css'
 import {motion} from "framer-motion";
 import ProductItem from "../ProductItem/ProductItem";
 
-const ProductPage = (productsDataBD) => {
-    const {productsData} = productsDataBD
-    console.log(productsData)
+const ProductPage = () => {
+
+    const [productsData, setProductsData] = useState([]);
+    async function fetchData() {
+        try {
+            const response = await fetch("https://sakurashopsmr.ru/product?category=disposable");
+            const data = await response.json();
+            setProductsData(data);
+        } catch (error) {
+            console.log("Ошибка загрузки данных", error);
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, []);
 
     const {tg} = useTelegram();
     const history = useNavigate();

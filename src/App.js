@@ -9,28 +9,14 @@ import Checkout from "./components/Checkout/Checkout";
 
 function App() {
 
-    const [productsDataBD, setProductsDataBD] = useState([]);
-
-
-    useEffect(() => {
-        fetch('https://sakurashopsmr.ru/product?category=disposable')
-            .then(response => response.json())
-            .then(data => {
-                setProductsDataBD(data);
-            })
-            .catch(error => console.error('Error fetching products:', error));
-
-    }, []);
-
     const {tg} = useTelegram();
     useEffect(() => {
         tg.ready();
     })
 
     tg.enableClosingConfirmation();
-if (productsDataBD.length === 0) {
-    return <div>Loading... </div>
-} else {
+
+
     return (
         <div className="App">
             <Routes>
@@ -44,8 +30,6 @@ if (productsDataBD.length === 0) {
             </Routes>
         </div>
     );
-}
-
 }
 
 export default App;
