@@ -8,6 +8,7 @@ import AnimatedPage from "../../AnimatedPage";
 const ProductItem = () => {
 
     const [productsData, setProductsData] = useState([]);
+    const [product, setProduct] = useState({});
 
     useEffect(() => {
         console.log('working')
@@ -15,6 +16,8 @@ const ProductItem = () => {
             .then(response => response.json())
             .then(data => {
                 setProductsData(data);
+                const { productId } = useParams();
+                setProduct(productsData[productId])
             })
             .catch(error => console.error('Error fetching products:', error));
 
@@ -28,10 +31,6 @@ const ProductItem = () => {
         navigate(-1);
         window.history.go(-1);
     });
-
-    const { productId } = useParams();
-
-    const product = productsData[productId] || {};
 
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
     const [totalPrice, setTotalPrice] = useState(() => {
