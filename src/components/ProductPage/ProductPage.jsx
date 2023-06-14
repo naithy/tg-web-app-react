@@ -13,18 +13,18 @@ import {motion} from "framer-motion";
 //     { title: 'vaporesso', price: 900 },
 // ];
 
-const [productsData, setProductsData] = useState([]);
-
-useEffect(() => {
-    fetch('/product?category=disposable')
-        .then((response) => response.json())
-        .then((data) => {
-            setProductsData(data);
-        })
-        .catch((error) => {
-            console.error('Error fetching products:', error);
-        });
-}, []);
+// const [productsData, setProductsData] = useState([]);
+//
+// useEffect(() => {
+//     fetch('/product?category=disposable')
+//         .then((response) => response.json())
+//         .then((data) => {
+//             setProductsData(data);
+//         })
+//         .catch((error) => {
+//             console.error('Error fetching products:', error);
+//         });
+// }, []);
 
 const ProductPage = () => {
     const {tg} = useTelegram();
