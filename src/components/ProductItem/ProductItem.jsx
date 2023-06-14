@@ -180,7 +180,7 @@ const ProductItem = () => {
                                 <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
                                 <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                             </div>
-                            <div className={index === max ? "producttext last" : "producttext"}>
+                            <div className={"producttext"}>
                                 <p>{flavor}</p>
                                 <div
                                     id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
