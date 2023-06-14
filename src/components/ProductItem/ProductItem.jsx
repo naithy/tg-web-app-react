@@ -174,7 +174,7 @@ const ProductItem = () => {
                     </div>
                 </div>
                 <div className="choicecontainer">
-                    {product.entries(flavors).map(([flavor, quantity]) => (
+                    {Object.entries(product.flavors).map(([flavor, quantity]) => (
                         <div className="option" key={flavor}>
                             <div className={'btns'}>
                                 <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
