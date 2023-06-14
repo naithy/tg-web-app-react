@@ -9,7 +9,6 @@ import Checkout from "./components/Checkout/Checkout";
 
 function App() {
 
-    const [productsData, setProductsData] = useState([]);
 
     useEffect(() => {
         fetch('https://sakurashopsmr.ru/product?category=disposable')
@@ -20,6 +19,8 @@ function App() {
             .catch(error => console.error('Error fetching products:', error));
 
     }, []);
+
+    const [productsData, setProductsData] = useState([]);
 
     const {tg} = useTelegram();
     useEffect(() => {
