@@ -170,30 +170,28 @@ const ProductItem = ({productsData}) => {
                 </div>
                 <div className="choicecontainer">
                     {Object.entries(product.flavors).map(([flavor, quantity]) => (
-                        <div className="option" key={flavor}>
-                            <div className={'btns'}>
-                                <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
-                                <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
-                            </div>
-                            {parseFloat(quantity) !== 0 ?
-                                (
-                                    <div className={"producttext"}>
-                                        <p>{flavor}</p>
-                                        <div
-                                            id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
-                                            className="badge hide"
-                                            style={{
-                                                animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
-                                                    '0.1s' : '0',
-                                                animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
-                                                    animationNames[`${productId}-${flavor}`] : 'badge-hide',
-                                            }}
-                                        >
-                                            {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}
-                                        </div>
+                        <div>
+                            {parseFloat(quantity) !== 0 ? (                            <div className="option" key={flavor}>
+                                <div className={'btns'}>
+                                    <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                                    <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                                </div>
+                                <div className={"producttext"}>
+                                    <p>{flavor}</p>
+                                    <div
+                                        id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
+                                        className="badge hide"
+                                        style={{
+                                            animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
+                                                '0.1s' : '0',
+                                            animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
+                                                animationNames[`${productId}-${flavor}`] : 'badge-hide',
+                                        }}
+                                    >
+                                        {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}
                                     </div>
-                                ) : ''
-                            }
+                                </div>
+                            </div>) : ''}
                         </div>
                     ))}
                 </div>
