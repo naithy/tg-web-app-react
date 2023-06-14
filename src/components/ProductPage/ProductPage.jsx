@@ -5,7 +5,19 @@ import './ProductPage.css'
 import {motion} from "framer-motion";
 import ProductItem from "../ProductItem/ProductItem";
 
-const ProductPage = (productsData) => {
+const ProductPage = () => {
+
+    useEffect(() => {
+        fetch('https://sakurashopsmr.ru/product?category=disposable')
+            .then(response => response.json())
+            .then(data => {
+                setProductsData(data);
+            })
+            .catch(error => console.error('Error fetching products:', error));
+
+    }, []);
+
+    const [productsData, setProductsData] = useState([]);
 
     console.log(productsData)
 

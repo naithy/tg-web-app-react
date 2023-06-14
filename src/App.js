@@ -8,22 +8,6 @@ import ProductItem from "./components/ProductItem/ProductItem";
 import Checkout from "./components/Checkout/Checkout";
 
 function App() {
-
-
-    useEffect(() => {
-        fetch('https://sakurashopsmr.ru/product?category=disposable')
-            .then(response => response.json())
-            .then(data => {
-                setProductsData(data);
-            })
-            .catch(error => console.error('Error fetching products:', error));
-
-    }, []);
-
-    const [productsData, setProductsData] = useState([]);
-
-    console.log(productsData)
-
     const {tg} = useTelegram();
     useEffect(() => {
         tg.ready();
@@ -35,11 +19,11 @@ function App() {
     <div className="App">
         <Routes>
             <Route index element={<CategoryList/>}/>
-            <Route path="/hqd" element={<ProductPage productsData={productsData}/>}/>
+            <Route path="/hqd" element={<ProductPage/>}/>
             <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
             <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
-            <Route path="/product/:productId" element={<ProductItem productsData={productsData}/>}/>
+            <Route path="/product/:productId" element={<ProductItem/>}/>
             <Route path="checkout" element={<Checkout/>}/>
         </Routes>
     </div>
