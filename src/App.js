@@ -9,14 +9,14 @@ import Checkout from "./components/Checkout/Checkout";
 
 function App() {
 
-    const [productsData, setProductsData] = useState([]);
+    const [productsDataBD, setProductsDataBD] = useState([]);
 
 
     useEffect(() => {
         fetch('https://sakurashopsmr.ru/product?category=disposable')
             .then(response => response.json())
             .then(data => {
-                setProductsData(data);
+                setProductsDataBD(data);
             })
             .catch(error => console.error('Error fetching products:', error));
 
@@ -35,11 +35,11 @@ if (productsData.length === 0) {
         <div className="App">
             <Routes>
                 <Route index element={<CategoryList/>}/>
-                <Route path="/hqd" element={<ProductPage productsData={productsData}/>}/>
+                <Route path="/hqd" element={<ProductPage productsDataBD={productsDataBD}/>}/>
                 <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
                 <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
                 <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
-                <Route path="/product/:productId" element={<ProductItem productsData={productsData}/>}/>
+                <Route path="/product/:productId" element={<ProductItem productsDataBD={productsDataBD}/>}/>
                 <Route path="checkout" element={<Checkout/>}/>
             </Routes>
         </div>
