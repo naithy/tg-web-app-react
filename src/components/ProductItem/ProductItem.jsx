@@ -9,14 +9,17 @@ const ProductItem = () => {
     const navigate = useNavigate();
     const {tg} = useTelegram();
 
-    const productsData = [
-        { title: 'GANG X BOX 8000', price: 1100, flavors: {
-            'Ананас Малина Вишня' : 20, 'Бабл-гам': 10,
-        },
-            description: '8000 затяжек',
-            img: 'https://sun9-66.userapi.com/impg/daUL-0rsVWF4iFxoIBNOpsYf93LJ_8yOyCnTkA/Qr3P8UJK2_I.jpg?size=1280x1280&quality=96&sign=10b465a1219b01ac2e85cd7a3ee6ebc1&type=album'
-        },
-    ];
+    const [productsData, setProductsData] = useState([]);
+
+    useEffect(() => {
+        fetch('https://sakurashopsmr.ru/product?category=disposable')
+            .then(response => response.json())
+            .then(data => {
+                setProductsData(data);
+            })
+            .catch(error => console.error('Error fetching products:', error));
+
+    }, []);
 
     tg.BackButton.show()
     tg.BackButton.onClick(() => {
