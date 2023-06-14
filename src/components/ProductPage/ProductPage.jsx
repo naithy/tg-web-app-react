@@ -21,7 +21,8 @@ const ProductPage = () => {
     const [productsData2, setProductsData] = useState([]);
 
 useEffect(() => {
-    fetch('/product?category=disposable')
+    fetch('https://sakurashopsmr.ru/product?category=disposable')
+        .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error fetching products:', error));
 
