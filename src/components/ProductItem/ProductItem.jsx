@@ -6,20 +6,6 @@ import {useTelegram} from "../../hooks/useTelegram";
 import AnimatedPage from "../../AnimatedPage";
 
 const ProductItem = () => {
-    const navigate = useNavigate();
-    const {tg} = useTelegram();
-
-
-
-
-
-    tg.BackButton.show()
-    tg.BackButton.onClick(() => {
-        navigate(-1);
-        window.history.go(-1);
-    });
-
-    const { productId } = useParams();
 
     const [productsData, setProductsData] = useState([]);
 
@@ -34,6 +20,16 @@ const ProductItem = () => {
 
     }, []);
 
+    const navigate = useNavigate();
+    const {tg} = useTelegram();
+
+    tg.BackButton.show()
+    tg.BackButton.onClick(() => {
+        navigate(-1);
+        window.history.go(-1);
+    });
+
+    const { productId } = useParams();
 
     const product = productsData[productId];
 
