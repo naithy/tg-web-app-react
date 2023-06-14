@@ -19,7 +19,6 @@ function App() {
             const response = await fetch("https://sakurashopsmr.ru/product?category=disposable");
             const data = await response.json();
             setProductsData(data);
-            await new Promise(r => setTimeout(r, 20000000))
         } catch (error) {
             console.log("Ошибка загрузки данных", error);
         }
