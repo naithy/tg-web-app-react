@@ -35,11 +35,11 @@ if (productsData.length === 0) {
         <div className="App">
             <Routes>
                 <Route index element={<CategoryList/>}/>
-                <Route path="/hqd" element={<ProductPage/>}/>
+                <Route path="/hqd" element={<ProductPage productsData={productsData}/>}/>
                 <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
                 <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
                 <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
-                <Route path="/product/:productId" element={<ProductItem/>}/>
+                <Route path="/product/:productId" element={<ProductItem productsData={productsData}/>}/>
                 <Route path="checkout" element={<Checkout/>}/>
             </Routes>
         </div>

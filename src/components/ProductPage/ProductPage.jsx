@@ -5,20 +5,7 @@ import './ProductPage.css'
 import {motion} from "framer-motion";
 import ProductItem from "../ProductItem/ProductItem";
 
-const ProductPage = () => {
-    const [productsData, setProductsData] = useState([]);
-
-
-    useEffect(() => {
-        fetch('https://sakurashopsmr.ru/product?category=disposable')
-            .then(response => response.json())
-            .then(data => {
-                setProductsData(data);
-            })
-            .catch(error => console.error('Error fetching products:', error));
-
-    }, []);
-
+const ProductPage = (productsData) => {
     console.log(productsData)
 
     const {tg} = useTelegram();
