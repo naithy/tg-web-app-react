@@ -28,7 +28,7 @@ function App() {
     })
 
     tg.enableClosingConfirmation();
-if (productsData.length === 0) {
+if (productsDataBD.length === 0) {
     return <div>Loading... </div>
 } else {
     return (
