@@ -36,15 +36,15 @@ const ProductItem = () => {
         return storedTotalPrice ? storedTotalPrice : 0;
     });
 
-    useEffect(() => {
-        const storedCart = JSON.parse(sessionStorage.getItem('cart'));
-        if (storedCart) {
-            setCart(storedCart);
-            const total = calculateTotalPrice(storedCart);
-            setTotalPrice(total);
-            sessionStorage.setItem('totalPrice', JSON.stringify(total));
-        }
-    }, []);
+    // useEffect(() => {
+    //     const storedCart = JSON.parse(sessionStorage.getItem('cart'));
+    //     if (storedCart) {
+    //         setCart(storedCart);
+    //         const total = calculateTotalPrice(storedCart);
+    //         setTotalPrice(total);
+    //         sessionStorage.setItem('totalPrice', JSON.stringify(total));
+    //     }
+    // }, []);
 
     const [animationNames, setAnimationNames] = useState({})
     const [classNames, setClassNames] = useState({})
