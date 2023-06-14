@@ -9,6 +9,23 @@ import Checkout from "./components/Checkout/Checkout";
 
 function App() {
 
+    const [productsData, setProductsData] = useState([]);
+    const [isFetched, setIsFetched] = useState(false)
+    async function fetchData() {
+        try {
+            const response = await fetch("https://sakurashopsmr.ru/product?category=disposable");
+            const data = await response.json();
+            setProductsData(data);
+        } catch (error) {
+            console.log("Ошибка загрузки данных", error);
+        }
+    }
+
+    useEffect(async () => {
+        await fetchData()
+        setIsFetched(true)
+    }, []);
+
     const {tg} = useTelegram();
     useEffect(() => {
         tg.ready();
@@ -16,20 +33,23 @@ function App() {
 
     tg.enableClosingConfirmation();
 
-
-    return (
-        <div className="App">
-            <Routes>
-                <Route index element={<CategoryList/>}/>
-                <Route path="/hqd" element={<ProductPage/>}/>
-                <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
-                <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
-                <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
-                <Route path="/product/:productId" element={<ProductItem/>}/>
-                <Route path="checkout" element={<Checkout/>}/>
-            </Routes>
-        </div>
-    );
+    if (isFetched) {
+        return (
+            <div className="App">
+                <Routes>
+                    <Route index element={<CategoryList/>}/>
+                    <Route path="/hqd" element={<ProductPage/>}/>
+                    <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
+                    <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
+                    <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
+                    <Route path="/product/:productId" element={<ProductItem/>}/>
+                    <Route path="checkout" element={<Checkout/>}/>
+                </Routes>
+            </div>
+     );
+    } else {
+       return <div>Loading...</div>
+    }
 }
 
 export default App;

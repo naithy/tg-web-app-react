@@ -7,21 +7,6 @@ import ProductItem from "../ProductItem/ProductItem";
 
 const ProductPage = () => {
 
-    const [productsData, setProductsData] = useState([]);
-    async function fetchData() {
-        try {
-            const response = await fetch("https://sakurashopsmr.ru/product?category=disposable");
-            const data = await response.json();
-            setProductsData(data);
-        } catch (error) {
-            console.log("Ошибка загрузки данных", error);
-        }
-    }
-
-    useEffect(async () => {
-        await fetchData()
-        console.log('fetched')
-    }, []);
 
     const {tg} = useTelegram();
     const history = useNavigate();
