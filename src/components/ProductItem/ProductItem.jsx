@@ -7,19 +7,6 @@ import AnimatedPage from "../../AnimatedPage";
 
 const ProductItem = ({productsData}) => {
 
-    // const [productsData, setProductsData] = useState([]);
-    //
-    // useEffect(() => {
-    //     console.log('working')
-    //     fetch('https://sakurashopsmr.ru/product?category=disposable')
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setProductsData(data);
-    //         })
-    //         .catch(error => console.error('Error fetching products:', error));
-    //
-    // }, [productsData]);
-
     const navigate = useNavigate();
     const {tg} = useTelegram();
 
@@ -189,7 +176,7 @@ const ProductItem = ({productsData}) => {
                                 <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                             </div>
                             <div className={"producttext"}>
-                                <p>{flavor}</p>
+                                <p>{quantity !== 0 ? flavor: ''}</p>
                                 <div
                                     id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
                                     className="badge hide"
