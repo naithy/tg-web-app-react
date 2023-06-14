@@ -23,15 +23,15 @@ const ProductItem = () => {
     const navigate = useNavigate();
     const {tg} = useTelegram();
 
-    // tg.BackButton.show()
-    // tg.BackButton.onClick(() => {
-    //     navigate(-1);
-    //     window.history.go(-1);
-    // });
-    //
-    // const { productId } = useParams();
-    //
-    // const product = productsData[productId];
+    tg.BackButton.show()
+    tg.BackButton.onClick(() => {
+        navigate(-1);
+        window.history.go(-1);
+    });
+
+    const { productId } = useParams();
+
+    const product = productsData[productId];
     //
     // const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
     // const [totalPrice, setTotalPrice] = useState(() => {
