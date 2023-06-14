@@ -9,18 +9,9 @@ const ProductItem = () => {
     const navigate = useNavigate();
     const {tg} = useTelegram();
 
-    const [productsData, setProductsData] = useState([]);
 
-    useEffect(() => {
-        fetch('https://sakurashopsmr.ru/product?category=disposable')
-            .then(response => response.json())
-            .then(data => {
-                setProductsData(data);
 
-            })
-            .catch(error => console.error('Error fetching products:', error));
-        console.log(productsData)
-    }, []);
+
 
     tg.BackButton.show()
     tg.BackButton.onClick(() => {
@@ -29,6 +20,20 @@ const ProductItem = () => {
     });
 
     const { productId } = useParams();
+
+    const [productsData, setProductsData] = useState([]);
+
+    useEffect(() => {
+        fetch('https://sakurashopsmr.ru/product?category=disposable')
+            .then(response => response.json())
+            .then(data => {
+                setProductsData(data);
+            })
+            .catch(error => console.error('Error fetching products:', error));
+        console.log(productsData)
+    }, []);
+
+
     const product = productsData[productId];
 
     const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
