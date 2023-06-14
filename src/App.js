@@ -6,7 +6,7 @@ import CategoryList from "./components/CategoryList/CategoryList";
 import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 import Checkout from "./components/Checkout/Checkout";
-import {Audio} from "react-loader-spinner";
+import {TailSpin} from "react-loader-spinner";
 
 function App() {
 
@@ -50,15 +50,18 @@ function App() {
             </div>
      );
     } else {
-        return <Audio
-            height="80"
-            width="80"
-            radius="9"
-            color="green"
-            ariaLabel="loading"
-            wrapperStyle
-            wrapperClass
-        />
+        return <div className={'loader'}>
+            <TailSpin
+                height="80"
+                width="80"
+                color="#FFC0CB"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+            />
+        </div>
     }
 }
 
