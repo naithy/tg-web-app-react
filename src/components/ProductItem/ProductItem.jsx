@@ -32,140 +32,140 @@ const ProductItem = () => {
     const { productId } = useParams();
 
     const product = productsData[productId];
-    //
-    // const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
-    // const [totalPrice, setTotalPrice] = useState(() => {
-    //     const storedTotalPrice = parseFloat(sessionStorage.getItem('totalPrice'));
-    //     return storedTotalPrice ? storedTotalPrice : 0;
-    // });
-    //
-    // useEffect(() => {
-    //     const storedCart = JSON.parse(sessionStorage.getItem('cart'));
-    //     if (storedCart) {
-    //         setCart(storedCart);
-    //         const total = calculateTotalPrice(storedCart);
-    //         setTotalPrice(total);
-    //         sessionStorage.setItem('totalPrice', JSON.stringify(total));
-    //     }
-    // }, []);
-    //
-    // const [animationNames, setAnimationNames] = useState({})
-    // const [classNames, setClassNames] = useState({})
-    // const [style, setStyle] = useState(false);
-    // const [styleName, setStyleName] = useState(true);
-    //
-    // const handleAdd = (flavor) => {
-    //     setClassNames((prevNames) => ({
-    //         ...prevNames,
-    //         [`${flavor}`]: ''
-    //     }));
-    // }
-    // const handleIncrement = (flavor) => {
-    //     if(!style) {
-    //         setAnimationNames((prevNames) => ({
-    //             ...prevNames,
-    //             [`${productId}-${flavor}`]: 'badge-incr',
-    //         }));
-    //         setStyle(true)
-    //     } else {
-    //         setAnimationNames((prevNames) => ({
-    //             ...prevNames,
-    //             [`${productId}-${flavor}`]: 'badge-incr2',
-    //         }));
-    //         setStyle(false)
-    //     }
-    // };
-    // const handleDecrement = (flavor) => {
-    //     if(!style) {
-    //         setAnimationNames((prevNames) => ({
-    //             ...prevNames,
-    //             [`${productId}-${flavor}`]: 'badge-decr',
-    //         }));
-    //         setStyle(true)
-    //     } else {
-    //         setAnimationNames((prevNames) => ({
-    //             ...prevNames,
-    //             [`${productId}-${flavor}`]: 'badge-decr2',
-    //         }));
-    //         setStyle(false)
-    //     }
-    // };
-    //
-    //
-    // const handleAddToCart = (flavor) => {
-    //     handleAdd(flavor)
-    //     handleIncrement(flavor)
-    //     tg.HapticFeedback.impactOccurred('light')
-    //     const newCart = { ...cart };
-    //     if (newCart[productId] && newCart[productId].flavors[flavor]) {
-    //         newCart[productId].flavors[flavor]++;
-    //     } else {
-    //         if (!newCart[productId]) {
-    //             newCart[productId] = {};
-    //             newCart[productId].title = product.title;
-    //             newCart[productId].price = product.price;
-    //             newCart[productId].flavors = {};
-    //         }
-    //         newCart[productId].flavors[flavor] = 1;
-    //     }
-    //     setCart(newCart);
-    //     sessionStorage.setItem('cart', JSON.stringify(newCart));
-    //     const total = calculateTotalPrice(newCart);
-    //     setTotalPrice(total);
-    //     sessionStorage.setItem('totalPrice', JSON.stringify(total));
-    //     dispatchEvent(new Event("storage"))
-    // }
-    //
-    // const handleRemoveFromCart = (flavor) => {
-    //     handleDecrement(flavor)
-    //     tg.HapticFeedback.impactOccurred('light')
-    //     const newCart = { ...cart };
-    //     if (newCart[productId] && newCart[productId].flavors[flavor]) {
-    //         newCart[productId].flavors[flavor]--;
-    //         if (newCart[productId].flavors[flavor] === 0) {
-    //             delete newCart[productId].flavors[flavor];
-    //             if (Object.keys(newCart[productId].flavors).length === 0) {
-    //                 delete newCart[productId];
-    //             }
-    //         }
-    //         setCart(newCart);
-    //         sessionStorage.setItem('cart', JSON.stringify(newCart));
-    //         const total = calculateTotalPrice(newCart);
-    //         setTotalPrice(total);
-    //         sessionStorage.setItem('totalPrice', JSON.stringify(total));
-    //         dispatchEvent(new Event("storage"))
-    //     }
-    // }
-    //
-    // const calculateTotalPrice = (cart) => {
-    //     let total = 0;
-    //     for (let productId in cart) {
-    //         if (cart.hasOwnProperty(productId)) {
-    //             const product = cart[productId];
-    //             const price = product.price;
-    //             for (let flavor in product.flavors) {
-    //                 if (product.flavors.hasOwnProperty(flavor)) {
-    //                     const count = product.flavors[flavor];
-    //                     if(count >= 3) {
-    //                         total += count * (price - 100);
-    //                     } else {
-    //                         total += count * price;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return total;
-    // };
-    //
-    // if(!sessionStorage.getItem('totalPrice') || parseFloat(sessionStorage.getItem('totalPrice')) === 0) {
-    //     tg.MainButton.hide()
-    // } else {
-    //     tg.MainButton.setParams({text: `Посмотреть заказ`,
-    //         "color": "#31b545"});
-    //     tg.MainButton.show();
-    //     tg.MainButton.onClick(() => navigate('/checkout'));
-    // }
+
+    const [cart, setCart] = useState(JSON.parse(sessionStorage.getItem('cart')) || {});
+    const [totalPrice, setTotalPrice] = useState(() => {
+        const storedTotalPrice = parseFloat(sessionStorage.getItem('totalPrice'));
+        return storedTotalPrice ? storedTotalPrice : 0;
+    });
+
+    useEffect(() => {
+        const storedCart = JSON.parse(sessionStorage.getItem('cart'));
+        if (storedCart) {
+            setCart(storedCart);
+            const total = calculateTotalPrice(storedCart);
+            setTotalPrice(total);
+            sessionStorage.setItem('totalPrice', JSON.stringify(total));
+        }
+    }, []);
+
+    const [animationNames, setAnimationNames] = useState({})
+    const [classNames, setClassNames] = useState({})
+    const [style, setStyle] = useState(false);
+    const [styleName, setStyleName] = useState(true);
+
+    const handleAdd = (flavor) => {
+        setClassNames((prevNames) => ({
+            ...prevNames,
+            [`${flavor}`]: ''
+        }));
+    }
+    const handleIncrement = (flavor) => {
+        if(!style) {
+            setAnimationNames((prevNames) => ({
+                ...prevNames,
+                [`${productId}-${flavor}`]: 'badge-incr',
+            }));
+            setStyle(true)
+        } else {
+            setAnimationNames((prevNames) => ({
+                ...prevNames,
+                [`${productId}-${flavor}`]: 'badge-incr2',
+            }));
+            setStyle(false)
+        }
+    };
+    const handleDecrement = (flavor) => {
+        if(!style) {
+            setAnimationNames((prevNames) => ({
+                ...prevNames,
+                [`${productId}-${flavor}`]: 'badge-decr',
+            }));
+            setStyle(true)
+        } else {
+            setAnimationNames((prevNames) => ({
+                ...prevNames,
+                [`${productId}-${flavor}`]: 'badge-decr2',
+            }));
+            setStyle(false)
+        }
+    };
+
+
+    const handleAddToCart = (flavor) => {
+        handleAdd(flavor)
+        handleIncrement(flavor)
+        tg.HapticFeedback.impactOccurred('light')
+        const newCart = { ...cart };
+        if (newCart[productId] && newCart[productId].flavors[flavor]) {
+            newCart[productId].flavors[flavor]++;
+        } else {
+            if (!newCart[productId]) {
+                newCart[productId] = {};
+                newCart[productId].title = product.title;
+                newCart[productId].price = product.price;
+                newCart[productId].flavors = {};
+            }
+            newCart[productId].flavors[flavor] = 1;
+        }
+        setCart(newCart);
+        sessionStorage.setItem('cart', JSON.stringify(newCart));
+        const total = calculateTotalPrice(newCart);
+        setTotalPrice(total);
+        sessionStorage.setItem('totalPrice', JSON.stringify(total));
+        dispatchEvent(new Event("storage"))
+    }
+
+    const handleRemoveFromCart = (flavor) => {
+        handleDecrement(flavor)
+        tg.HapticFeedback.impactOccurred('light')
+        const newCart = { ...cart };
+        if (newCart[productId] && newCart[productId].flavors[flavor]) {
+            newCart[productId].flavors[flavor]--;
+            if (newCart[productId].flavors[flavor] === 0) {
+                delete newCart[productId].flavors[flavor];
+                if (Object.keys(newCart[productId].flavors).length === 0) {
+                    delete newCart[productId];
+                }
+            }
+            setCart(newCart);
+            sessionStorage.setItem('cart', JSON.stringify(newCart));
+            const total = calculateTotalPrice(newCart);
+            setTotalPrice(total);
+            sessionStorage.setItem('totalPrice', JSON.stringify(total));
+            dispatchEvent(new Event("storage"))
+        }
+    }
+
+    const calculateTotalPrice = (cart) => {
+        let total = 0;
+        for (let productId in cart) {
+            if (cart.hasOwnProperty(productId)) {
+                const product = cart[productId];
+                const price = product.price;
+                for (let flavor in product.flavors) {
+                    if (product.flavors.hasOwnProperty(flavor)) {
+                        const count = product.flavors[flavor];
+                        if(count >= 3) {
+                            total += count * (price - 100);
+                        } else {
+                            total += count * price;
+                        }
+                    }
+                }
+            }
+        }
+        return total;
+    };
+
+    if(!sessionStorage.getItem('totalPrice') || parseFloat(sessionStorage.getItem('totalPrice')) === 0) {
+        tg.MainButton.hide()
+    } else {
+        tg.MainButton.setParams({text: `Посмотреть заказ`,
+            "color": "#31b545"});
+        tg.MainButton.show();
+        tg.MainButton.onClick(() => navigate('/checkout'));
+    }
 
 
     return (
