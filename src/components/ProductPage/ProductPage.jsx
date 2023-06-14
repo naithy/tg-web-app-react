@@ -13,7 +13,11 @@ const productsData = [
     { title: 'vaporesso', price: 900 },
 ];
 
-const [productsData2, setProductsData] = useState([]);
+
+
+const ProductPage = () => {
+
+    const [productsData2, setProductsData] = useState([]);
 
 // useEffect(() => {
 //     fetch('/product?category=disposable')
@@ -27,7 +31,6 @@ const [productsData2, setProductsData] = useState([]);
 //     console.log(productsData2)
 // }, []);
 
-const ProductPage = () => {
     const {tg} = useTelegram();
     const history = useNavigate();
 
