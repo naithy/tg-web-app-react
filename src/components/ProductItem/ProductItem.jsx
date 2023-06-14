@@ -24,13 +24,14 @@ const ProductItem = () => {
     const [productsData, setProductsData] = useState([]);
 
     useEffect(() => {
+        console.log('working')
         fetch('https://sakurashopsmr.ru/product?category=disposable')
             .then(response => response.json())
             .then(data => {
                 setProductsData(data);
             })
             .catch(error => console.error('Error fetching products:', error));
-        console.log(productsData)
+
     }, []);
 
 
