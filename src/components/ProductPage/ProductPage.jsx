@@ -1,11 +1,14 @@
 import {useTelegram} from "../../hooks/useTelegram";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import './ProductPage.css'
 import {motion} from "framer-motion";
 import ProductItem from "../ProductItem/ProductItem";
 
 const ProductPage = ({productsData}) => {
+    const location = useLocation()
+    console.log(location)
+
     const {tg} = useTelegram();
     const history = useNavigate();
 
