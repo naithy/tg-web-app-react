@@ -33,7 +33,7 @@ const ProductPage = ({productsData}) => {
                 {(productsData.filter(product => product.category === `${location}`).length === 0 ? 'Скоро в продаже' :
                     (productsData.filter(product => product.category === `${location}`)).map((product, index) => (
                     <div className={'HqdItem'} key={index}>
-                        <Link to={`/product/${index}`} className={'toItemPage'} component={ProductItem}>
+                        <Link to={`/product/s${index}`} className={'toItemPage'} component={ProductItem}>
                             <div className={'hqdcontainer'}>
                                 <div className={'product item'}>
                                     <img className={'hqdimg'} src={product.img} alt={'parilka'}/>
