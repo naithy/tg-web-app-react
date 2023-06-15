@@ -16,7 +16,7 @@ function App() {
     const [isFetched, setIsFetched] = useState(false)
     async function fetchData() {
         try {
-            const response = await fetch("https://sakurashopsmr.ru/product?category=disposable");
+            const response = await fetch("https://sakurashopsmr.ru/product");
             const data = await response.json();
             setProductsData(data);
         } catch (error) {

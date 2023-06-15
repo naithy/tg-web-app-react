@@ -7,9 +7,6 @@ import ProductItem from "../ProductItem/ProductItem";
 
 const ProductPage = ({productsData}) => {
     const location = useLocation().pathname.slice(1)
-    console.log(productsData.filter(product => product.category === `${location}`).length)
-    console.log(productsData.filter(product => product.category === `${location}`))
-
     const {tg} = useTelegram();
     const history = useNavigate();
 
