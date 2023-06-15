@@ -6,8 +6,7 @@ import {motion} from "framer-motion";
 import ProductItem from "../ProductItem/ProductItem";
 
 const ProductPage = ({productsData}) => {
-    const location = useLocation().pathname
-    console.log(location)
+    const location = useLocation().pathname.slice(1)
 
     const {tg} = useTelegram();
     const history = useNavigate();
