@@ -45,7 +45,7 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route index element={<CategoryList/>}/>
-                    <Route path="/hqd" element={<ProductPage productsData={productsData}/>}/>
+                    <Route path="/disposable" element={<ProductPage productsData={productsData}/>}/>
                     <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
                     <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
                     <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
