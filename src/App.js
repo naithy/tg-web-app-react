@@ -49,7 +49,7 @@ function App() {
                     <Route path="/pods" element={<ProductPage productsData={productsData}/>}/>
                     <Route path="/liquid" element={<ProductPage productsData={productsData}/>}/>
                     <Route path="/consumables" element={<ProductPage productsData={productsData}/>}/>
-                    <Route path="/product/:productId" element={<ProductItem productsData={productsData}/>}/>
+                    <Route path="/product/s:productId" element={<ProductItem productsData={productsData}/>}/>
                     <Route path="checkout" element={<Checkout/>}/>
                 </Routes>
             </div>
