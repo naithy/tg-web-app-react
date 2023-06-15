@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import './ProductItem.css'
 import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 import AnimatedPage from "../../AnimatedPage";
 
 const ProductItem = ({productsData}) => {
+    const location = useLocation().pathname
+    console.log(location)
 
     const navigate = useNavigate();
     const {tg} = useTelegram();
