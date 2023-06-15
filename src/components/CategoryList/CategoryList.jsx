@@ -8,10 +8,10 @@ import atomizer from '../../pics/atomizer.png'
 import {useTelegram} from "../../hooks/useTelegram";
 
 const categories = [
-    {id: 'hqd', title: 'Одноразовые ЭС', img: disposable},
-    {id: 'pod', title: 'POD Системы', img: vape},
+    {id: 'disposable', title: 'Одноразовые ЭС', img: disposable},
+    {id: 'pods', title: 'POD Системы', img: vape},
     {id: 'liquid', title: 'Жидкости', img: liquid},
-    {id: 'atomizer', title: 'Испарители', img: atomizer}
+    {id: 'consumables', title: 'Испарители', img: atomizer}
 ]
 
 const CategoryList = () => {

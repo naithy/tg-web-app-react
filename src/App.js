@@ -46,9 +46,9 @@ function App() {
                 <Routes>
                     <Route index element={<CategoryList/>}/>
                     <Route path="/disposable" element={<ProductPage productsData={productsData}/>}/>
-                    <Route path="/pod" element={<div className={'available'}>Скоро в продаже</div>}/>
-                    <Route path="/liquid" element={<div className={'available'}>Скоро в продаже</div>}/>
-                    <Route path="/atomizer" element={<div className={'available'}>Скоро в продаже</div>}/>
+                    <Route path="/pods" element={<ProductPage productsData={productsData}/>}/>
+                    <Route path="/liquid" element={<ProductPage productsData={productsData}/>}/>
+                    <Route path="/consumables" element={<ProductPage productsData={productsData}/>}/>
                     <Route path="/product/:productId" element={<ProductItem productsData={productsData}/>}/>
                     <Route path="checkout" element={<Checkout/>}/>
                 </Routes>

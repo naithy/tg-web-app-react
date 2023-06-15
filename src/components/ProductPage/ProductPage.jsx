@@ -32,7 +32,8 @@ const ProductPage = ({productsData}) => {
             transition={{duration: 0.5}}
         >
             <div className={'list'}>
-                {productsData.map((product, index) => (
+                {(productsData.filter(product => product.category === `${location}`).length === 0 ? 'Скоро в продаже' :
+                    (productsData.filter(product => product.category === `${location}`)).map((product, index) => (
                     <div className={'HqdItem'} key={index}>
                         <Link to={`/product/${index}`} className={'toItemPage'} component={ProductItem}>
                             <div className={'hqdcontainer'}>
