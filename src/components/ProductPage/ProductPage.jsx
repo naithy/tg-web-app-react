@@ -50,7 +50,7 @@ const ProductPage = ({productsData}) => {
                             </div>
                         </Link>
                     </div>
-                ))}
+                )))}
             </div>
         </motion.div>
     );
