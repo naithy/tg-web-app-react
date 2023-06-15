@@ -133,7 +133,7 @@ const ProductItem = ({productsData}) => {
                 for (let flavor in product.flavors) {
                     if (product.flavors.hasOwnProperty(flavor)) {
                         const count = product.flavors[flavor];
-                        if(count >= 3) {
+                        if((Object.values(product.flavors).reduce((a, b) => a + b, 0)) >= 3) {
                             total += count * (price - 100);
                         } else {
                             total += count * price;
