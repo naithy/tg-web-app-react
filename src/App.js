@@ -24,6 +24,8 @@ function App() {
         }
     }
 
+    console.log(productsData)
+
     useEffect(async () => {
         await fetchData()
 
