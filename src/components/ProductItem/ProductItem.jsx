@@ -5,12 +5,13 @@ import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 import AnimatedPage from "../../AnimatedPage";
 
-const ProductItem = ({productsData}) => {
+const ProductItem = () => {
 
 
     const navigate = useNavigate();
-    console.log(navigate(-1))
     const {tg} = useTelegram();
+
+    const productsData = useLocation().state.product
 
     tg.BackButton.show()
     tg.BackButton.onClick(() => {
@@ -19,6 +20,7 @@ const ProductItem = ({productsData}) => {
     });
 
     const { productId } = useParams();
+
 
     const product = productsData[productId] || {};
 
@@ -53,13 +55,13 @@ const ProductItem = ({productsData}) => {
         if(!style) {
             setAnimationNames((prevNames) => ({
                 ...prevNames,
-                [`${productId}-${flavor}`]: 'badge-incr',
+                [`${product._id}-${flavor}`]: 'badge-incr',
             }));
             setStyle(true)
         } else {
             setAnimationNames((prevNames) => ({
                 ...prevNames,
-                [`${productId}-${flavor}`]: 'badge-incr2',
+                [`${product._id}-${flavor}`]: 'badge-incr2',
             }));
             setStyle(false)
         }
@@ -68,13 +70,13 @@ const ProductItem = ({productsData}) => {
         if(!style) {
             setAnimationNames((prevNames) => ({
                 ...prevNames,
-                [`${productId}-${flavor}`]: 'badge-decr',
+                [`${product._id}-${flavor}`]: 'badge-decr',
             }));
             setStyle(true)
         } else {
             setAnimationNames((prevNames) => ({
                 ...prevNames,
-                [`${productId}-${flavor}`]: 'badge-decr2',
+                [`${product._id}-${flavor}`]: 'badge-decr2',
             }));
             setStyle(false)
         }
@@ -86,16 +88,16 @@ const ProductItem = ({productsData}) => {
         handleIncrement(flavor)
         tg.HapticFeedback.impactOccurred('light')
         const newCart = { ...cart };
-        if (newCart[productId] && newCart[productId].flavors[flavor]) {
-            newCart[productId].flavors[flavor]++;
+        if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
+            newCart[product._id].flavors[flavor]++;
         } else {
-            if (!newCart[productId]) {
-                newCart[productId] = {};
-                newCart[productId].title = product.title;
-                newCart[productId].price = product.price;
-                newCart[productId].flavors = {};
+            if (!newCart[product._id]) {
+                newCart[product._id] = {};
+                newCart[product._id].title = product.title;
+                newCart[product._id].price = product.price;
+                newCart[product._id].flavors = {};
             }
-            newCart[productId].flavors[flavor] = 1;
+            newCart[product._id].flavors[flavor] = 1;
         }
         setCart(newCart);
         sessionStorage.setItem('cart', JSON.stringify(newCart));
@@ -109,12 +111,12 @@ const ProductItem = ({productsData}) => {
         handleDecrement(flavor)
         tg.HapticFeedback.impactOccurred('light')
         const newCart = { ...cart };
-        if (newCart[productId] && newCart[productId].flavors[flavor]) {
-            newCart[productId].flavors[flavor]--;
-            if (newCart[productId].flavors[flavor] === 0) {
-                delete newCart[productId].flavors[flavor];
-                if (Object.keys(newCart[productId].flavors).length === 0) {
-                    delete newCart[productId];
+        if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
+            newCart[product._id].flavors[flavor]--;
+            if (newCart[product._id].flavors[flavor] === 0) {
+                delete newCart[product._id].flavors[flavor];
+                if (Object.keys(newCart[product._id].flavors).length === 0) {
+                    delete newCart[product._id];
                 }
             }
             setCart(newCart);
@@ -175,22 +177,22 @@ const ProductItem = ({productsData}) => {
                         <div>
                             {parseFloat(quantity) !== 0 ? (                            <div className="option" key={flavor}>
                                 <div className={'btns'}>
-                                    <Button className={`addBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
-                                    <Button className={`rmvBtn ${(cart[productId] && cart[productId].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
+                                    <Button className={`addBtn ${(cart[product._id] && cart[product._id].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                                    <Button className={`rmvBtn ${(cart[product._id] && cart[product._id].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                                 </div>
                                 <div className={"producttext"}>
                                     <p>{flavor}</p>
                                     <div
-                                        id={`badge-${productId}-${flavor}`} // Добавляем уникальный идентификатор
+                                        id={`badge-${product._id}-${flavor}`} // Добавляем уникальный идентификатор
                                         className="badge hide"
                                         style={{
-                                            animationDuration: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
+                                            animationDuration: (cart[product._id] && cart[product._id].flavors[`${flavor}`]) ?
                                                 '0.1s' : '0',
-                                            animationName: (cart[productId] && cart[productId].flavors[`${flavor}`]) ?
-                                                animationNames[`${productId}-${flavor}`] : 'badge-hide',
+                                            animationName: (cart[product._id] && cart[product._id].flavors[`${flavor}`]) ?
+                                                animationNames[`${product._id}-${flavor}`] : 'badge-hide',
                                         }}
                                     >
-                                        {cart[productId] && cart[productId].flavors[`${flavor}`] ? cart[productId].flavors[`${flavor}`] : 0}
+                                        {cart[product._id] && cart[product._id].flavors[`${flavor}`] ? cart[product._id].flavors[`${flavor}`] : 0}
                                     </div>
                                 </div>
                             </div>) : ''}

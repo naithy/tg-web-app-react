@@ -9,6 +9,7 @@ const ProductPage = ({productsData}) => {
     const location = useLocation().pathname.slice(1)
     const {tg} = useTelegram();
     const history = useNavigate();
+    const productsDataFiltered = productsData.filter(product => product.category === `${location}`);
 
         tg.BackButton.onClick(() => {
             history(-1);
@@ -30,10 +31,10 @@ const ProductPage = ({productsData}) => {
             transition={{duration: 0.5}}
         >
             <div className={'list'}>
-                {(productsData.filter(product => product.category === `${location}`).length === 0 ? 'Скоро в продаже' :
-                    (productsData.filter(product => product.category === `${location}`)).map((product, index) => (
+                {(productsDataFiltered.length === 0 ? 'Скоро в продаже' :
+                    productsDataFiltered.map((product, index) => (
                     <div className={'HqdItem'} key={index}>
-                        <Link to={`/product/s${index}`} className={'toItemPage'} component={ProductItem}>
+                        <Link to={`/product/${index}`} className={'toItemPage'} state={{product: productsDataFiltered}}>
                             <div className={'hqdcontainer'}>
                                 <div className={'product item'}>
                                     <img className={'hqdimg'} src={product.img} alt={'parilka'}/>
