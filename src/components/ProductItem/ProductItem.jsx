@@ -6,10 +6,10 @@ import {useTelegram} from "../../hooks/useTelegram";
 import AnimatedPage from "../../AnimatedPage";
 
 const ProductItem = ({productsData}) => {
-    const location = useLocation().pathname
-    console.log(location)
+
 
     const navigate = useNavigate();
+    console.log(navigate(-1))
     const {tg} = useTelegram();
 
     tg.BackButton.show()
