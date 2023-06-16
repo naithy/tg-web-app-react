@@ -24,7 +24,6 @@ a {
 
 .categoryimg {
     text-align: center;
-    background: var(--tg-theme-bg-color);
     height: 110px;
     border-radius: 7px;
 }
