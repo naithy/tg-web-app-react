@@ -101,7 +101,7 @@ const ProductItem = () => {
             newCart[product._id].flavors[flavor] = 1;
         }
         setCart(newCart);
-        console.log(newCart)
+        console.log(newCart[product._id])
         sessionStorage.setItem('cart', JSON.stringify(newCart));
         const total = calculateTotalPrice(newCart);
         setTotalPrice(total);
