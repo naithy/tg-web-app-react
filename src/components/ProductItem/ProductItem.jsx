@@ -89,7 +89,7 @@ const ProductItem = () => {
         tg.HapticFeedback.impactOccurred('light')
         const newCart = { ...cart };
         if (newCart[product._id]?.flavors[flavor] >= quantity) {
-
+            return 0
         }
         if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
             newCart[product._id].flavors[flavor]++;
