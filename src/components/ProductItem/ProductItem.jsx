@@ -83,28 +83,32 @@ const ProductItem = () => {
     };
 
 
-    const handleAddToCart = (flavor) => {
-        handleAdd(flavor)
-        handleIncrement(flavor)
-        tg.HapticFeedback.impactOccurred('light')
-        const newCart = { ...cart };
-        if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
-            newCart[product._id].flavors[flavor]++;
-        } else {
-            if (!newCart[product._id]) {
-                newCart[product._id] = {};
-                newCart[product._id].title = product.title;
-                newCart[product._id].price = product.price;
-                newCart[product._id].flavors = {};
+    const handleAddToCart = (flavor, quantity) => {
+        let counter = quantity
+        if (counter !== quantity) {
+            counter += 1
+            handleAdd(flavor)
+            handleIncrement(flavor)
+            tg.HapticFeedback.impactOccurred('light')
+            const newCart = { ...cart };
+            if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
+                newCart[product._id].flavors[flavor]++;
+            } else {
+                if (!newCart[product._id]) {
+                    newCart[product._id] = {};
+                    newCart[product._id].title = product.title;
+                    newCart[product._id].price = product.price;
+                    newCart[product._id].flavors = {};
+                }
+                newCart[product._id].flavors[flavor] = 1;
             }
-            newCart[product._id].flavors[flavor] = 1;
+            setCart(newCart);
+            sessionStorage.setItem('cart', JSON.stringify(newCart));
+            const total = calculateTotalPrice(newCart);
+            setTotalPrice(total);
+            sessionStorage.setItem('totalPrice', JSON.stringify(total));
+            dispatchEvent(new Event("storage"))
         }
-        setCart(newCart);
-        sessionStorage.setItem('cart', JSON.stringify(newCart));
-        const total = calculateTotalPrice(newCart);
-        setTotalPrice(total);
-        sessionStorage.setItem('totalPrice', JSON.stringify(total));
-        dispatchEvent(new Event("storage"))
     }
 
     const handleRemoveFromCart = (flavor) => {
@@ -177,7 +181,7 @@ const ProductItem = () => {
                         <div>
                             {parseFloat(quantity) !== 0 ? (                            <div className="option" key={flavor}>
                                 <div className={'btns'}>
-                                    <Button className={`addBtn ${(cart[product._id] && cart[product._id].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                                    <Button className={`addBtn ${(cart[product._id] && cart[product._id].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor, quantity)}>+</Button>
                                     <Button className={`rmvBtn ${(cart[product._id] && cart[product._id].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                                 </div>
                                 <div className={"producttext"}>
