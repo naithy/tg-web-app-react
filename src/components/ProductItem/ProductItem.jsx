@@ -84,6 +84,7 @@ const ProductItem = () => {
 
 
     const handleAddToCart = (flavor, quantity) => {
+        console.log(quantity)
         let counter = 0
         if (counter < quantity) {
             counter++
