@@ -90,24 +90,25 @@ const ProductItem = () => {
         const newCart = { ...cart };
         if (newCart[product._id].flavors[flavor] === quantity) {
             return 0
-        }
-        if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
-            newCart[product._id].flavors[flavor]++;
         } else {
-            if (!newCart[product._id]) {
-                newCart[product._id] = {};
-                newCart[product._id].title = product.title;
-                newCart[product._id].price = product.price;
-                newCart[product._id].flavors = {};
+            if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
+                newCart[product._id].flavors[flavor]++;
+            } else {
+                if (!newCart[product._id]) {
+                    newCart[product._id] = {};
+                    newCart[product._id].title = product.title;
+                    newCart[product._id].price = product.price;
+                    newCart[product._id].flavors = {};
+                }
+                newCart[product._id].flavors[flavor] = 1;
             }
-            newCart[product._id].flavors[flavor] = 1;
+            setCart(newCart);
+            sessionStorage.setItem('cart', JSON.stringify(newCart));
+            const total = calculateTotalPrice(newCart);
+            setTotalPrice(total);
+            sessionStorage.setItem('totalPrice', JSON.stringify(total));
+            dispatchEvent(new Event("storage"))
         }
-        setCart(newCart);
-        sessionStorage.setItem('cart', JSON.stringify(newCart));
-        const total = calculateTotalPrice(newCart);
-        setTotalPrice(total);
-        sessionStorage.setItem('totalPrice', JSON.stringify(total));
-        dispatchEvent(new Event("storage"))
     }
 
     const handleRemoveFromCart = (flavor) => {
