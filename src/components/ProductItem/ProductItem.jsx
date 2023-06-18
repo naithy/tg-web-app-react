@@ -83,11 +83,14 @@ const ProductItem = () => {
     };
 
 
-    const handleAddToCart = (flavor) => {
+    const handleAddToCart = (flavor, quantity) => {
         handleAdd(flavor)
         handleIncrement(flavor)
         tg.HapticFeedback.impactOccurred('light')
         const newCart = { ...cart };
+        if (newCart[product._id].flavors[flavor] === quantity) {
+            return 0
+        }
         if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
             newCart[product._id].flavors[flavor]++;
         } else {
@@ -177,7 +180,7 @@ const ProductItem = () => {
                         <div>
                             {parseFloat(quantity) !== 0 ? (                            <div className="option" key={flavor}>
                                 <div className={'btns'}>
-                                    <Button className={`addBtn ${(cart[product._id] && cart[product._id].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor)}>+</Button>
+                                    <Button className={`addBtn ${(cart[product._id] && cart[product._id].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'nonselected' }`} onClick={() => handleAddToCart(flavor, quantity)}>+</Button>
                                     <Button className={`rmvBtn ${(cart[product._id] && cart[product._id].flavors[`${flavor}`]) ? classNames[`${flavor}`] : 'hidebtn'}`} onClick={() => handleRemoveFromCart(flavor)}>-</Button>
                                 </div>
                                 <div className={"producttext"}>
