@@ -90,7 +90,7 @@ const ProductItem = () => {
         const newCart = { ...cart };
         if (newCart[product._id] && newCart[product._id].flavors[flavor] && newCart[product._id].flavors[flavor] < quantity) {
             newCart[product._id].flavors[flavor]++;
-        } else {
+        } else if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
             if (!newCart[product._id]) {
                 newCart[product._id] = {};
                 newCart[product._id].title = product.title;
