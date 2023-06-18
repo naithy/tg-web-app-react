@@ -84,7 +84,7 @@ const ProductItem = () => {
 
 
     const handleAddToCart = (flavor, quantity) => {
-        console.log(JSON.parse(sessionStorage.getItem('cart')))
+
         handleAdd(flavor)
         handleIncrement(flavor)
         tg.HapticFeedback.impactOccurred('light')
@@ -101,6 +101,7 @@ const ProductItem = () => {
             newCart[product._id].flavors[flavor] = 1;
         }
         setCart(newCart);
+        console.log(newCart)
         sessionStorage.setItem('cart', JSON.stringify(newCart));
         const total = calculateTotalPrice(newCart);
         setTotalPrice(total);
