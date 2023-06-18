@@ -84,32 +84,28 @@ const ProductItem = () => {
 
 
     const handleAddToCart = (flavor, quantity) => {
-        let counter = 0
-        counter += 1
-        console.log(counter)
-        if (counter < quantity) {
-            handleAdd(flavor)
-            handleIncrement(flavor)
-            tg.HapticFeedback.impactOccurred('light')
-            const newCart = { ...cart };
-            if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
-                newCart[product._id].flavors[flavor]++;
-            } else {
-                if (!newCart[product._id]) {
-                    newCart[product._id] = {};
-                    newCart[product._id].title = product.title;
-                    newCart[product._id].price = product.price;
-                    newCart[product._id].flavors = {};
-                }
-                newCart[product._id].flavors[flavor] = 1;
+        console.log(JSON.parse(sessionStorage.getItem('cart')))
+        handleAdd(flavor)
+        handleIncrement(flavor)
+        tg.HapticFeedback.impactOccurred('light')
+        const newCart = { ...cart };
+        if (newCart[product._id] && newCart[product._id].flavors[flavor]) {
+            newCart[product._id].flavors[flavor]++;
+        } else {
+            if (!newCart[product._id]) {
+                newCart[product._id] = {};
+                newCart[product._id].title = product.title;
+                newCart[product._id].price = product.price;
+                newCart[product._id].flavors = {};
             }
-            setCart(newCart);
-            sessionStorage.setItem('cart', JSON.stringify(newCart));
-            const total = calculateTotalPrice(newCart);
-            setTotalPrice(total);
-            sessionStorage.setItem('totalPrice', JSON.stringify(total));
-            dispatchEvent(new Event("storage"))
+            newCart[product._id].flavors[flavor] = 1;
         }
+        setCart(newCart);
+        sessionStorage.setItem('cart', JSON.stringify(newCart));
+        const total = calculateTotalPrice(newCart);
+        setTotalPrice(total);
+        sessionStorage.setItem('totalPrice', JSON.stringify(total));
+        dispatchEvent(new Event("storage"))
     }
 
     const handleRemoveFromCart = (flavor) => {
