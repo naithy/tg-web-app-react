@@ -85,8 +85,8 @@ const ProductItem = () => {
 
     const handleAddToCart = (flavor, quantity) => {
         let counter = 0
-        if (counter !== quantity) {
-            counter += 1
+        if (counter < quantity) {
+            counter++
             handleAdd(flavor)
             handleIncrement(flavor)
             tg.HapticFeedback.impactOccurred('light')
