@@ -85,6 +85,7 @@ const ProductItem = () => {
 
     const handleAddToCart = (flavor, quantity) => {
         const newCart = { ...cart };
+        console.log(newCart)
         if (newCart[product._id]?.flavors[flavor] < quantity) {
             handleAdd(flavor)
             handleIncrement(flavor)
