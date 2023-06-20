@@ -7,6 +7,7 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 import Checkout from "./components/Checkout/Checkout";
 import {TailSpin} from "react-loader-spinner";
+import Brands from "./components/Brands/Brands";
 
 function App() {
     const color = getComputedStyle(document.documentElement)

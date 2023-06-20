@@ -11,6 +11,10 @@ const ProductPage = ({productsData}) => {
     const history = useNavigate();
     const productsDataFiltered = productsData.filter(product => product.category === `${location}`);
 
+    const [products, setProducts] = useState([]);
+    const brands = [...new Set(productsDataFiltered.map(item => item.brand))]
+
+
         tg.BackButton.onClick(() => {
             history(-1);
         })
@@ -31,25 +35,30 @@ const ProductPage = ({productsData}) => {
             transition={{duration: 0.5}}
         >
             <div className={'list'}>
-                {(productsDataFiltered.length === 0 ? 'Скоро в продаже' :
-                    productsDataFiltered.map((product, index) => (
-                    <div className={'HqdItem'} key={index}>
-                        <Link to={`/product/${index}`} className={'toItemPage'} state={{product: productsDataFiltered}}>
-                            <div className={'hqdcontainer'}>
-                                <div className={'product item'}>
-                                    <img className={'hqdimg'} src={product.img} alt={'parilka'}/>
-                                    <div className={'hqdcontainertext'}>
-                                        <div className={`hqdtitle`}>{product.title}</div>
-                                        {/*<div className={'description'}>{product.description}</div>*/}
-                                        <div className={'price'}>
-                                            <span>{product.price + 'р.'}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
+                {brands.map(product => (
+                    <div className={'product'}>
+                        <div>{product}</div>
                     </div>
-                )))}
+                ))}
+                {/*{(productsDataFiltered.length === 0 ? 'Скоро в продаже' :*/}
+                {/*    productsDataFiltered.map((product, index) => (*/}
+                {/*    <div className={'HqdItem'} key={index}>*/}
+                {/*        <Link to={`/product/${index}`} className={'toItemPage'} state={{product: productsDataFiltered}}>*/}
+                {/*            <div className={'hqdcontainer'}>*/}
+                {/*                <div className={'product item'}>*/}
+                {/*                    <img className={'hqdimg'} src={product.img} alt={'parilka'}/>*/}
+                {/*                    <div className={'hqdcontainertext'}>*/}
+                {/*                        <div className={`hqdtitle`}>{product.title}</div>*/}
+                {/*                        /!*<div className={'description'}>{product.description}</div>*!/*/}
+                {/*                        <div className={'price'}>*/}
+                {/*                            <span>{product.price + 'р.'}</span>*/}
+                {/*                        </div>*/}
+                {/*                    </div>*/}
+                {/*                </div>*/}
+                {/*            </div>*/}
+                {/*        </Link>*/}
+                {/*    </div>*/}
+                {/*)))}*/}
             </div>
         </motion.div>
     );
