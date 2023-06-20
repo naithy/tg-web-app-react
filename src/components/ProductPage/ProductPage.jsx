@@ -1,9 +1,8 @@
 import {useTelegram} from "../../hooks/useTelegram";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import './ProductPage.css'
 import {motion} from "framer-motion";
-import ProductItem from "../ProductItem/ProductItem";
+import '../Products/Product.css'
 
 const ProductPage = ({productsData}) => {
     const location = useLocation().pathname.slice(1)
