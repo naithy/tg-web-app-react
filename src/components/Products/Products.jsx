@@ -16,7 +16,7 @@ const Products = () => {
     tg.BackButton.show()
 
     useEffect(() => {
-        setProducts(productsf.filter(product => product.brand === brand));
+        setProducts((productsf.filter(product => product.brand === brand)).sort());
     }, [productsf]);
 
 
