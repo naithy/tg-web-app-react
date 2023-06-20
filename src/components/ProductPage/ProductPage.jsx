@@ -34,11 +34,11 @@ const ProductPage = ({productsData}) => {
             exit="exit"
             transition={{duration: 0.5}}
         >
-            <div className={'list'}>
+            <div className={'brandlist'}>
                 {(productsDataFiltered.length) === 0 ? 'Скоро в продаже' :
                 brands.map(product => (
                     <Link to={`/products/`} className={'toItemPage'} state={{productsTo: productsDataFiltered, brandFilter: product}}>
-                        <div className={'product'}>
+                        <div className={'brand'}>
                             <div>{product}</div>
                         </div>
                     </Link>

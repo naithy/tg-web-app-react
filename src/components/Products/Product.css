@@ -1,0 +1,8 @@
+.brandlist {
+    display: flex;
+}
+
+.brand {
+    background: var(--tg-theme-bg-color);
+    font-weight: 700;
+}
