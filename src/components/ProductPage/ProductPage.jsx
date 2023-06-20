@@ -14,11 +14,10 @@ const ProductPage = ({productsData}) => {
     const [products, setProducts] = useState([]);
     const brands = [...new Set(productsDataFiltered.map(item => item.brand))]
 
-
-        tg.BackButton.onClick(() => {
-            history(-1);
-        })
-        tg.BackButton.show()
+    tg.BackButton.onClick(() => {
+        history(-1);
+    })
+    tg.BackButton.show()
 
     const  animations = {
         initial: {opacity: 0},
