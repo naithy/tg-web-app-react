@@ -18,6 +18,7 @@ const Checkout = () => {
         history(-1);
     }
 
+    tg.expand()
     tg.BackButton.show()
     tg.BackButton.onClick(() => {
         history(-1);
