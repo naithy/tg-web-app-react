@@ -5,7 +5,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
 
     const productsf = useLocation().state.productsTo;
-    const brand = useLocation().state.filterBrand;
+    const brand = useLocation().state.brandFilter;
     console.log(productsf)
     console.log(brand)
 
