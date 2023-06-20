@@ -3,6 +3,7 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import '../Products/Product.css'
+import './ProductPage.css'
 
 const ProductPage = ({productsData}) => {
     const location = useLocation().pathname.slice(1)
