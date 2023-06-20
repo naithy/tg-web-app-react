@@ -1,8 +1,12 @@
 .brandlist {
     display: flex;
+    justify-content: center;
 }
 
 .brand {
     background: var(--tg-theme-bg-color);
     font-weight: 700;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 7px;
 }
