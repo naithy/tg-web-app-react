@@ -4,7 +4,7 @@ import {Link, useLocation} from "react-router-dom";
 const Products = () => {
     const [products, setProducts] = useState([]);
 
-    const productsf = useLocation.state.productsTo;
+    const productsf = useLocation().state.productsTo;
     const brand = useLocation().state.filterBrand;
 
     useEffect(() => {
