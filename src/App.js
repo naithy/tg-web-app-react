@@ -7,7 +7,7 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import ProductItem from "./components/ProductItem/ProductItem";
 import Checkout from "./components/Checkout/Checkout";
 import {TailSpin} from "react-loader-spinner";
-import Brands from "./components/Brands/Brands";
+import Products from "./components/Products/Products";
 
 function App() {
     const color = getComputedStyle(document.documentElement)
@@ -50,6 +50,7 @@ function App() {
                     <Route path="/pods" element={<ProductPage productsData={productsData}/>}/>
                     <Route path="/liquid" element={<ProductPage productsData={productsData}/>}/>
                     <Route path="/consumables" element={<ProductPage productsData={productsData}/>}/>
+                    <Route path="/products" element={<Products/>}/>
                     <Route path="/product/:productId" element={<ProductItem productsData={productsData}/>}/>
                     <Route path="checkout" element={<Checkout/>}/>
                 </Routes>

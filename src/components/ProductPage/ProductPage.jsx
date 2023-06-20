@@ -35,30 +35,14 @@ const ProductPage = ({productsData}) => {
             transition={{duration: 0.5}}
         >
             <div className={'list'}>
-                {brands.map(product => (
-                    <div className={'product'}>
-                        <div>{product}</div>
-                    </div>
+                {(productsDataFiltered.length) === 0 ? 'Скоро в продаже' :
+                brands.map(product => (
+                    <Link to={`/products/`} className={'toItemPage'} state={{productsTo: productsDataFiltered, brandFilter: brands}}>
+                        <div className={'product'}>
+                            <div>{product}</div>
+                        </div>
+                    </Link>
                 ))}
-                {/*{(productsDataFiltered.length === 0 ? 'Скоро в продаже' :*/}
-                {/*    productsDataFiltered.map((product, index) => (*/}
-                {/*    <div className={'HqdItem'} key={index}>*/}
-                {/*        <Link to={`/product/${index}`} className={'toItemPage'} state={{product: productsDataFiltered}}>*/}
-                {/*            <div className={'hqdcontainer'}>*/}
-                {/*                <div className={'product item'}>*/}
-                {/*                    <img className={'hqdimg'} src={product.img} alt={'parilka'}/>*/}
-                {/*                    <div className={'hqdcontainertext'}>*/}
-                {/*                        <div className={`hqdtitle`}>{product.title}</div>*/}
-                {/*                        /!*<div className={'description'}>{product.description}</div>*!/*/}
-                {/*                        <div className={'price'}>*/}
-                {/*                            <span>{product.price + 'р.'}</span>*/}
-                {/*                        </div>*/}
-                {/*                    </div>*/}
-                {/*                </div>*/}
-                {/*            </div>*/}
-                {/*        </Link>*/}
-                {/*    </div>*/}
-                {/*)))}*/}
             </div>
         </motion.div>
     );
