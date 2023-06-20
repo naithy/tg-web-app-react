@@ -6,6 +6,8 @@ const Products = () => {
 
     const productsf = useLocation().state.productsTo;
     const brand = useLocation().state.filterBrand;
+    console.log(productsf)
+    console.log(brand)
 
     useEffect(() => {
         setProducts(productsf.filter(product => product.brand === brand));
