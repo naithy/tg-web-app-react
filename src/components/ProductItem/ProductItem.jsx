@@ -165,10 +165,18 @@ const ProductItem = () => {
 
     const [strength, setStrenght] = useState();
     const LightButton = () => {
+        let color = document.getElementById('strengthbtnlight');
+        let color2 = document.getElementById('strengthbtnhard');
+        color2.style.background = 'var(--tg-theme-button-color)'
+        color.style.background = '#31b545';
         setStrenght('LIGHT')
     }
 
     const HardButton = () => {
+        let color = document.getElementById('strengthbtnhard');
+        let color2 = document.getElementById('strengthbtnlight');
+        color2.style.background = 'var(--tg-theme-button-color)'
+        color.style.background = '#31b545';
         setStrenght('HARD')
     }
 
@@ -184,8 +192,8 @@ const ProductItem = () => {
                     </div>
                 </div>
                 {product.category === 'disposable'? (<div className={'strength'}>
-                    <button className={'strengthbtnlight'} onClick={LightButton}>Light</button>
-                    <button className={'strengthbtnhard'} onClick={HardButton}>Hard</button>
+                    <button className={'strengthbtnlight'}  id='strengthbtnlight' onClick={LightButton}>Light</button>
+                    <button className={'strengthbtnhard'} id='strengthbtnhard' onClick={HardButton}>Hard</button>
                 </div>) : ''}
                 <div className="choicecontainer">
                     {Object.keys(product.flavors)
