@@ -197,7 +197,9 @@ const ProductItem = () => {
                 </div>) : ''}
                 <div className="choicecontainer">
                     {Object.keys(product.flavors)
-                        .filter((flavor) => !filter || flavor.endsWith(strength))
+                        .filter((flavor) =>
+                            strength ? flavor.endsWith(strength) : true
+                        )
                         .map((flavor) => {
                             const quantity = product.flavors[flavor];
                             return (
