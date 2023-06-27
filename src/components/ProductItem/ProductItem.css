@@ -226,7 +226,7 @@ p {
 
 .strength {
     margin-top: 15px;
-    justify-content: space-between;
+    justify-content: space-around;
     display: flex;
     position: relative;
     left: 50%;
@@ -237,7 +237,7 @@ p {
 .strengthbtn {
     height: 30px;
     border-radius: 7px;
-    width: 90%;
+    width: 45%;
     background: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
     border: none;
