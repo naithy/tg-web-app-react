@@ -223,3 +223,24 @@ p {
     }
 
 }
+
+.strength {
+    justify-content: space-between;
+    display: flex;
+    margin-top: 20px;
+    padding: 15px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+}
+
+.strengthbtn {
+    width: 100%;
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 700;
+}

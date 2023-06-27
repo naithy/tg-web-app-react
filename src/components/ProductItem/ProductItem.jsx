@@ -175,6 +175,10 @@ const ProductItem = () => {
                         <div className={'price'}>{product.price}p.</div>
                     </div>
                 </div>
+                <div className={'strength'}>
+                    <button className={'strengthbtn'}>Light</button>
+                    <button className={'strengthbtn'}>Hard</button>
+                </div>
                 <div className="choicecontainer">
                     {Object.entries(product.flavors).map(([flavor, quantity]) => (
                         <div>
@@ -186,7 +190,7 @@ const ProductItem = () => {
                                 <div className={"producttext"}>
                                     <p>{flavor}</p>
                                     <div
-                                        id={`badge-${product._id}-${flavor}`} // Добавляем уникальный идентификатор
+                                        id={`badge-${product._id}-${flavor}`}
                                         className="badge hide"
                                         style={{
                                             animationDuration: (cart[product._id] && cart[product._id].flavors[`${flavor}`]) ?
