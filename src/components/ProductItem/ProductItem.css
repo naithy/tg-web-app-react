@@ -234,7 +234,7 @@ p {
     width: 95%;
 }
 
-.strengthbtn {
+.strengthbtnlight, .strengthbtnhard {
     height: 30px;
     border-radius: 7px;
     width: 45%;
