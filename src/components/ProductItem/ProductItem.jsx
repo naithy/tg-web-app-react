@@ -192,8 +192,8 @@ const ProductItem = () => {
                     </div>
                 </div>
                 {product.category === 'disposable'? (<div className={'strength'}>
-                    <button className={'strengthbtnlight'}  id='strengthbtnlight' onClick={LightButton}>Light</button>
-                    <button className={'strengthbtnhard'} id='strengthbtnhard' onClick={HardButton}>Hard</button>
+                    <button className={'strengthbtnlight'}  id='strengthbtnlight' onClick={LightButton}>LIGHT</button>
+                    <button className={'strengthbtnhard'} id='strengthbtnhard' onClick={HardButton}>HARD</button>
                 </div>) : ''}
                 <div className="choicecontainer">
                     {Object.keys(product.flavors)
