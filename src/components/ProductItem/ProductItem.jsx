@@ -165,11 +165,11 @@ const ProductItem = () => {
 
     const [strength, setStrenght] = useState();
     const LightButton = () => {
-        setStrenght('Light')
+        setStrenght('LIGHT')
     }
 
     const HardButton = () => {
-        setStrenght('Hard')
+        setStrenght('HARD')
     }
 
     return (
