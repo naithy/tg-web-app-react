@@ -1,3 +1,7 @@
+body {
+    background: var(--tg-theme-secondary-bg-color);
+}
+
 .productcontainer {
     background: var(--tg-theme-secondary-bg-color);
     height: 100vh;
