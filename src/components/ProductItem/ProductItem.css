@@ -15,6 +15,10 @@
     border-radius: 7px;
 }
 
+.description {
+    color: var(--tg-theme-hint-color);
+}
+
 .hqdimg2 {
     width: 120px;
     height: 120px;

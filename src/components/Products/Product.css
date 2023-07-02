@@ -8,7 +8,7 @@
 }
 
 .brand {
-    background: var(--tg-theme-secondary-bg-color);
+    background: var(--tg-theme-bg-color);
     font-weight: 700;
     padding: 10px;
     width: 164px;
