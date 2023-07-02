@@ -191,7 +191,8 @@ const ProductItem = () => {
                         <div className={'price'}>{product.price}p.</div>
                     </div>
                 </div>
-                {product.category === 'liquid'? (<div className={'strength'}>
+                {product.category === 'liquid' && Object.keys(product.flavors).some(flavor => flavor.endsWith('HARD')
+                    || flavor.endsWith('LIGHT')) ? (<div className={'strength'}>
                     <button className={'strengthbtnlight'}  id='strengthbtnlight' onClick={LightButton}>LIGHT</button>
                     <button className={'strengthbtnhard'} id='strengthbtnhard' onClick={HardButton}>HARD</button>
                 </div>) : ''}
