@@ -11,7 +11,7 @@ const categories = [
     {id: 'disposable', title: 'Одноразовые ЭС', img: disposable},
     {id: 'pods', title: 'POD Системы', img: vape},
     {id: 'liquid', title: 'Жидкости', img: liquid},
-    {id: 'consumables', title: 'Испарители', img: atomizer}
+    {id: 'consumables', title: 'Расходники', img: atomizer}
 ]
 
 const CategoryList = () => {
