@@ -152,9 +152,15 @@ const Checkout = () => {
                         <div className={'orderproduct'}>
                             <div className={'orderproducttext'}>  • {name} <span className="colortext">{amount}x</span></div>
                             <div className={'totalprice'}>
-                                {((Object.values(Cart[key].flavors).reduce((a, b) => a + b, 0)) >= 3 && Cart[key].category === 'disposable' || Cart[key].category === 'vape') ?
-                                (parseFloat(Cart[key].price) - 100) * amount + ' р.': 
-                                parseFloat(Cart[key].price) * amount + ' р.'}</div>
+                                {((Object.values(Cart[key].flavors).reduce((a, b) => a + b, 0)) >= 3 && Cart[key].category === 'disposable') || Cart[key].category === 'vape' ? 
+                                    (price - 100) * amount + ' р.' : 
+                                    ((Object.values(Cart[key].flavors).reduce((a, b) => a + b, 0)) >= 3 && Cart[key].category === 'consumables') ?
+                                      (price - 20) * amount + ' р.' :
+                                      ((Object.values(Cart[key].flavors).reduce((a, b) => a + b, 0)) >= 3 && Cart[key].category === 'liquid') ?
+                                        (price - 50) * amount + ' р.' :
+                                        price * amount + ' р.'
+                                  }
+                            </div>
                         </div>
                     ))}
                 </div>)}
