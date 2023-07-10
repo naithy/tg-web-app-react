@@ -141,8 +141,12 @@ const ProductItem = () => {
                 for (let flavor in product.flavors) {
                     if (product.flavors.hasOwnProperty(flavor)) {
                         const count = product.flavors[flavor];
-                        if((Object.values(product.flavors).reduce((a, b) => a + b, 0)) >= 3) {
+                        if((Object.values(product.flavors).reduce((a, b) => a + b, 0)) >= 3 && product.category === 'disposable' || product.category === 'vape') {
                             total += count * (price - 100);
+                        } else if ((Object.values(product.flavors).reduce((a, b) => a + b, 0)) >= 3 && product.category === 'liquid') {
+                            total += count * (price - 50);
+                        } else if ((Object.values(product.flavors).reduce((a, b) => a + b, 0)) >= 3 && product.category === 'consumables') {
+                            total += count * (price - 20);
                         } else {
                             total += count * price;
                         }
