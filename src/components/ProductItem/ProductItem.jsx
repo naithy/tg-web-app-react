@@ -98,6 +98,7 @@ const ProductItem = () => {
                 newCart[product._id] = {};
                 newCart[product._id].title = product.title;
                 newCart[product._id].price = product.price;
+                newCart[product._id].category = product.category;
                 newCart[product._id].flavors = {};
             }
             newCart[product._id].flavors[flavor] = 1;
