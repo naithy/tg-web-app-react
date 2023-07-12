@@ -40,7 +40,7 @@ const Products = () => {
                         <Link to={`/product/${index}`} className={'toItemPage'} state={{product: products}}>
                             <div className={'hqdcontainer'}>
                                 <div className={'product item'}>
-                                    <img className={'hqdimg'} src={product.img} alt={'parilka'}/>
+                                    <img className={'hqdimg'} src={product.img} alt={'img'}/>
                                     <div className={'hqdcontainertext'}>
                                         <div className={`hqdtitle`}>{product.title}</div>
                                         <div className={'price'}>
